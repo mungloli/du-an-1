@@ -1,0 +1,254 @@
+*{
+    box-sizing: border-box;
+}
+.header{
+    background-color: rgb(6, 80, 48);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+.search input{
+    border: none;
+    padding-right: 10px;
+    padding: 10px 10px;
+}
+.search input:focus {
+   outline: none;
+}
+.logo strong{
+    display: block;
+    font-size: 30px;
+    color: rgb(240, 238, 238);
+}
+.logo p{
+    text-align: center;
+    color: rgb(240, 238, 238);
+}
+.login {
+    display: flex;
+    align-items: center;
+}
+.login1{
+    margin-right: 20px;
+    border-right: 1px solid white;
+    padding-bottom: 20px;
+}
+.login1:hover{
+    border-right: none;
+    box-shadow: inset 1px rgb(255, 254, 254);
+}
+.login1 ul{
+    list-style: none;
+    padding-right: 20px;
+    margin: 5px;
+    padding: 0;
+    margin: 0;
+}
+.login1 ul li{
+    padding-right: 20px;
+    color: rgb(240, 238, 238);
+}
+.login1 ul a{
+    color: rgb(240, 238, 238);
+    text-decoration: none;
+    padding-bottom: 20px;
+}
+.login1 ul a:hover{
+    color: rgb(207, 203, 203);
+}
+.login1 ul li ul{
+    display: none;
+    position: absolute;
+    list-style: none;
+    border: none;
+    margin: 0;
+    padding-top: 10px;
+}
+.login1 ul li ul li{
+    background-color: rgb(252, 252, 252);
+    padding: 10px 110px 10px 5px;
+    border-radius: 3px;
+}
+.login1 ul li ul li:hover{
+    background-color: rgb(204, 202, 202);
+}
+.login1 ul li ul a:hover{
+    color: rgb(104, 100, 100);
+}
+.login1 ul li ul a{
+    color: black;
+}
+.login1 ul li:hover ul{
+    display: block;
+}
+.menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 20px 80px;
+}
+.menu ul a{
+    text-decoration: none;
+    color: black;
+}
+.menu ul a:hover{
+    text-decoration: underline;
+}
+.box-cent{
+    display: flex;
+}
+.bar{
+    background-color: rgb(240, 238, 238);
+    height: 40px;
+    padding: 10px 0 0 40px;
+}
+.title{
+    margin: 20px 0 0 40px;
+    font-weight: bold;
+    border: 1px solid rgb(228, 225, 225);
+    width: 260px;
+    padding: 8px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.formtitle ul{
+    flex-direction: column;
+    align-items: normal;
+    margin: 0;
+    margin-left: 40px;
+}
+.formtitle ul li{
+    border-left: 1px solid rgb(228, 225, 225);
+    border-right: 1px solid rgb(228, 225, 225);
+    border-bottom: 1px solid rgb(228, 225, 225);
+    width: 260px;
+    padding: 8px 10px;
+}
+.formtitle ul li:hover{
+    background-color: rgb(240, 238, 238);
+}
+.mn{
+    margin-top: 0;
+}
+.cons{
+    border-left: 1px solid rgb(228, 225, 225);
+    border-right: 1px solid rgb(228, 225, 225);
+    border-bottom: 1px solid rgb(228, 225, 225);
+    width: 260px;
+    margin-left: 40px;
+    padding: 8px 10px;
+}
+.sptop img{
+    width: 60px;
+    height: 80px;
+    padding-right: 10px;
+}
+.sptop p{
+    margin: 0;
+}
+.sptop{
+    display: flex;
+    margin-top: 10px;
+}
+.content{
+    border: 1px solid rgb(228, 225, 225);
+    border-radius: 3px;
+    margin: 20px 0 0 20px;
+    padding: 10px 20px 20px 10px;
+}
+.blog{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.block{
+    display: flex;
+    margin-bottom: 20px;
+}
+.image img{
+    width: 220px;
+    height: 150px;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+.write p{
+    font-size: 15px;
+}
+.textnumber{
+    letter-spacing: 10px;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+.box-buton{
+    background-color: rgb(28, 71, 52);
+    padding: 30px 50px;
+    margin-top: 20px;
+}
+.foter-top{
+    display: flex;
+}
+.block1{
+    width: 260px;
+}
+.block1 strong{
+    display: block;
+    color: rgb(249, 246, 246);
+}
+.block1 a{
+     text-decoration: none;
+     color: rgb(249, 246, 246);
+     font-size: 14px;
+}
+.block1 a:hover{
+    color: yellow;
+}
+.foter-buton{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.block2 strong{
+    display: block;
+    color: rgb(249, 246, 246);
+    font-size: 14px;
+}
+.block2 p{
+    color: rgb(249, 246, 246);
+}
+.block2 img{
+    width: 45px;
+    height: 35px;
+    border-radius: 5px;
+}
+.boder img{
+    border-radius: 100%;
+    width: 43px;
+    height: 40px;
+}
+.block2 input[type="text"]{
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+}
+.block2 input[type="button"]{
+    padding: 10px 15px;
+    background-color: gray;
+    border: none;
+    color: rgb(249, 246, 246);
+    border-radius: 5px;
+}
+.block2 input[type="button"]:hover{
+    background-color: rgb(75, 74, 74);
+}
+.block2 input:focus {
+    outline: none;
+ }
+
