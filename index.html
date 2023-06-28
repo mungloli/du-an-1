@@ -1,20 +1,202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <!-- // Add the new slick-theme.css if you want the default styling -->
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+  <style>
+    .menu_child{
+      display: none;
+      transform-origin: 5% top;
+      animation: hovermenu ease-in .2s;
+    }
+    .item_menu:hover .menu_child{
+      display: block;
+    }
+    /* .banner_product{
+      transition: ease-in-out .3s;
+    } */
+    .banner_product::before{
+      content: "";
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left: 0;
+    }
+    .banner_product:hover::before{
+      transition: ease-in-out .5s;
+      left: 50%;
+      right: 50%;
+      width: 0;
+      background-color: rgba(255,255,255,0.2);
+    }
+    .banner_product::after{
+      content: "";
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left: 0;
+    }
+    .banner_product:hover::after{
+      transition: ease-in-out .5s;
+      top: 50%;
+      bottom: 50%;
+      height: 0;
+      background-color: rgba(255,255,255,0.2);
+    }
+    @keyframes hovermenu{
+      from{
+        transform: scale(0);
+      }
+      to{
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wapper">
+    <header>
+      <div class="bg-[#064a38]">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex justify-between items-center h-[88px]">
+            <div class="">
+              <form action="" class="bg-white rounded-lg overflow-hidden px-2">
+                <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm kiếm sản phẩm">
+                <button class="w-7"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+            <div class="">
+              <img class="h-[88px]" src="img/logo.png" alt="">
+            </div>
+            <div class="flex items-center">
+              <div class="border-r border-white text-xl p-3 text-white">
+                  <i class="px-2 fa-solid fa-heart"></i>
+                  <i class="px-2 fa-solid fa-cart-shopping"></i>
+              </div>
+              <div class="ml-3">
+                <a class="text-white text-base block hover:text-gray-300" href="#">Đăng nhập</a>
+                <a class="text-white text-base block hover:text-gray-300" href="#">Đăng kí</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-3">
+        <div class="max-w-6xl mx-auto">
+          <ul class="flex items-center h-10 justify-between">
+            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Trang chủ</a></li>
+            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Giới thiệu</a></li>
+            <li class="item_menu relative ">
+              <a class=" p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
+                <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="item_menu relative">
+              <a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Nước hoa <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
+                <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                </ul> 
+              </div>
+            </li>
+            <li class="item_menu relative">
+              <a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Nước hoa chiết <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
+                <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                  <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Hỏi đáp</a></li>
+            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Liên hệ</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="slide-show mt-2">
+       <div><img src="img/slider_1.webp" alt=""></div>
+       <div><img src="img/slider_2.webp" alt=""></div>
+       <div><img src="img/slider_3.webp" alt=""></div>
+    </div>
+    <section>
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-[#064a38] p-2">
+          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nam</h2></a>          
+        </div>
+        <div class="banner_product relative">
+          <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
+        </div>
+        <div class="grid grid-cols-5 grid-rows-2 overflow-hidden">
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+        </div>
+      </div>
+    </section>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $(".slide-show").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000,
+      });
+    });
+    </script>
+  </div>
+</body>
 </html>
