@@ -10,59 +10,7 @@
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
-  <style>
-    .menu_child{
-      display: none;
-      transform-origin: 5% top;
-      animation: hovermenu ease-in .2s;
-    }
-    .item_menu:hover .menu_child{
-      display: block;
-    }
-    /* .banner_product{
-      transition: ease-in-out .3s;
-    } */
-    .banner_product::before{
-      content: "";
-      position: absolute;
-      z-index: 5;
-      width: 100%;
-      height: 100%;
-      top:0;
-      left: 0;
-    }
-    .banner_product:hover::before{
-      transition: ease-in-out .5s;
-      left: 50%;
-      right: 50%;
-      width: 0;
-      background-color: rgba(255,255,255,0.2);
-    }
-    .banner_product::after{
-      content: "";
-      position: absolute;
-      z-index: 5;
-      width: 100%;
-      height: 100%;
-      top:0;
-      left: 0;
-    }
-    .banner_product:hover::after{
-      transition: ease-in-out .5s;
-      top: 50%;
-      bottom: 50%;
-      height: 0;
-      background-color: rgba(255,255,255,0.2);
-    }
-    @keyframes hovermenu{
-      from{
-        transform: scale(0);
-      }
-      to{
-        transform: scale(1);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="content/style.css">
 </head>
 <body>
   <div class="wapper">
@@ -76,8 +24,8 @@
                 <button class="w-7"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
             </div>
-            <div class="">
-              <img class="h-[88px]" src="img/logo.png" alt="">
+            <div>
+              <img src="img/logo.webp" alt="">
             </div>
             <div class="flex items-center">
               <div class="border-r border-white text-xl p-3 text-white">
@@ -95,10 +43,10 @@
       <div class="p-3">
         <div class="max-w-6xl mx-auto">
           <ul class="flex items-center h-10 justify-between">
-            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Trang chủ</a></li>
-            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Giới thiệu</a></li>
+            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Trang chủ</a></li>
+            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Giới thiệu</a></li>
             <li class="item_menu relative ">
-              <a class=" p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <a class=" p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
               <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
                 <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
                   <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
@@ -115,7 +63,7 @@
               </div>
             </li>
             <li class="item_menu relative">
-              <a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Nước hoa <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Nước hoa <i class="text-sm fa-solid fa-chevron-right"></i></a>
               <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
                 <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
                   <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
@@ -132,7 +80,7 @@
               </div>
             </li>
             <li class="item_menu relative">
-              <a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Nước hoa chiết <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Nước hoa chiết <i class="text-sm fa-solid fa-chevron-right"></i></a>
               <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
                 <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
                   <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">lorem fajf</a></li>
@@ -148,18 +96,18 @@
                 </ul>
               </div>
             </li>
-            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Hỏi đáp</a></li>
-            <li><a class="p-3 text-xl transition-colors duration-300 hover:text-green-700" href="#">Liên hệ</a></li>
+            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Hỏi đáp</a></li>
+            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Liên hệ</a></li>
           </ul>
         </div>
       </div>
     </header>
-    <div class="slide-show mt-2">
+    <div class="slide-show">
        <div><img src="img/slider_1.webp" alt=""></div>
        <div><img src="img/slider_2.webp" alt=""></div>
        <div><img src="img/slider_3.webp" alt=""></div>
     </div>
-    <section>
+    <section class="perfume_men_product">
       <div class="max-w-6xl mx-auto">
         <div class="bg-[#064a38] p-2">
           <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nam</h2></a>          
@@ -167,23 +115,603 @@
         <div class="banner_product relative">
           <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
         </div>
-        <div class="grid grid-cols-5 grid-rows-2 overflow-hidden">
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-          <div><img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+        <div class="product_list">
+          <div class=" grid grid-cols-5 grid-rows-2">
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
         </div>
       </div>
     </section>
-    
+    <section class="perfume_women_product">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-[#064a38] p-2">
+          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nữ</h2></a>          
+        </div>
+        <div class="banner_product relative">
+          <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
+        </div>
+        <div class="product_list">
+          <div class=" grid grid-cols-5 grid-rows-2">
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <section class="perfume_unisex_product">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-[#064a38] p-2">
+          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nam</h2></a>          
+        </div>
+        <div class="banner_product relative">
+          <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
+        </div>
+        <div class="product_list">
+          <div class=" grid grid-cols-5 grid-rows-2">
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="product pb-4 border px-3">
+              <img src="img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <div class="blog p-7">
+      <div class="max-w-6xl mx-auto border">
+        <div class="text-center py-4">
+          <h3 class="font-bold uppercase text-2xl border-b border-green-950 inline">Thông tin</h3>
+        </div>
+        <div class="grid grid-cols-4">
+          <div class="p-3">
+            <a href=""><img src="img/posts1.webp" alt=""></a>
+            <div>
+              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
+              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
+              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
+            </div>
+          </div>
+          <div class="p-3">
+            <a href=""><img src="img/posts1.webp" alt=""></a>
+            <div>
+              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
+              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
+              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
+            </div>
+          </div>
+          <div class="p-3">
+            <a href=""><img src="img/posts1.webp" alt=""></a>
+            <div>
+              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
+              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
+              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
+            </div>
+          </div>
+          <div class="p-3">
+            <a href=""><img src="img/posts1.webp" alt=""></a>
+            <div>
+              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
+              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
+              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-3">
+      <div class="bg-[#064a38] py-10">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-4">
+            <div>
+              <h4 class="font-bold text-white text-lg">Về Parfumerie</h4>
+              <div class="mt-5">
+                <ul>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Trang chủ</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Giới thiệu</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Sản phẩm</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Liên hệ</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Hướng dẫn</h4>
+              <div class="mt-5">
+                <ul>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Hướng dẫn mua hàng</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Hướng dẫn thanh toán</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Hướng dẫn giao nhận</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Điều khoản sử dụng</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Chính sách</h4>
+              <div class="mt-5">
+                <ul>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Chính sách mua hàng</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Chính sách bảo mật</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Chính sách giao hàng</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Chính sách bảo hành</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Hỗ trợ</h4>
+              <div class="mt-5">
+                <ul>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Tìm kiếm</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Đăng nhập</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Đăng kí</a></li>
+                  <li><a class="text-white hover:text-yellow-400" href="#">Cộng tác viên</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+            <div class="w-1/5 ml-auto mt-5">
+              <h3 class="text-lg text-white font-bold">Phương thức thanh toán</h3>
+            <div>
+              <i class="text-white text-2xl fa-solid fa-money-bills"></i>
+            </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="bg-black text-center py-3">
+        <p class="text-white">Created By <span class="text-green-700 font-semibold">Mung Loli</span> / <span class="text-green-700 font-semibold">Mung Loli</span> / <span class="text-green-700 font-semibold">Mung Loli</span> / <span class="text-green-700 font-semibold">Mung Loli</span> | © 2023 FPT Polytechnic. All rights reserved.</p>
+      </div>
+    </footer>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
