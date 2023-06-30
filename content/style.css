@@ -1,9 +1,17 @@
 .menu_child{
     display: none;
     transform-origin: 5% top;
-    animation: hovermenu ease-in .2s;
+    animation:hovermenu ease .3s ;
+  }
+  .menu_child_2{
+    transform-origin: top;
+    display: none;
+    animation:hovermenu ease .3s ;
   }
   .item_menu:hover .menu_child{
+    display: block;
+  }
+  .item_menu_2:hover .menu_child_2{
     display: block;
   }
   /* .banner_product{
