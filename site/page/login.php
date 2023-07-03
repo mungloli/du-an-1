@@ -10,9 +10,12 @@
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
-  <link rel="stylesheet" href="content/style.css">
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
+  <?php
+    include "site/layout/header.php";
+    ?>
     <div>
         <div class="w-2/5 mx-auto shadow-2xl py-5">
           <div class="text-center mb-3">
@@ -35,7 +38,9 @@
           </div>
         </div>
     </div>
-
+    <?php
+    include "site/layout/footer.php";
+    ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
