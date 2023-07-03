@@ -22,7 +22,106 @@
        <div><img src="public/img/slider_2.webp" alt=""></div>
        <div><img src="public/img/slider_3.webp" alt=""></div>
     </div>
-    <section class="perfume_men_product">
+    <?php 
+    foreach($list_loai as $loai ){
+    ?>
+      <section class="perfume_men_product">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-[#064a38] p-2">
+          <a href="#"><h2 class="font-bold uppercase text-white"><?=$loai['name']?></h2></a>          
+        </div>
+        <div class="banner_product relative">
+          <a href="#"><img src="public/img/product_banner_1.webp" alt=""></a>
+        </div>
+        <div class="product_list">
+          <div class=" grid grid-cols-5">
+            <?php 
+            $id_loai=$loai['id'];
+            $list_sanPham=select_san_pham_by_loai($id_loai);
+            foreach($list_sanPham as $san_pham){
+              ?>
+              <div class="product pb-4 border px-3">
+              <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold"><?=$san_pham['name']?></h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+              <?php
+            }
+            ?>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <?php
+    }
+    ?>
+    
+    <!-- <section class="perfume_women_product">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-[#064a38] p-2">
+          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nữ</h2></a>          
+        </div>
+        <div class="banner_product relative">
+          <a href="#"><img src="public/img/product_banner_1.webp" alt=""></a>
+        </div>
+        <div class="product_list">
+          <div class=" grid grid-cols-5">
+            <div class="product pb-4 border px-3">
+              <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+              <div class="mt-1">
+                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
+                <div class="mt-3">
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="price_product relative">
+                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                    </div>
+                    <div class="interact_product">
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
+        </div>
+      </div>
+    </section> -->
+    <!-- <section class="perfume_unisex_product">
       <div class="max-w-6xl mx-auto">
         <div class="bg-[#064a38] p-2">
           <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nam</h2></a>          
@@ -31,7 +130,7 @@
           <a href="#"><img src="public/img/product_banner_1.webp" alt=""></a>
         </div>
         <div class="product_list">
-          <div class=" grid grid-cols-5 grid-rows-2">
+          <div class=" grid grid-cols-5">
             <div class="product pb-4 border px-3">
               <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
               <div class="mt-1">
@@ -63,91 +162,7 @@
           <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
         </div>
       </div>
-    </section>
-    <section class="perfume_women_product">
-      <div class="max-w-6xl mx-auto">
-        <div class="bg-[#064a38] p-2">
-          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nữ</h2></a>          
-        </div>
-        <div class="banner_product relative">
-          <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
-        </div>
-        <div class="product_list">
-          <div class=" grid grid-cols-5 grid-rows-2">
-            <div class="product pb-4 border px-3">
-              <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
-              <div class="mt-1">
-                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
-                <div class="mt-3">
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                </div>
-                <div>
-                  <div class=" text-green-900 font-semibold h-10 relative">
-                    <div class="price_product relative">
-                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
-                    </div>
-                    <div class="interact_product">
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center p-3">
-          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
-        </div>
-      </div>
-    </section>
-    <section class="perfume_unisex_product">
-      <div class="max-w-6xl mx-auto">
-        <div class="bg-[#064a38] p-2">
-          <a href="#"><h2 class="font-bold uppercase text-white">Nước hoa nam</h2></a>          
-        </div>
-        <div class="banner_product relative">
-          <a href="#"><img src="img/product_banner_1.webp" alt=""></a>
-        </div>
-        <div class="product_list">
-          <div class=" grid grid-cols-5 grid-rows-2">
-            <div class="product pb-4 border px-3">
-              <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
-              <div class="mt-1">
-                <a href="#"><h3 class="name_product font-semibold">Creed Aventus For Men EDP</h3></a>
-                <div class="mt-3">
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                  <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                </div>
-                <div>
-                  <div class=" text-green-900 font-semibold h-10 relative">
-                    <div class="price_product relative">
-                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
-                    </div>
-                    <div class="interact_product">
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center p-3">
-          <button class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></button>
-        </div>
-      </div>
-    </section>
+    </section> -->
     <div class="blog p-7">
       <div class="max-w-6xl mx-auto border">
         <div class="text-center py-4">

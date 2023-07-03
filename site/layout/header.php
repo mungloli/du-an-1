@@ -17,9 +17,27 @@
                   <i class="px-2 fa-solid fa-heart"></i>
                   <i class="px-2 fa-solid fa-cart-shopping"></i>
               </div>
-              <div class="ml-3">
-                <a class="text-white text-base block hover:text-gray-300" href="?ctl=login">Đăng nhập</a>
-                <a class="text-white text-base block hover:text-gray-300" href="?ctl=register">Đăng kí</a>
+              <div class="account ml-3 relative">
+                <?php
+                if(isset($_SESSION['user'])){
+                  extract($_SESSION['user']);
+                  ?>
+                  <h2 class="text-white">Xin Chào:<br> <span><?=$user_name?></span></h2>
+                  <div class="account_menu">
+                    <ul class=" w-max shadow-lg bg-white p-3">
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=change_pass&id=<?=$id?>">Đổi mật khẩu</a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Đăng xuất</a></li>               
+                    </ul>
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <a class="text-white text-base block hover:text-gray-300" href="?ctl=login">Đăng nhập</a>
+                  <a class="text-white text-base block hover:text-gray-300" href="?ctl=register">Đăng kí</a>
+                  <?php
+                }
+                ?>
               </div>
             </div>
           </div>

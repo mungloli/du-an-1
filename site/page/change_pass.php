@@ -13,29 +13,34 @@
   <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
-  <?php require "site/layout/header.php"?>
+  <?php
+    include "site/layout/header.php";
+    ?>
     <div class="py-10">
-        <div class="w-2/5 mx-auto shadow-2xl py-5">
-          <div class="text-center">
-            <h1 class="font-bold text-3xl uppercase">Đăng ký tài khoản</h1>
+        <div class="w-1/3 mx-auto shadow-2xl py-5">
+          <div class="text-center mb-3">
+            <h1 class="font-bold text-3xl uppercase">Đổi mật khẩu</h1>
           </div>
           <div class="px-10">
-            <form action="index.php?ctl=btn_register" method="post">
-              <label class="font-bold mt-3 block" for="">Họ tên</label>
+            <form action="index.php?ctl=btn_change" method="post">
+              <label class="font-bold mt-3 block" for="">Tên tài khoản</label>
               <input class="block rounded h-10 w-full pl-1 border" type="text" name="ten">
-              <label class="font-bold mt-3 block" for="">Email</label>
-              <input class="block rounded h-10 w-full pl-1 border" type="email" name="email">
               <label class="font-bold mt-3 block" for="">Mật khẩu</label>
               <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau">
-              <div class="text-center mt-5">
-                <button class="bg-green-900 w-24 h-10 text-white hover:bg-[#064a38] mr-3" name="btn_register">Đăng ký</button>
-                <a class="text-green-900 hover:underline" href="?ctl=login">Đăng nhập</a>
+              <label class="font-bold mt-3 block" for="">Nhập mật khẩu mới</label>
+              <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau-new">
+              <label class="font-bold mt-3 block" for="">Nhập lại mật khẩu mới</label>
+              <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau-new-2">
+              <div class="mt-8 text-center">
+                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_login">Đăng Nhập</button>
               </div>
             </form>
           </div>
         </div>
     </div>
-    <?php require "site/layout/footer.php"?>
+    <?php
+    include "site/layout/footer.php";
+    ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

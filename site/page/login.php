@@ -16,23 +16,24 @@
   <?php
     include "site/layout/header.php";
     ?>
-    <div>
-        <div class="w-2/5 mx-auto shadow-2xl py-5">
+    <div class="py-10">
+        <div class="w-1/3 mx-auto shadow-2xl py-5">
           <div class="text-center mb-3">
             <h1 class="font-bold text-3xl uppercase">Đăng nhập tài khoản</h1>
           </div>
           <div class="px-10">
-            <form action="">
-              <label class="font-bold mt-3 block" for="">Email</label>
-              <input class="block rounded h-10 w-full pl-1 border" type="email">
+            <form action="index.php?ctl=btn_login" method="post">
+              <label class="font-bold mt-3 block" for="">Tên tài khoản</label>
+              <input class="block rounded h-10 w-full pl-1 border" type="text" name="ten">
               <label class="font-bold mt-3 block" for="">Mật khẩu</label>
-              <input class="block rounded h-10 w-full pl-1 border" type="password">
-              <div class="flex justify-between mt-2">
-                <a class="text-green-900 hover:underline" href="">Quên mật khẩu</a>
+              <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau">
+              <span><?php if(!empty($messenger['login'])) echo $messenger['login'] ?></span>
+              <div class="mt-8 text-center">
+                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_login">Đăng Nhập</button>
               </div>
               <div class="flex justify-between items-center mt-5">
-                <button class="bg-green-900 w-24 h-10 text-white hover:bg-[#064a38] mr-3">Đăng Nhập</button>
-                <p>Bạn chưa có tài khoản đăng ký: <a class="text-green-900 hover:underline font-bold" href="">Tại dây</a></p>
+                <a class="text-green-900 hover:underline" href="">Quên mật khẩu</a>
+                <p>Bạn chưa có tài khoản đăng ký: <a class="text-green-900 hover:underline font-bold" href="?ctl=register">Tại dây</a></p>
               </div>
             </form>
           </div>

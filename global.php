@@ -9,4 +9,5 @@
     extract($data);
     include_once "site/" . $path . ".php";
 }
+$messenger=[];
 ?>

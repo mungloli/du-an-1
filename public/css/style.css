@@ -85,6 +85,18 @@
     animation: hovermenu ease .5s;
     transform-origin: 90% bottom;
   }
+  .account_menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform-origin: top;
+    z-index: 5;
+    display: none;
+    animation:hovermenu ease .3s ;
+  }
+  .account:hover .account_menu{
+    display: block;
+  }
   @keyframes hovermenu{
     from{
       transform: scale(0);
