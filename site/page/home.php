@@ -54,7 +54,11 @@
                 <div>
                   <div class=" text-green-900 font-semibold h-10 relative">
                     <div class="price_product relative">
-                      <span>765.000đ</span><span class="mx-1">-</span><span>1.160.000đ</span>
+                      <?php
+                        $gia_san_pham=select_gia_san_pham($san_pham['id']);
+                        // print_r($gia_san_pham);
+                      ?>
+                      <span><?php echo number_format($gia_san_pham['gia_min'])?>đ</span><span class="mx-1">-</span><span><?php echo number_format($gia_san_pham['gia_max'])?>đ</span>
                     </div>
                     <div class="interact_product">
                       <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>

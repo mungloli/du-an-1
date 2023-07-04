@@ -21,7 +21,9 @@
             $mat_khau=$_POST['mat-khau'];
             $tai_khoan=check_login($name,$mat_khau);
             if(is_array($tai_khoan)){
-                $_SESSION['user']=$tai_khoan;
+                // $_SESSION['user']=$tai_khoan;
+                $json_tai_khoan=json_encode($tai_khoan);
+                setcookie("user",$json_tai_khoan,time()+(86400*7));
                 $messenger['login']="Đăng nhập thành công";
                 header('location:index.php');
             }else {
@@ -29,7 +31,11 @@
                 
             }
         }
-        
+    }
+
+    function user_logout(){
+        setcookie("user",'',time()-(86400*7));
+        header('location:index.php');
     }
     function user_register(){
         if(isset($_POST['btn_register'])){
@@ -41,13 +47,17 @@
         }
     }
     function update_pass(){
-        $id=$_GET['id'];
-        if(isset($_POST['btn_change'])){
+        $user=json_decode($_COOKIE['user'],true);
+        $id=$user['id'];
+        if(isset($_POST['btn_change-pass'])){
             $mat_khau=$_POST['mat-khau'];
             $new_may_khau=$_POST['mat-khau-new'];
             $new_may_khau_2=$_POST['mat-khau-new-2'];
-            update_new_pass($new_may_khau,$id);
-            echo "Thay đổi thành công";
+            if($user['mat_khau']==$mat_khau && $new_may_khau == $new_may_khau_2){
+                update_new_pass($new_may_khau,$id);
+            }else{
+                echo "Không thể thay đổi tài khoản mật khẩu";
+            }
         }
     }
 ?>

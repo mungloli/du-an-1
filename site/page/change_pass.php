@@ -22,9 +22,12 @@
             <h1 class="font-bold text-3xl uppercase">Đổi mật khẩu</h1>
           </div>
           <div class="px-10">
+            <?php if(isset($_COOKIE['user'])){
+              $user=json_decode($_COOKIE['user'],true);
+            }?>
             <form action="index.php?ctl=btn_change" method="post">
               <label class="font-bold mt-3 block" for="">Tên tài khoản</label>
-              <input class="block rounded h-10 w-full pl-1 border" type="text" name="ten">
+              <input class="block rounded h-10 w-full pl-1 border" type="text" name="ten" value="<?php if(isset($user)){ echo $user['user_name'];}?>" readonly>
               <label class="font-bold mt-3 block" for="">Mật khẩu</label>
               <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau">
               <label class="font-bold mt-3 block" for="">Nhập mật khẩu mới</label>
@@ -32,7 +35,7 @@
               <label class="font-bold mt-3 block" for="">Nhập lại mật khẩu mới</label>
               <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau-new-2">
               <div class="mt-8 text-center">
-                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_login">Đăng Nhập</button>
+                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_change-pass">Đăng Nhập</button>
               </div>
             </form>
           </div>

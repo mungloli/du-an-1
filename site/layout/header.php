@@ -19,15 +19,15 @@
               </div>
               <div class="account ml-3 relative">
                 <?php
-                if(isset($_SESSION['user'])){
-                  extract($_SESSION['user']);
+                if(isset($_COOKIE["user"])){
+                  $user=json_decode($_COOKIE["user"],true);
                   ?>
-                  <h2 class="text-white">Xin Chào:<br> <span><?=$user_name?></span></h2>
+                  <h2 class="text-white">Xin Chào:<br> <span><?php echo $user['user_name']?></span></h2>
                   <div class="account_menu">
                     <ul class=" w-max shadow-lg bg-white p-3">
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li>
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=change_pass&id=<?=$id?>">Đổi mật khẩu</a></li>
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Đăng xuất</a></li>               
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=change_pass">Đổi mật khẩu</a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=logout">Đăng xuất</a></li>               
                     </ul>
                   </div>
                   <?php

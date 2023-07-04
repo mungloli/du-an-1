@@ -25,6 +25,12 @@ require "controllers/site/home.php";
   case 'change_pass':
     change_pass();
     break;
+  case 'logout':
+    user_logout();
+    break;
+  case 'btn_change':
+    update_pass();
+    break;
   default: echo "Page not pound";
  }
 ?>

@@ -43,4 +43,12 @@ function update_new_pass($new_pass,$id_user){
    $stmt = $connect->prepare($sql);
    $stmt->execute();
 }
+function select_gia_san_pham($id){
+   $connect=connection();
+   $sql = "SELECT min(`gia_chi_tiet`.`gia`) gia_min ,max(`gia_chi_tiet`.`gia`) gia_max FROM `san_pham` JOIN gia_chi_tiet ON gia_chi_tiet.id_sanPham=san_pham.id WHERE san_pham.id=$id";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result[0];
+}
 ?>
