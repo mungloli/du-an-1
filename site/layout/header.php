@@ -4,13 +4,13 @@
         <div class="max-w-6xl mx-auto">
           <div class="flex justify-between items-center h-[88px]">
             <div class="">
-              <form action="" class="bg-white rounded-lg overflow-hidden px-2">
-                <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm kiếm sản phẩm">
-                <button class="w-7"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <form action="index.php?ctl=search" method="post" class="bg-white rounded-lg overflow-hidden px-2">
+                <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm kiếm sản phẩm" name="search">
+                <button class="w-7" name="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
             </div>
             <div>
-              <img src="public/img/logo.webp" alt="">
+              <a href="index.php"><img src="public/img/logo.webp" alt=""></a>
             </div>
             <div class="flex items-center">
               <div class="border-r border-white text-xl p-3 text-white">
@@ -46,7 +46,7 @@
       <div class="p-3">
         <div class="max-w-6xl mx-auto">
           <ul class="flex items-center h-10 justify-between">
-            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="index.html">Trang chủ</a></li>
+            <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="index.php">Trang chủ</a></li>
             <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Giới thiệu</a></li>
             <li class="item_menu relative ">
               <a class=" p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
@@ -56,7 +56,7 @@
                   $list_hang=hang_all();
                   foreach($list_hang as $hang ){
                     ?>
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#"><?=$hang['name']?></a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="index.php?ctl=by-hang&id-hang=<?=$hang['id']?>"><?=$hang['name']?></a></li>
                     <?php
                   }
                   ?>
@@ -72,7 +72,7 @@
                   $list_loai=loai_all();
                   foreach($list_loai as $loai ){
                     ?>
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#"><?=$loai['name']?></a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="index.php?ctl=by-loai&id-loai=<?=$loai['id']?>"><?=$loai['name']?></a></li>
                     <?php
                   }
                   ?>

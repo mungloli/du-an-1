@@ -1,5 +1,4 @@
 <?php
-    session_start();
     function home_page(){
         view('/page/home');
     }
@@ -20,7 +19,7 @@
             $name=$_POST['ten'];
             $mat_khau=$_POST['mat-khau'];
             $tai_khoan=check_login($name,$mat_khau);
-            if(is_array($tai_khoan)){
+            if(!empty($tai_khoan)){
                 // $_SESSION['user']=$tai_khoan;
                 $json_tai_khoan=json_encode($tai_khoan);
                 setcookie("user",$json_tai_khoan,time()+(86400*7));
@@ -58,6 +57,70 @@
             }else{
                 echo "Không thể thay đổi tài khoản mật khẩu";
             }
+        }
+    }
+    function chi_tiet_san_pham(){
+        $id=$_GET['id'];
+        $san_pham=select_san_pham_by_id($id);
+        $dung_tich=select_dung_tich();
+        $loai_sp=select_gioi_tinh($id);
+        view('page/chi_tiet_san_pham',['san_pham' => $san_pham,'dung_tich'=>$dung_tich,'loai_sp'=>$loai_sp]);
+    }
+    function cart(){
+        if(isset($_POST['btn-add-cart']) && isset($_COOKIE['user'])){
+            $id_sp=$_POST['id-sp'];
+            $id_dt=$_POST['dung-tich'];
+            $sl=$_POST['so-luong'];
+            $chi_tiet_sp=select_by_dung_tich($id_sp,$id_dt);
+            extract($chi_tiet_sp);
+            print_r($_POST) ;
+            if($chi_tiet_sp['so_luong']>0){
+                $user = json_decode($_COOKIE['user'],true);
+                $user_cart=check_cart($user['id']);
+                $cart=select_cart_by_group($user['id'],$id_sp,$id_dt);
+                extract($cart);
+                print_r($cart);
+                if(empty($user_cart)){
+                    echo "Tạo giỏ hàng thành công";
+                    create_cart($user['id']);
+                    add_product_cart($user['id'],$id_sp,$sl,$id_dt);
+                }
+                else{
+                    echo 'Đã có giỏ hàng';
+                    if(!empty($cart)){
+                        echo "đã có sp";
+                        $sl_update=$cart['so_luong']+$sl;
+                        echo $sl_update ;
+                        update_so_luong_sp_cart($sl_update,$id_sp,$user['id'],$id_dt);
+                    }else{
+                        echo "san phẩm mới";
+                        add_product_cart($user['id'],$id_sp,$sl,$id_dt);
+                    }
+                }
+            }else{
+                echo "sản phẩm đã hết hàng";
+            }
+        }    
+    }
+    function search(){
+        if(isset($_POST['btn-search'])){
+            $keyword=$_POST['search'];
+            $list=select_by_keyword($keyword);
+            print_r($list);
+        }
+    }
+    function select_sp_by_loai(){
+        if(isset($_GET['id-loai'])){
+            $id_loai=$_GET['id-loai'];
+            $list=select_san_pham_by_loai($id_loai);
+            print_r($list);
+        }
+    }
+    function select_sp_by_hang(){
+        if(isset($_GET['id-hang'])){
+            $id_hang=$_GET['id-hang'];
+            $list=select_san_pham_by_hang($id_hang);
+            print_r($list);
         }
     }
 ?>
