@@ -1,0 +1,44 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+}
+.conten{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.giohang{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.giohang h3{font-size: 30px;}
+.box-infor-product{
+    padding-left: 10px;
+}
+.eller-by-hidden{
+    text-decoration: none;
+}
+
+.img{
+    width: 169px;
+    height: 169px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+}
+.produtc{
+    border-radius: 5px;
+    border: 1px solid gray;
+    display: flex;
+
+}
+.form{
+    padding-left: 20px;
+    display: grid; 
+    justify-content: center;
+}
