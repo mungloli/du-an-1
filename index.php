@@ -1,8 +1,17 @@
 <?php
 require "global.php";
 require "model/connection.php";
-require "model/site/san_pham.php";
+require "model/cart.php";
+require "model/change_pass.php";
+require "model/chi_tiet_gio_hang.php";
+require "model/dung_tich.php";
+require "model/hang.php";
+require "model/loai.php";
+require "model/san_pham.php";
+require "model/user.php";
+require "model/yeu_thich.php";
 require "controllers/site/home.php";
+require "controllers/site/chi_tiet_san_pham.php";
 
  $ctl= $_GET['ctl'] ?? '';
  switch($ctl){
@@ -30,6 +39,9 @@ require "controllers/site/home.php";
     break;
   case 'btn_change':
     update_pass();
+    break;
+  case "don_hang":
+    don_hang();
     break;
   case 'product_datail':
     chi_tiet_san_pham();

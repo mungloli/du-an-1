@@ -1,8 +1,9 @@
 <?php 
     extract($data['san_pham']);
     extract($data['dung_tich']);
-    extract($data['loai_sp']);
+    extract($data['yeu_thich']);
     $id_sp=$san_pham['id'];
+    print_r($yeu_thich);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,9 @@
   <script src="tailwind.config.js"></script>
   <link rel="stylesheet" href="public/css/style.css">
   <style>
+    .yt_parent:hover .yt_child{
+        color: rgb(22, 101, 52,) ;
+    }
     /* chi tiết sản phẩm */
   .more_info{
     background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.33) 33%, rgba(255,255,255,0.8) 83%, #fff);
@@ -61,7 +65,7 @@
                         </p>
                     </div>
                     <div class="mt-3">
-                        <p class="font-medium">Danh mục: <span><?=$loai_sp['name']?></span></p>
+                        <p class="font-medium">Danh mục: <span><?=$san_pham['ten_loai']?></span></p>
                     </div>
                     <form action="index.php?ctl=add_to_cart" method="post">
                         <input class="hidden" type="text" value="<?=$san_pham['id']?>" name="id-sp">
@@ -93,10 +97,25 @@
                             <button class="text-white font-medium rounded-lg bg-green-800 hover:bg-black w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
                         </div>
                     </form>
-                    <div class="mt-3 border w-max p-3 hover:border-green-950 hover:text-green-950">
-                        <i class="text-inherit fa-regular fa-heart"></i>
-                        <span class="text-inherit cursor-pointer">Thêm vào mục yêu thích</span>
-                    </div>
+                    <button id="btn_wishlist" onclick="wishlist()" value="<?=$san_pham['id']?>"
+                             class="yt_parent mt-3 border w-max p-3 
+                            hover:border-green-950 hover:text-green-950 cursor-pointer">
+                        <i id="icon_wishlist" class="yt_child text-gray-200
+                        <?php if(!empty($yeu_thich)){
+                                echo "text-green-900";
+                            }?>
+                        fa-solid fa-heart"></i>
+                        <span id="text_wishlist" class="
+                        <?php if(!empty($yeu_thich)){
+                                echo "text-green-900";
+                            }?> yt_child">
+                            <?php if(!empty($yeu_thich)){
+                                echo "Đã yêu thích";
+                            }else{
+                                echo"Thêm vào mục yêu thích";
+                            }
+                            ?></span>
+                    </button>
                 </div>
             </div>
             <div class="flex gap-5 mt-5">
@@ -338,9 +357,10 @@
                 };
                 var jsondata= JSON.stringify(data);
                 var html =new XMLHttpRequest();
-                html.open('post','http://localhost/du-an-1/model/site/chi_tiet_san_pham.php',true);
+                html.open('post','http://localhost/du-an-1/ajax/chi_tiet_san_pham.php',true);
                 html.onreadystatechange = function() {
                 if (html.readyState === 4 && html.status === 200) {
+                    console.log(html.responseText);
                     label_dt.forEach(item=>{
                         item.classList.remove('border-green-800','border-red-800');
                     });
@@ -371,7 +391,7 @@
 
         // tăng giảm số lượng mua hàng
          let render =(amount)=>{
-            qlt.value=amount;qlt.value=amount;
+            qlt.value=amount;
         }
          // tăng giảm số lượng
          var minus= document.getElementById('minus');
@@ -400,6 +420,42 @@
             amount=(isNaN(amount)||amount==0 ? 1:amount);
             render(amount);
 })
+        var btn_wishlist=document.getElementById('btn_wishlist');
+        var icon_wishlist=document.getElementById('icon_wishlist');
+        var text_wishlist=document.getElementById('text_wishlist');
+        // console.log(btn_wishlist.value);
+        function wishlist(){
+            let count_wl=document.getElementById('count_wl').innerText;
+            let int_count=parseInt(count_wl);
+            let data=btn_wishlist.value;
+            let html = new XMLHttpRequest();
+            html.open('post','http://localhost/du-an-1/ajax/yeu_thich.php',true);
+            html.setRequestHeader('X-Requested-With', 'wishlist');
+            html.onreadystatechange = function(){
+            if(html.readyState===4 && html.status===200){
+            let repo=html.responseText;
+            //  console.log(repo);
+            if(repo==1){
+                int_count++;
+                document.getElementById('count_wl').innerText = "" + int_count;
+                icon_wishlist.classList.add('text-green-900');
+                text_wishlist.classList.add('text-green-900')
+                text_wishlist.innerText="Đã yêu thích";
+                console.log(repo);
+            }else{
+                int_count--;
+                document.getElementById('count_wl').innerText = "" + int_count;
+                text_wishlist.classList.remove('text-green-900');
+                icon_wishlist.classList.remove('text-green-900');
+                text_wishlist.innerText="Thêm vào mục yêu thích";
+                console.log(repo);
+            }
+            }
+            }
+            html.send(data);
+
+        }
+        
     </script>
 </body>
 </html>

@@ -1,4 +1,12 @@
-
+<?php 
+  if(isset($_COOKIE["user"])){
+    $user=json_decode($_COOKIE["user"],true);
+    $count_Wishlist=count_wishlist($user['id']);
+    $count_cart=count_cart($user['id']);
+    print_r($count_cart) ;
+    print_r($count_Wishlist) ;
+  }
+?>
 <header>
       <div class="bg-[#064a38]">
         <div class="max-w-6xl mx-auto">
@@ -13,9 +21,15 @@
               <a href="index.php"><img src="public/img/logo.webp" alt=""></a>
             </div>
             <div class="flex items-center">
-              <div class="border-r border-white text-xl p-3 text-white">
-                  <i class="px-2 fa-solid fa-heart"></i>
-                  <i class="px-2 fa-solid fa-cart-shopping"></i>
+              <div class="border-r border-white text-xl p-3 text-white flex items-center">
+                <div class="relative mr-3">
+                  <i class="px-2 cursor-pointer fa-solid fa-heart"></i>
+                  <p id="count_wl" class="w-4 h-4 rounded-full absolute -top-1 -right-1 text-xs bg-red-500 text-center" ><?=$count_Wishlist['count']?></p>
+                </div>
+                <div class="relative">
+                  <i class="px-2 cursor-pointer fa-solid fa-cart-shopping"></i>
+                  <button class="w-4 h-4 rounded-full absolute -top-1 right-0 text-xs bg-red-500 text-center" ><?=$count_cart['count']?></button>
+                </div>
               </div>
               <div class="account ml-3 relative">
                 <?php
@@ -26,6 +40,7 @@
                   <div class="account_menu">
                     <ul class=" w-max shadow-lg bg-white p-3">
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=don_hang">Đơn hàng</a></li>
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=change_pass">Đổi mật khẩu</a></li>
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=logout">Đăng xuất</a></li>               
                     </ul>

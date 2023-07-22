@@ -1,3 +1,7 @@
+<?php 
+extract($data['yeu_thich']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,15 +59,27 @@
                   <div class=" text-green-900 font-semibold h-10 relative">
                     <div class="price_product relative">
                       <?php
+                      // hiển thị giá min và max
                         $gia_san_pham=select_gia_min_max_san_pham($san_pham['id']);
-                        // print_r($gia_san_pham);
+
                       ?>
                       <span><?php echo number_format($gia_san_pham['gia_min'])?>đ</span><span class="mx-1">-</span><span><?php echo number_format($gia_san_pham['gia_max'])?>đ</span>
                     </div>
                     <div class="interact_product">
                       <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
                       <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-heart"></i></button>
+                      <button value="<?=$san_pham['id']?>" class="btn_wishlist btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900
+                      
+                      <?php 
+                      // check yêu thích sản phẩm
+                      $i=0;$count=count($yeu_thich);
+                      for($i;$i<$count;$i++){
+                        if($yeu_thich[$i]['id_san_pham']==$san_pham['id']){
+                          echo "bg-green-900 text-white";
+                        }
+                      }
+                      ?>">
+                      <i class="icon_product text-inherit fa-regular fa-heart"></i></button>
                     </div>
                   </div>
                 </div> 
@@ -128,6 +144,44 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
+
+      var btn_wishlist=document.querySelectorAll('.btn_wishlist');
+      
+      function wishList(index){
+        let count_wl=document.getElementById('count_wl').innerText;
+        let int_count=parseInt(count_wl);
+        let data=btn_wishlist[index].value;
+        let html = new XMLHttpRequest();
+        html.open('post','http://localhost/du-an-1/ajax/yeu_thich.php',true);
+        html.setRequestHeader('X-Requested-With', 'wishlist');
+        html.onreadystatechange = function(){
+          if(html.readyState===4 && html.status===200){
+           let repo=html.responseText;
+          //  console.log(repo);
+           if(repo==1){
+             btn_wishlist[index].classList.add('bg-green-900');
+             btn_wishlist[index].classList.add('text-white');
+             int_count++;
+             document.getElementById('count_wl').innerText = "" + int_count;
+             console.log(repo);
+           }else{
+            btn_wishlist[index].classList.remove('bg-green-900');
+            btn_wishlist[index].classList.remove('text-white');
+            int_count--;
+            document.getElementById('count_wl').innerText = "" + int_count;
+            console.log(repo);
+           }
+          }
+        }
+        html.send(data);
+      }
+      btn_wishlist.forEach((item,index)=>{
+        item.addEventListener('click',e=>{
+          console.log(e.target);
+          wishList(index);
+        })
+      });
+
     $(document).ready(function(){
       $(".slide-show").slick({
         slidesToShow: 1,

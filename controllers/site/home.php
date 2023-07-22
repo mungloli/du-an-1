@@ -1,6 +1,7 @@
 <?php
     function home_page(){
-        view('/page/home');
+        $yeu_thich=select_yeu_thich();
+        view('/page/home',['yeu_thich'=>$yeu_thich]);
     }
     function login(){
         view('/page/login');
@@ -10,6 +11,9 @@
     }
     function change_pass(){
         view('/page/change_pass');
+    }
+    function don_hang(){
+        view('/page/don_hang');
     }
     function user_login(){
         if(isset($_POST['btn_login'])){
@@ -59,13 +63,7 @@
             }
         }
     }
-    function chi_tiet_san_pham(){
-        $id=$_GET['id'];
-        $san_pham=select_san_pham_by_id($id);
-        $dung_tich=select_dung_tich();
-        $loai_sp=select_gioi_tinh($id);
-        view('page/chi_tiet_san_pham',['san_pham' => $san_pham,'dung_tich'=>$dung_tich,'loai_sp'=>$loai_sp]);
-    }
+    
     function cart(){
         if(isset($_POST['btn-add-cart']) && isset($_COOKIE['user'])){
             $id_sp=$_POST['id-sp'];
@@ -100,7 +98,9 @@
             }else{
                 echo "sản phẩm đã hết hàng";
             }
-        }    
+        } else{
+            header('location:index.php?ctl=login');
+        }   
     }
     function search(){
         if(isset($_POST['btn-search'])){
