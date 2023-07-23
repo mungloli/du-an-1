@@ -20,5 +20,5 @@ function create_cart($id_kh){
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
  }
-
+//  SELECT don_hang.*,chi_tiet_don_hang.id_san_pham,chi_tiet_don_hang.id_dung_tich,chi_tiet_don_hang.so_luong,chi_tiet_don_hang.gia FROM `don_hang` JOIN chi_tiet_don_hang ON don_hang.id = chi_tiet_don_hang.id_don_hang WHERE don_hang.id=1;
 ?>

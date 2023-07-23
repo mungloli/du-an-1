@@ -3,8 +3,6 @@
     $user=json_decode($_COOKIE["user"],true);
     $count_Wishlist=count_wishlist($user['id']);
     $count_cart=count_cart($user['id']);
-    print_r($count_cart) ;
-    print_r($count_Wishlist) ;
   }
 ?>
 <header>
@@ -23,12 +21,25 @@
             <div class="flex items-center">
               <div class="border-r border-white text-xl p-3 text-white flex items-center">
                 <div class="relative mr-3">
+                  <a href="?ctl=yeu_thich">
                   <i class="px-2 cursor-pointer fa-solid fa-heart"></i>
-                  <p id="count_wl" class="w-4 h-4 rounded-full absolute -top-1 -right-1 text-xs bg-red-500 text-center" ><?=$count_Wishlist['count']?></p>
+                  <p id="count_wl" class="w-4 h-4 rounded-full absolute -top-1 -right-1 text-xs bg-red-500 text-center" >
+                    <?php if(isset($count_Wishlist['count'])){
+                      echo $count_Wishlist['count'];
+                      }else echo "0";
+                      ?>
+                  </p>
+                  </a>
                 </div>
                 <div class="relative">
                   <i class="px-2 cursor-pointer fa-solid fa-cart-shopping"></i>
-                  <button class="w-4 h-4 rounded-full absolute -top-1 right-0 text-xs bg-red-500 text-center" ><?=$count_cart['count']?></button>
+                  <button class="w-4 h-4 rounded-full absolute -top-1 right-0 text-xs bg-red-500 text-center" >
+                    <?php 
+                    if(isset($count_cart['count'])){
+                      echo $count_cart['count'];
+                    } else echo "0"
+                      ?>
+                  </button>
                 </div>
               </div>
               <div class="account ml-3 relative">

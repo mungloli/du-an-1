@@ -1,7 +1,12 @@
 <?php
     function home_page(){
-        $yeu_thich=select_yeu_thich();
-        view('/page/home',['yeu_thich'=>$yeu_thich]);
+        if(!empty($_COOKIE['user'])){
+            $user=json_decode($_COOKIE['user'],true);
+            $yeu_thich=select_yeu_thich($user['id']);
+            view('/page/home',['yeu_thich'=>$yeu_thich]);
+        }else{
+            view('/page/home');
+        }
     }
     function login(){
         view('/page/login');
@@ -11,9 +16,6 @@
     }
     function change_pass(){
         view('/page/change_pass');
-    }
-    function don_hang(){
-        view('/page/don_hang');
     }
     function user_login(){
         if(isset($_POST['btn_login'])){

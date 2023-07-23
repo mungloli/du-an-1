@@ -1,3 +1,8 @@
+<?php 
+extract($data['don_hang']);
+global $img_dir;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,29 +16,63 @@
 <body>
     <?php require "site/layout/header.php"?>
     <main class="mt-20">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex border-y-2 py-4 items-center">
-                <img class="w-[80px] h-[80px]" src="../../public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
-                <div class="flex-1 ml-4 h-full">
-                    <h2 class="font-medium text-2xl">Nước hoa</h2>
-                    <p class="text-lg my-1">Dung tích: 50ml</p>
-                    <span class="text-lg">Số lượng: 3</span>
-                </div>
-                <div class="justify-end ">
-                    <p class="text-xl">480.000đ</p>
-                </div>
-            </div>
+        <?php
+        foreach($don_hang as $dh){
+             $tong_tien=0;
+            ?>
+    <div class="max-w-6xl mx-auto mt-5 shadow-xl p-5">
+                <?php 
+                $ct_don_hang=select_chi_tiet_don_hang($dh['id']);
+                foreach($ct_don_hang as $ctdh){
+                    $tong_tien_sp= $ctdh['so_luong'] * $ctdh['gia'];
+                    $tong_tien += $tong_tien_sp;
+                    
+                    ?>
+                    <div class="flex py-4 items-center border-b">
+                        <img class="w-[80px] h-[80px]" src="<?=$img_dir.$ctdh['img']?>" alt="">
+                        <div class="flex-1 ml-4 h-full">
+                            <h2 class="font-medium text-2xl"><?= $ctdh['name']?></h2>
+                            <p class="text-lg my-1">Dung tích: <?=$ctdh['dung_tich'] ?>ml</p>
+                            <span class="text-lg">Số lượng: <?= $ctdh['so_luong']?></span>
+                        </div>
+                        <div class="justify-end ">
+                            <button id="<?=$dh['id']?>" value="" class="text-xl cursor-text"><?= number_format($ctdh['gia'])?> đ</button>
+                        </div>
+                    </div>
+                    <?php
+                }
+                    ?>
             <div class="py-3 text-right">
-                <p class="text-2xl text-green-900">Tổng tiền: 480.000</p>
+                <p class="text-2xl text-green-900">Tổng tiền: <?= number_format($tong_tien)?> đ</p>
             </div>
             <div class="border-t-2 flex justify-between pt-3">
-                <p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>
-                <div>
-                    <button class="px-5 py-4 bg-green-900 text-white text-lg font-medium">Xác nhận đã lấy hàng</button>
-                </div>
+                <?php if($dh['trang_thai']==0){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đã xác nhận đơn hàng</p>';
+                }else if($dh['trang_thai']==1){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
+                }else if($dh['trang_thai']==2){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã đến nơi</p>
+                    <div>
+                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
+                    </div>
+                    ';
+                    
+                }
+                
+                ?>
+                    <div>
+                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button>
+                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
+                    </div>
+                
                 
             </div>
         </div>
+        <?php
+        
+        }
+        ?>
+        
     </main>
     <?php require "site/layout/footer.php"?>
 </body>

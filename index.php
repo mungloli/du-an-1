@@ -9,9 +9,13 @@ require "model/hang.php";
 require "model/loai.php";
 require "model/san_pham.php";
 require "model/user.php";
+require "model/anh_san_pham.php";
+require "model/chi_tiet_don_hang.php";
 require "model/yeu_thich.php";
 require "controllers/site/home.php";
 require "controllers/site/chi_tiet_san_pham.php";
+require "controllers/site/don_hang.php";
+require "controllers/site/yeu_thich.php";
 
  $ctl= $_GET['ctl'] ?? '';
  switch($ctl){
@@ -57,6 +61,9 @@ require "controllers/site/chi_tiet_san_pham.php";
     break;
   case 'by-hang':
     select_sp_by_hang();
+    break;
+  case 'yeu_thich':
+    yeu_thich();
     break;
   default: echo "Page not pound";
   

@@ -1,6 +1,8 @@
 <?php 
-extract($data['yeu_thich']);
-
+if(isset($data['messenger'])){
+  extract($data['messenger']);
+}
+global $img_dir;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +43,12 @@ extract($data['yeu_thich']);
           <div class=" grid grid-cols-5">
             <?php 
             $id_loai=$loai['id'];
-            $list_sanPham=select_san_pham_by_loai($id_loai);
+            $list_sanPham=select_san_pham_by_loai_limit_10($id_loai);
             foreach($list_sanPham as $san_pham){
+              $img=select_anh($san_pham['id']);
               ?>
               <div  class="product pb-4 border px-3">
-              <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></a>
+              <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$img[0]['img']?>" alt=""></a>
               <div class="mt-1">
                 <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold"><?=$san_pham['name']?></h3></a>
                 <div class="mt-3">
@@ -72,11 +75,14 @@ extract($data['yeu_thich']);
                       
                       <?php 
                       // check yêu thích sản phẩm
-                      $i=0;$count=count($yeu_thich);
+                      if(isset($data['yeu_thich'])){
+                        extract($data['yeu_thich']);
+                        $i=0;$count=count($yeu_thich);
                       for($i;$i<$count;$i++){
                         if($yeu_thich[$i]['id_san_pham']==$san_pham['id']){
                           echo "bg-green-900 text-white";
                         }
+                      }
                       }
                       ?>">
                       <i class="icon_product text-inherit fa-regular fa-heart"></i></button>
@@ -144,7 +150,6 @@ extract($data['yeu_thich']);
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
-
       var btn_wishlist=document.querySelectorAll('.btn_wishlist');
       
       function wishList(index){

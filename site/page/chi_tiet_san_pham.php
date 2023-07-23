@@ -2,8 +2,9 @@
     extract($data['san_pham']);
     extract($data['dung_tich']);
     extract($data['yeu_thich']);
+    extract($data['imgs']);
     $id_sp=$san_pham['id'];
-    print_r($yeu_thich);
+    global $img_dir;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +35,20 @@
         <div class="max-w-6xl mx-auto ">
             <div class="flex gap-8">
                 <div class="w-2/5">
-                    <div class="flex justify-center">
-                        <img src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
+                    <div class="flex justify-center relative">
+                    <div id="pre" class="absolute top-1/2 left-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-left"></i></div>
+                        <img id="img-show" src="" alt="">
+                        <div id="next" class="absolute top-1/2 right-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-right"></i></div>
                     </div>
                     
-                    <div class="flex items-center justify-around mt-8 border p-3">
-                        <div class="border-4"><img width="80px" height="80px" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-                        <div class="border-4"><img width="80px" height="80px" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-                        <div class="border-4"><img width="80px" height="80px" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
-                        <div class="border-4"><img width="80px" height="80px" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt=""></div>
+                    <div class="flex items-center mt-8 border p-3 gap-5">
+                        <?php 
+                            foreach ($imgs as $img) {
+                                ?>
+                                <div id="imgs" class="border-2"><img class="w-[80px] h-[80px]"  src="<?=$img_dir.$img['img']?>" alt=""></div>
+                            <?php
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="w-3/5">
@@ -455,6 +461,43 @@
             html.send(data);
 
         }
+        var img_show =document.querySelector('#img-show');
+        var list_img =document.querySelectorAll('#imgs');
+        var img =document.querySelectorAll('#imgs img');
+        var pre = document.getElementById('pre');
+        var next = document.getElementById('next');
+        let curentIndex = 0;
+        function updateImg(index){
+            list_img.forEach(item=>{
+                item.classList.remove('border-2');
+            })
+            curentIndex=index;
+            img_show.src=img[index].getAttribute('src');
+            img[index].parentElement.classList.add('border-2', 'border-green-400');       
+         }
+         img.forEach((imgElement,index)=>{
+            imgElement.addEventListener('click',e=>{
+                updateImg(index);
+            })
+         })
+         pre.addEventListener('click',e=>{
+            if(curentIndex ==0){
+                curentIndex=img.length - 1;
+            }else{
+                curentIndex--;
+            }
+            updateImg(curentIndex);
+         })
+         next.addEventListener('click',e=>{
+            
+            if(curentIndex == img.length - 1 ){
+                curentIndex=0;
+            }else{
+                curentIndex++;
+            }
+            updateImg(curentIndex);
+         })
+         updateImg(0);
         
     </script>
 </body>

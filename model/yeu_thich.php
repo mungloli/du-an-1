@@ -2,9 +2,9 @@
 <?php 
 
 
-    function select_yeu_thich(){
+    function select_yeu_thich($id_kh){
         $connect=connection();
-        $sql = "SELECT * FROM `yeu_thich`";
+        $sql = "SELECT * FROM `yeu_thich` WHERE id_khach_hang=$id_kh";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,25 +26,22 @@
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $result[0];
    }
+   function select_list_yeu_thich($id_kh){
+      $connect=connection();
+      $sql = "SELECT yeu_thich.id_san_pham as id_san_pham ,san_pham.name as name_sp, MAX(gia_chi_tiet.gia) as max ,
+      MIN(gia_chi_tiet.gia) as min,anh_san_pham.img as img,hang.name as name_hang ,loai.name as name_loai FROM `yeu_thich` 
+      JOIN san_pham ON yeu_thich.id_san_pham=san_pham.id 
+      JOIN gia_chi_tiet ON yeu_thich.id_san_pham=gia_chi_tiet.id_sanPham 
+      JOIN anh_san_pham ON yeu_thich.id_san_pham=anh_san_pham.id_san_pham 
+      JOIN hang ON san_pham.id_hang=hang.id 
+      JOIN loai ON san_pham.id_loai=loai.id 
+      WHERE yeu_thich.id_khach_hang=$id_kh GROUP BY yeu_thich.id_san_pham;";
 
-
-//  if(!empty($_COOKIE['user'])){
-//     $jsonData = file_get_contents('php://input');
-//     $user = json_decode($_COOKIE['user'],true);
-//     $id_sp = $jsonData;
-//     $id_kh=$user['id'];
-//     $yeu_thich=select_by_yeu_thich($id_sp,$id_kh);
-//     // print_r($yeu_thich);
-//     if(!empty($yeu_thich)){
-//         // add_wishlist($id_sp,$id_kh);
-//         echo "1";
-//     }else{
-//         echo "2";
-//     }
-// }
-// else{
-//     echo "http://localhost/du-an-1/index.php?ctl=login";
-// }
+      $stmt = $connect->prepare($sql);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+   }
  
 ?>
     
