@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+.main{
+    padding: 0;
+    margin: auto;
+}
+.amin{
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    border: 1px solid rgb(59, 117, 210);
+    background-color: rgb(59, 117, 210);
+    border-radius: 4px;
+}
+.amin h1{
+    font-size: 50px;
+    margin: 0;
+    padding-left: 30px;
+    color: white;
+}
+.fa-solid{
+    color: white;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 100%;
+}
+.menu ul{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    list-style: none;
+}
+.menu ul a{
+    padding: 5px 28px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgb(59, 117, 210);
+    border-radius: 100%;
+    background-color: rgb(59, 117, 210);
+}
+.menu ul a:hover{
+    color: yellow;
+}
+.m10{
+    border: 1px solid green;
+    width: 38%;
+}
+.m10 table tr th{
+    border-bottom: 3px solid green;
+    padding: 5px 15px;
+    background-color: green;
+    color: white;
+    width: 30%;
+}
+.m10 table tr td{
+    border-bottom: 1px solid green;
+    padding: 5px 15px;
+}
+.m11{
+    width: 60%;
+}
+.m11 table tr th:nth-child(1){
+    width: 10%;
+}
+.m11 table tr th:nth-child(2){
+    width: 10%;
+}
+.m11 table tr th:nth-child(3){
+    width: 20%;
+}
+.m11 table tr th:nth-child(4){
+    width: 15%;
+}
+.m11 table tr th:nth-child(5){
+    width: 20%;
+}
+.frmcontent input[type="button"],
+.frmcontent input[type="reset"],
+.frmcontent input[type="submit"]{
+    margin-top: 20px;
+    color: white;
+    background-color: green;
+    border: 1px solid green;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+.frmcontent input[type="button"]:hover,
+.frmcontent input[type="reset"]:hover,
+.frmcontent input[type="submit"]:hover{
+    color: green;
+    background-color: white;
+}
