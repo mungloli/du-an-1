@@ -35,10 +35,17 @@ a{
     border-radius: 5px;
     border: 1px solid gray;
     display: flex;
+    padding: 30px;  
 
 }
 .form{
     padding-left: 20px;
-    display: grid; 
+    display: flex; 
     justify-content: center;
+}
+.button{
+    background-color: green;
+    color: aliceblue;
+    height:35px ;
+    width: 90px;
 }
