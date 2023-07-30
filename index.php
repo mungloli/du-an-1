@@ -16,6 +16,10 @@ require "controllers/site/home.php";
 require "controllers/site/chi_tiet_san_pham.php";
 require "controllers/site/don_hang.php";
 require "controllers/site/yeu_thich.php";
+require "controllers/site/san_pham.php";
+require "controllers/site/bill.php";
+require "controllers/site/cart.php";
+require "controllers/site/user.php";
 
  $ctl= $_GET['ctl'] ?? '';
  switch($ctl){
@@ -41,6 +45,9 @@ require "controllers/site/yeu_thich.php";
   case 'logout':
     user_logout();
     break;
+  // case 'product':
+  //   san_pham();
+  //   break;
   case 'btn_change':
     update_pass();
     break;
@@ -53,14 +60,22 @@ require "controllers/site/yeu_thich.php";
   case 'add_to_cart':
     cart();
     break;
-  case 'search':
-    search();
+  // case 'search':
+  //   search();
+  //   break;
+  case 'sanpham':
+    san_pham();
+  // case 'by-loai':
+  //   select_sp_by_loai();
+  //   break;
+  // case 'by-hang':
+  //   select_sp_by_hang();
     break;
-  case 'by-loai':
-    select_sp_by_loai();
+  case 'bill':
+    bill();
     break;
-  case 'by-hang':
-    select_sp_by_hang();
+  case 'cart':
+    list_cart();
     break;
   case 'yeu_thich':
     yeu_thich();

@@ -10,10 +10,14 @@
         <div class="max-w-6xl mx-auto">
           <div class="flex justify-between items-center h-[88px]">
             <div class="">
-              <form action="index.php?ctl=search" method="post" class="bg-white rounded-lg overflow-hidden px-2">
-                <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm kiếm sản phẩm" name="search">
-                <button class="w-7" name="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-              </form>
+            <form action="index.php?ctl=sanpham" method="post"class="bg-white rounded-lg overflow-hidden px-2">
+              <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm thương hiệu" name="kyw">
+              <button class="w-7" type="submit" name="timkiem" value="Tìm" id=""><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+              <!-- <form action="index.php?ctl=sanpham" method="post" class="bg-white rounded-lg overflow-hidden px-2">
+                <input class="h-10 w-56 outline-none" name="kyw" type="text" placeholder="Tìm kiếm sản phẩm">
+                <button class="w-7" name="timkiem"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form> -->
             </div>
             <div>
               <a href="index.php"><img src="public/img/logo.webp" alt=""></a>
@@ -47,7 +51,7 @@
                 if(isset($_COOKIE["user"])){
                   $user=json_decode($_COOKIE["user"],true);
                   ?>
-                  <h2 class="text-white">Xin Chào:<br> <span><?php echo $user['user_name']?></span></h2>
+                  <h2 class="text-white cursor-default">Xin Chào:<br> <span><?php echo $user['user_name']?></span></h2>
                   <div class="account_menu">
                     <ul class=" w-max shadow-lg bg-white p-3">
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li>
@@ -74,6 +78,10 @@
           <ul class="flex items-center h-10 justify-between">
             <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="index.php">Trang chủ</a></li>
             <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Giới thiệu</a></li>
+            <li class="item_menu_2 relative">
+              <a href="?ctl=product" class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" >Sản phẩm</a>
+              
+            </li>
             <li class="item_menu relative ">
               <a class=" p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
               <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
@@ -105,7 +113,7 @@
                 </ul> 
               </div>
             </li>
-            <li class="item_menu_2 relative">
+            <!-- <li class="item_menu_2 relative">
               <a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Nước hoa chiết <i class="text-sm fa-solid fa-chevron-right"></i></a>
               <div class="menu_child_2 absolute top-[100%] left-0 pt-4 z-10">
                 <ul class="w-max shadow-lg bg-white p-3">
@@ -113,7 +121,7 @@
                   <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Nước hoa chiết nữ</a></li>               
                 </ul>
               </div>
-            </li>
+            </li> -->
             <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Hỏi đáp</a></li>
             <li><a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Liên hệ</a></li>
           </ul>

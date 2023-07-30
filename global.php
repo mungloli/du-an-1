@@ -4,20 +4,28 @@
  $config['user'] = 'root';
  $config['password'] = '';
 
+ $image_dir=$_SERVER['DOCUMENT_ROOT']."/du-an-1/public/img";
+
+
  function view($path, $data = [])
 {
     extract($data);
     include_once "site/" . $path . ".php";
 }
 
-function uploadt_img($fieldname,$target_dir){
+function location($path, $data = [])
+{
+    extract($data);
+    include_once "page/" . $path . ".php";
+}
+
+function save_file($fieldname, $target_dir) {
     $file_uploaded = $_FILES[$fieldname];
     $file_name = basename($file_uploaded['name']);
-    $target_path = $target_dir.$file_name;
+    $target_path = $_SERVER['DOCUMENT_ROOT'].$target_dir.$file_name;
     move_uploaded_file($file_uploaded['tmp_name'], $target_path);
     return $file_name;
 }
-$messenger=[];
 
 $img_dir="public/img/";
 ?>

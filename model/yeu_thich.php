@@ -28,15 +28,11 @@
    }
    function select_list_yeu_thich($id_kh){
       $connect=connection();
-      $sql = "SELECT yeu_thich.id_san_pham as id_san_pham ,san_pham.name as name_sp, MAX(gia_chi_tiet.gia) as max ,
-      MIN(gia_chi_tiet.gia) as min,anh_san_pham.img as img,hang.name as name_hang ,loai.name as name_loai FROM `yeu_thich` 
-      JOIN san_pham ON yeu_thich.id_san_pham=san_pham.id 
-      JOIN gia_chi_tiet ON yeu_thich.id_san_pham=gia_chi_tiet.id_sanPham 
-      JOIN anh_san_pham ON yeu_thich.id_san_pham=anh_san_pham.id_san_pham 
-      JOIN hang ON san_pham.id_hang=hang.id 
-      JOIN loai ON san_pham.id_loai=loai.id 
-      WHERE yeu_thich.id_khach_hang=$id_kh GROUP BY yeu_thich.id_san_pham;";
-
+      $sql = "SELECT san_pham.id as id_san_pham, san_pham.name as name_sp, hang.name as name_hang, loai.name as name_loai, anh_san_pham.img as img FROM `yeu_thich`
+      JOIN san_pham ON yeu_thich.id_san_pham = san_pham.id
+       JOIN hang ON san_pham.id_hang = hang.id
+       JOIN loai ON san_pham.id_loai = loai.id
+       JOIN anh_san_pham ON san_pham.id = anh_san_pham.id_san_pham WHERE yeu_thich.id_khach_hang=$id_kh GROUP BY san_pham.id ";
       $stmt = $connect->prepare($sql);
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

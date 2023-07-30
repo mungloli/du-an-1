@@ -34,10 +34,10 @@ global $img_dir;
       <section class="perfume_men_product">
       <div class="max-w-6xl mx-auto">
         <div class="bg-[#064a38] p-2">
-          <a href="#"><h2 class="font-bold uppercase text-white"><?=$loai['name']?></h2></a>          
+          <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>"><h2 class="font-bold uppercase text-white"><?=$loai['name']?></h2></a>          
         </div>
         <div class="banner_product relative">
-          <a href="#"><img src="public/img/product_banner_1.webp" alt=""></a>
+          <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>"><img src="<?=$img_dir.$loai['anh']?>" alt=""></a>
         </div>
         <div class="product_list">
           <div class=" grid grid-cols-5">
@@ -45,10 +45,9 @@ global $img_dir;
             $id_loai=$loai['id'];
             $list_sanPham=select_san_pham_by_loai_limit_10($id_loai);
             foreach($list_sanPham as $san_pham){
-              $img=select_anh($san_pham['id']);
               ?>
               <div  class="product pb-4 border px-3">
-              <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$img[0]['img']?>" alt=""></a>
+              <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$san_pham['img']?>" alt=""></a>
               <div class="mt-1">
                 <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold"><?=$san_pham['name']?></h3></a>
                 <div class="mt-3">
@@ -68,11 +67,12 @@ global $img_dir;
                       ?>
                       <span><?php echo number_format($gia_san_pham['gia_min'])?>đ</span><span class="mx-1">-</span><span><?php echo number_format($gia_san_pham['gia_max'])?>đ</span>
                     </div>
-                    <div class="interact_product">
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button>
-                      <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
-                      <button value="<?=$san_pham['id']?>" class="btn_wishlist btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900
-                      
+                    <div class="interact_product h-[32px]">
+                      <!-- <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button> -->
+                      <form action="index.php?ctl=product_datail&id=<?=$san_pham['id']?>" class="inline-flex" method="post">
+                        <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                      </form>
+                      <button value="<?=$san_pham['id']?>" class="btn_wishlist btn_product inline border border-green-900 rounded w-8 h-8 hover:bg-green-900
                       <?php 
                       // check yêu thích sản phẩm
                       if(isset($data['yeu_thich'])){
@@ -97,7 +97,7 @@ global $img_dir;
           </div>
         </div>
         <div class="text-center p-3">
-          <a href="index.php?ctl=by-loai&id-loai=<?=$loai['id']?>" class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></a>
+          <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>" class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></a>
         </div>
       </div>
     </section>

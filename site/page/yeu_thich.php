@@ -22,6 +22,7 @@ global $img_dir;
       <div class="grid grid-cols-3 gap-4">
         <?php 
         foreach($yeu_thich as $yt){
+          $gia = select_gia_min_max_san_pham($yt['id_san_pham'])
           ?>
           <div class="flex align-top p-3 shadow-lg">
           <img class="h-[100px] w-[100px]" src="<?=$img_dir.$yt['img']?>" alt="">
@@ -29,7 +30,7 @@ global $img_dir;
             <h2 class="text-2xl text-[#064a38] font-medium"><?=$yt['name_sp']?></h2>
             <p class="font-medium">Thương hiệu: <?=$yt['name_hang']?></p>
             <p class="font-medium">Loại: <?=$yt['name_loai']?></p>
-            <p class="font-medium">Giá: <?=number_format($yt['min'])?> đ - <?=number_format($yt['max'])?> đ</p>
+            <p class="font-medium">Giá: <?=number_format($gia['gia_min'])?> đ - <?=number_format($gia['gia_max'])?> đ</p>
           </div>
         </div>
           <?php

@@ -80,7 +80,7 @@
     transition: all ease .5s;
   }
   .product:hover .interact_product{
-    display:block;
+    display: block;
     opacity: 1;
     animation: hovermenu ease .5s;
     transform-origin: 90% bottom;
