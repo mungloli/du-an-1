@@ -108,4 +108,15 @@ function check_key_word($kyw,$id_hang,$id_loai){
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
    return $result;
 }
+
+function insert_san_pham($ten_sp,$mo_ta,$id_loai,$id_hang){
+   $connect=connection();
+   $sql="INSERT INTO `san_pham`(`name`, `mo_ta`,`id_loai`, `id_hang`) 
+   VALUES ('$ten_sp','$mo_ta',$id_loai,$id_hang)";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $id_sp=$connect->lastInsertId();
+   return $id_sp;
+}  
+
 ?>

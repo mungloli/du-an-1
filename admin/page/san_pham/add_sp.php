@@ -27,43 +27,46 @@ extract($data['list_dt']);
                     <div class="pb-4">
                         <h2 class="font-medium text-xl">Thêm sản phẩm</h2>
                         <div>
-                            <form action="" class="flex ">
+                            <form action="index.php?ctl=add_new_sp" method="post" enctype="multipart/form-data" >
+                                <div class="flex ">
                                 <div class="w-1/2">
                                     <label class="mt-5 block">
                                         <span class="font-medium text-lg">ID:</span>
-                                        <input class="block mt-1 border h-10 rounded-md outline-none p-1" type="text" value="Auto Number">
+                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1" readonly type="text" value="Auto Number">
                                     </label>
                                     <label class="mt-5 block">
                                         <span class="font-medium text-lg">Tên sản phẩm</span> 
-                                        <input class="block mt-1 border h-10 rounded-md outline-none p-1" type="text">
+                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1" name="ten_sp" type="text">
                                     </label>
-                                    <label>
-                                        <span class="text-lg font-medium">Thương hiệu</span> 
-                                        <select name="" id="">
+                                    <div class="mt-3">
+                                        <label>
+                                            <span class="text-lg font-medium">Thương hiệu</span> 
+                                            <select name="hang" id="">
+                                                <?php 
+                                                foreach($list_hang as $hang){
+                                                    ?>
+                                                    <option value="<?=$hang['id']?>"><?=$hang['name']?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </label>
+                                        <label class="ml-5">
+                                            <span class="text-lg font-medium">Loại hàng:</span> 
+                                            <select name="loai" id="">
                                             <?php 
-                                            foreach($list_hang as $hang){
+                                                foreach($list_loai as $loai){
+                                                    ?>
+                                                    <option value="<?=$loai['id']?>"><?=$loai['name']?></option>
+                                                <?php
+                                                }
                                                 ?>
-                                                <option value="<?=$hang['id']?>"><?=$hang['name']?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </label>
-                                    <label class="ml-5">
-                                        <span class="text-lg font-medium">Loại hàng:</span> 
-                                        <select name="" id="">
-                                        <?php 
-                                            foreach($list_loai as $loai){
-                                                ?>
-                                                <option value="<?=$loai['id']?>"><?=$loai['name']?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </label>
+                                            </select>
+                                        </label>
+                                    </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Ảnh: </span>
-                                        <input class="ml-3" type="file">
+                                        <input name="img[]" class="ml-3" type="file" multiple>
                                     </label>
                                     
                                 </div>
@@ -75,11 +78,11 @@ extract($data['list_dt']);
                                             ?>
                                                 <div class="mt-2">
                                                     <label class="mr-3" for="">
-                                                        <input class="w-4 h-4" type="checkbox" name="" id="" value="<?=$dt['id']?>">
-                                                        <span class="text-lg"></span><?=$dt['dungTichThuc']?> ml</span>
+                                                        <input onclick="check_option(this)" class="h-4 w-4" type="checkbox" name="dt[]" id="" value="<?=$dt['id']?>">
+                                                        <span class="text-xl"></span><?=$dt['dungTichThuc']?> ml</span>
                                                     </label>
-                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-lg" type="text" disabled>
-                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-lg" type="text" name="" id="" disabled>                        
+                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-md" type="text" name="gia[]" placeholder="Nhập giá" disabled>
+                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-md" type="text" name="so_luong[]" id="" placeholder="Nhập số lượng" disabled>                        
                                                 </div>
                                             <?php
                                         }
@@ -87,9 +90,13 @@ extract($data['list_dt']);
                                     </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Mô tả</span>
-                                        <textarea class="block border rounded-lg outline-none w w-full" name="" id=""></textarea>
+                                        <textarea class="block border rounded-lg outline-none w w-full" name="mo_ta" id=""></textarea>
                                     </label>
                                 </div>
+                            </div>
+                            <div class="mt-20">
+                                <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_add_sp">Thêm mới</button>
+                            </div>
                             </form>
                         </div>
                     </div>

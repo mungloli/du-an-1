@@ -83,6 +83,9 @@ switch($ctl){
     case "add_sp":
         add_sp_page();
         break;
+    case "add_new_sp":
+        add_sp_new();
+        break;
     }
     
     
