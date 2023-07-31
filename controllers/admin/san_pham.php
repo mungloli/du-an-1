@@ -32,9 +32,11 @@ function add_sp_new(){
         $id_dt=$_POST['dt'];
         $gia=$_POST['gia'];
         $so_luong=$_POST['so_luong'];
+        $hinh=save_file('img','/du-an-1/public/img/');
         $id=insert_san_pham($ten_sp,$mo_ta,$id_loai,$id_hang);
         insert_imgs($id,$imgs);
         insert_gia_chi_tiet($id,$id_dt,$gia,$so_luong);
+        
     }
 }
 ?>

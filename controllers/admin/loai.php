@@ -72,7 +72,7 @@ function update_loai_by_id(){
     if(empty($errors)){
         $id_loai=$_POST['id_loai'];
         $ten_loai=$_POST['ten_loai'];
-        update_loai($id_loai,$ten_loai,$hinh);
+        update_loai($id_loai,$ten_loai,$hinh[0]);
         // location('/loai/loai');
         header('location: index.php?ctl=loai');
 }
