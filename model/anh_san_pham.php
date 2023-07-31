@@ -25,4 +25,16 @@
    $stmt = $connect->prepare($sql);
    $stmt->execute();
 }
+function delete_anh($id){
+   $connect=connection();
+   $sql = "DELETE FROM `anh_san_pham` WHERE id=$id";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+}
+function insert_anh($id_sp,$img){
+   $connect=connection();
+   $sql = "INSERT INTO `anh_san_pham`(`id_san_pham`, `img`) VALUES ('$id_sp','$img')";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+}
 ?>

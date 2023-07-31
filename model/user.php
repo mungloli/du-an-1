@@ -22,7 +22,7 @@ function check_user($user_name){
     $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result[0];
+    return $result;
 }
 
 function check_login($name,$mat_khau){
@@ -31,7 +31,7 @@ function check_login($name,$mat_khau){
     $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result[0];
+    return $result;
  }
  function update_user($name,$email,$vai_tro,$mat_khau,$id){
    $connect=connection();

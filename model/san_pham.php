@@ -30,7 +30,7 @@ function select_san_pham_by_loai_limit_10($id_loai){
 }
  function select_gia_min_max_san_pham($id){
     $connect=connection();
-    $sql = "SELECT min(`gia_chi_tiet`.`gia`) gia_min ,max(`gia_chi_tiet`.`gia`) gia_max FROM `san_pham` JOIN gia_chi_tiet ON gia_chi_tiet.id_sanPham=san_pham.id WHERE san_pham.id=$id";
+    $sql = "SELECT min(`chi_tiet_sp`.`gia`) gia_min ,max(`chi_tiet_sp`.`gia`) gia_max FROM `san_pham` JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id WHERE san_pham.id=$id";
     $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -65,7 +65,9 @@ function select_san_pham_by_loai_limit_10($id_loai){
  };
  function select_sp(){
    $connect=connection();
-   $sql="select * from san_pham";
+   $sql="SELECT san_pham.id,san_pham.mo_ta,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong FROM `san_pham`
+   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id
+   GROUP by san_pham.id";
    $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,6 +80,14 @@ function select_san_pham_by_loai_limit_10($id_loai){
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
+}
+function select_sp_by_id_sp($id){
+   $connect=connection();
+   $sql="SELECT * FROM `san_pham` WHERE id=$id";
+   $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result[0];
 }
 function detail_sanpham($id){
    $connect=connection();
@@ -119,4 +129,17 @@ function insert_san_pham($ten_sp,$mo_ta,$id_loai,$id_hang){
    return $id_sp;
 }  
 
+function delete_san_pham($id){
+   $connect=connection();
+   $sql="DELETE FROM `san_pham` WHERE id=$id";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+}  
+
+function update_san_pham($id,$name,$mo_ta,$id_loai,$id_hang){
+   $connect=connection();
+   $sql="UPDATE `san_pham` SET`name`='$name',`mo_ta`='$mo_ta',`id_loai`='$id_loai',`id_hang`='$id_hang' WHERE id=$id";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+}  
 ?>

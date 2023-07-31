@@ -41,11 +41,11 @@ extract($data['user'])
                 </div>
                 
                 <label class="mt-5 w-1/2 block font-medium" for="">Mật khẩu
-                <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="mat_khau" type="text" placeholder="Mật khẩu"
+                <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="mat_khau" type="password" placeholder="Mật khẩu"
                 value="<?=$user['mat_khau']?>">
                 </label>
                 <label class="mt-5 w-1/2 block font-medium" for="">Xác nhận mật khẩu
-                <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="confirm_mat_khau" type="text" placeholder="Mật khẩu"
+                <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="confirm_mat_khau" type="password" placeholder="Mật khẩu"
                 value="<?=$user['mat_khau']?>">
                 </label>
                 <div class="mt-4">

@@ -14,34 +14,74 @@ function user_login(){
         $name=$_POST['ten'];
         $mat_khau=$_POST['mat-khau'];
         $tai_khoan=check_login($name,$mat_khau);
+        $user=$tai_khoan[0];
         if(!empty($tai_khoan)){
-            if($tai_khoan['vai_tro'] == 1){
-                $_SESSION['user']=$tai_khoan;
+            if($user['vai_tro'] == 1){
+                $_SESSION['user']=$user;
                 header('location: ./admin/index.php');
             }else{
-                // $_SESSION['user']=$tai_khoan;
-                $json_tai_khoan=json_encode($tai_khoan);
+                $json_tai_khoan=json_encode($user);
                 setcookie("user",$json_tai_khoan,time()+(86400*7));
                 header('location:index.php');
             }
         }else {
-            $messenger['login']= "Tài khoản hoặc mật khẩu không đúng";
-            
+            $errors['login']="Tài khoản hoặc mật khẩu không đúng";
+            view("/page/login",['errors'=>$errors]);
         }
     }
 }
 
 function user_logout(){
-    setcookie("user",'',time()-(86400*7));
+    setcookie("user",'',time()-1000);
     header('location:index.php');
 }
 function user_register(){
-    if(isset($_POST['btn_register'])){
+    if(isset($_POST['btn_re'])){
         $name=$_POST['ten'];
-        $email=$_POST['email'];
-        $mat_khau=$_POST['mat-khau'];
+        // $email=$_POST['email'];
+        // $mat_khau=$_POST['mat-khau'];
+        $mat_khau2=$_POST['mat-khau-2'];
+        if(empty($_POST['ten'])){
+            $errors['ten']="Vui lòng điền vào trường này";
+        }else if(!empty(check_user($_POST['ten']))){
+            $errors['ten']="Tài khoản đã tồn tại";
+        }else if(preg_match("/\s/",$_POST['ten'] )){
+            $errors['ten']="Tên không được có khoảng trắng";
+        }else {
+            $name=$_POST['ten'];
+        }
+        
+        if(empty($_POST['email'])){
+            $errors['email']="Vui lòng điền vào trường này";
+        }else if(!preg_match("/^[A-Za-z0-9_.]{4,32}@([a-zA-Z0-9]{2,12})(.[a-zA-Z]{2,12})+$/",$_POST['email'])){
+            $errors['email']="Chưa nhập đúng định dạng email";
+        }else{
+            $email=$_POST['email'];
+            }
+
+        if(empty($_POST['mat-khau-2'])){
+            $errors['mat-khau-2']="Vui lòng điền vào trường này";
+        }
+
+        if(empty($_POST['mat-khau'])){
+            $errors['mat-khau']="Vui lòng điền vào trường này";
+        }else if(!preg_match("/^[a-zA-Z0-9!@#$%^&*]+$/",$_POST['mat-khau'])){
+            $errors['mat-khau']="Chưa nhập đúng định dạng mật khẩu";
+        }else if($_POST['mat-khau'] !== $_POST['mat-khau-2']){
+            $errors['mat-khau-2']="Xác nhận mật khẩu không chính xác";
+        }else{
+            $mat_khau=$_POST['mat-khau-2'];
+        }
+        // new_register($name,$email,$mat_khau);
+        // echo "đăng kí thành công";
+    }
+    if(empty($errors)){
         new_register($name,$email,$mat_khau);
-        echo "đăng kí thành công";
+        setcookie('mess_re',"Tạo tài khoản thành công",time()+1);
+        header('location:index.php?ctl=login');
+        
+    }else{
+        view('page/register',['errors'=>$errors]);
     }
 }
 function update_pass(){

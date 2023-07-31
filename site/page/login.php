@@ -1,3 +1,13 @@
+<?php 
+if(isset($data['errors'])){
+  extract($data['errors']);
+  
+}
+if(isset($_COOKIE['mess_re'])){
+  $dang_ki=true;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +25,7 @@
 <body>
   <?php
     include "site/layout/header.php";
+    
     ?>
     <div class="py-10">
         <div class="w-1/3 mx-auto shadow-2xl py-5">
@@ -26,8 +37,8 @@
               <label class="font-bold mt-3 block" for="">Tên tài khoản</label>
               <input class="block rounded h-10 w-full pl-1 border" type="text" name="ten">
               <label class="font-bold mt-3 block" for="">Mật khẩu</label>
-              <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau">
-              <span><?php if(!empty($messenger['login'])) echo $messenger['login'] ?></span>
+              <input class="block mb-3 rounded h-10 w-full pl-1 border" type="password" name="mat-khau">
+              <span class="text-red-600"><?php if(isset($errors)) echo $errors['login'] ?></span>
               <div class="mt-8 text-center">
                 <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_login">Đăng Nhập</button>
               </div>
@@ -41,9 +52,20 @@
     </div>
     <?php
     include "site/layout/footer.php";
+    
     ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <scrip type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+
+      <?php
+      if($dang_ki){
+        echo "alert('Đăng kí tài khoản thành công')";
+      }
+      ?>
+    </script>
+    
+      
 </body>
 </html>

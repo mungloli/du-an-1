@@ -11,7 +11,7 @@
     // echo $id_sp;
     function select_gia_san_pham_by_dung_tich($id_san_pham,$id_dung_tich){
         $connect=connection();
-        $sql = "SELECT * FROM `gia_chi_tiet` WHERE id_sanPham=$id_san_pham AND id_theTich =$id_dung_tich";
+        $sql = "SELECT * FROM `chi_tiet_sp` WHERE id_sanPham=$id_san_pham AND id_theTich =$id_dung_tich";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

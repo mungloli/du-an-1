@@ -1,7 +1,9 @@
 <?php 
     extract($data['san_pham']);
     extract($data['dung_tich']);
-    extract($data['yeu_thich']);
+    if(isset($data['yeu_thich'])){
+        extract($data['yeu_thich']);
+    }
     extract($data['imgs']);
     $id_sp=$san_pham['id'];
     global $img_dir;
@@ -107,15 +109,15 @@
                              class="yt_parent mt-3 border w-max p-3 
                             hover:border-green-950 hover:text-green-950 cursor-pointer">
                         <i id="icon_wishlist" class="yt_child text-gray-200
-                        <?php if(!empty($yeu_thich)){
+                        <?php if(isset($yeu_thich)){
                                 echo "text-green-900";
                             }?>
                         fa-solid fa-heart"></i>
                         <span id="text_wishlist" class="
-                        <?php if(!empty($yeu_thich)){
+                        <?php if(isset($yeu_thich)){
                                 echo "text-green-900";
                             }?> yt_child">
-                            <?php if(!empty($yeu_thich)){
+                            <?php if(isset($yeu_thich)){
                                 echo "Đã yêu thích";
                             }else{
                                 echo"Thêm vào mục yêu thích";

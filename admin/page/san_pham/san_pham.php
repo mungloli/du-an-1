@@ -1,6 +1,6 @@
 <?
 extract($data['list_sp']);
-
+extract($data['imgs']);
 ?>
 
 <!DOCTYPE html>
@@ -34,23 +34,28 @@ extract($data['list_sp']);
                         <tr>
                             <th class="p-2 border text-left w-1/12">ID</th>
                             <th class="p-2 border text-left w-3/12">Tên sản phẩm</th>
-                            <th class="p-2 border text-left w-6/12">Mô tả</th>
-                            <th class="p-2 border text-left w-2/12">Thao tác</th>
+                            <th class="p-2 border text-left w-1/12">Hình ảnh</th>
+                            <th class="p-2 border text-left w-1/12">Số lượng</th>
+                            <th class="p-2 border text-left w-5/12">Mô tả</th>
+                            <th class="p-2 border text-left w-1/12">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         foreach($list_sp as $sp){
+                            $imgs=select_anh($sp['id']);
                             ?>
                             <tr>
                             <td class="p-2 border"><?=$sp['id']?></td>
                             <td class="p-2 border"><?=$sp['name']?></td>
-                            <td class="p-2 border"><?=$sp['mo_ta']?></td>
+                            <td class="p-2 border"><img class="w-20 h-20" src="../public/img/<?=$imgs[0]['img']?>" alt=""></td>
+                            <td class="p-2 border"><?=$sp['so_luong']?></td>
+                            <td class="p-2 border overflow-hidden"><?=$sp['mo_ta']?></td>
                             <td class="p-2 border">
-                                <a class="px-2 py-1 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
-                                href="index.php?ctl=detail_sp&id=<?=$sp['id']?>">Chi tiết</a>
                                 <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
-                                href="index.php?ctl=delete_loai&id=<?=$sp['id']?>">Xóa</a>
+                                href="index.php?ctl=delete_sp&id=<?=$sp['id']?>">Xóa</a>
+                                <a class="px-2 py-1 block w-max mt-2 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
+                                href="index.php?ctl=detail_sp&id=<?=$sp['id']?>">Chi tiết</a>
                             </td>
                         </tr>
                             <?php

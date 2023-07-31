@@ -7,7 +7,7 @@ require "../model/user.php";
 require "../model/anh_san_pham.php";
 require "../model/san_pham.php";
 require "../model/dung_tich.php";
-require "../model/gia_chi_tiet.php";
+require "../model/chi_tiet_sp.php";
 require "../controllers/admin/doashboard.php";
 require "../controllers/admin/loai.php";
 require "../controllers/admin/hang.php";
@@ -85,6 +85,30 @@ switch($ctl){
         break;
     case "add_new_sp":
         add_sp_new();
+        break;
+    case "delete_sp":
+        delete_sp();
+        break;
+    case "edit_sp":
+        edit_sp_page();
+        break;
+    case 'update_sp':
+        update_sp();
+        break;
+    case "delete_img":
+        delete_anh_by_id();
+        break;
+    case "insert_img":
+        add_img();
+        break;
+    case "delete_chi_tiet_sp":
+        delete_gia_chi_tiet_by_id();
+        break;
+    case "edit_chi_tiet_sp":
+        chi_tiet_sp_adit_page();
+        break;
+    case "update_chi_tiet_sp":
+        update_chi_tiet_sp_by_id();
         break;
     }
     
