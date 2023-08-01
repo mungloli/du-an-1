@@ -1,4 +1,8 @@
 <?
+if(isset($data['errors'])){
+    extract($data['errors']);
+}
+
 extract($data['list_loai']);
 extract($data['list_hang']);
 extract($data['list_dt']);
@@ -32,16 +36,18 @@ extract($data['list_dt']);
                                 <div class="w-1/2">
                                     <label class="mt-5 block">
                                         <span class="font-medium text-lg">ID:</span>
-                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1" readonly type="text" value="Auto Number">
+                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1 w-3/4" readonly type="text" value="Auto Number">
                                     </label>
                                     <label class="mt-5 block">
                                         <span class="font-medium text-lg">Tên sản phẩm</span> 
-                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1" name="ten_sp" type="text">
+                                        <input class="block mt-1 border h-8 rounded-md outline-none p-1 w-3/4" name="ten_sp" type="text">
+                                        <span class="text-red-600 text-xs"><?php if(isset($errors['ten_sp'])) echo $errors['ten_sp']?></span>
                                     </label>
-                                    <div class="mt-3">
+                                    <div class="mt-3 flex">
                                         <label>
                                             <span class="text-lg font-medium">Thương hiệu</span> 
                                             <select name="hang" id="">
+                                                <option value="">Chọn thương hiệu</option>
                                                 <?php 
                                                 foreach($list_hang as $hang){
                                                     ?>
@@ -49,11 +55,13 @@ extract($data['list_dt']);
                                                 <?php
                                                 }
                                                 ?>
-                                            </select>
+                                            </select><br>
+                                            <span class="text-red-600 text-xs"><?php if(isset($errors['hang'])) echo $errors['hang']?></span>
                                         </label>
                                         <label class="ml-5">
                                             <span class="text-lg font-medium">Loại hàng:</span> 
                                             <select name="loai" id="">
+                                            <option value="">Chọn loại</option>
                                             <?php 
                                                 foreach($list_loai as $loai){
                                                     ?>
@@ -61,19 +69,23 @@ extract($data['list_dt']);
                                                 <?php
                                                 }
                                                 ?>
-                                            </select>
+                                            </select><br>
+                                            <span class="text-red-600 text-xs"><?php if(isset($errors['loai'])) echo $errors['loai']?></span>
                                         </label>
                                     </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Ảnh: </span>
                                         <input name="img[]" class="ml-3" type="file" multiple>
+                                        <br>
+                                        <span class="text-red-600 text-xs"><?php if(isset($errors['img'])) echo $errors['img']?></span>
                                     </label>
                                     
                                 </div>
                                 <div>
-                                    <p class="text-lg font-medium">Chọn option</p>
+                                    <p class="text-lg font-medium">Chọn option</p><span class="text-red-600 text-xs"><?php if(isset($errors['dt'])) echo $errors['dt']?></span>
                                     <div>
                                         <?php 
+                                        $i=0;
                                         foreach($list_dt as $dt){
                                             ?>
                                                 <div class="mt-2">
@@ -82,15 +94,19 @@ extract($data['list_dt']);
                                                         <span class="text-xl"></span><?=$dt['dungTichThuc']?> ml</span>
                                                     </label>
                                                     <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-md" type="text" name="gia[]" placeholder="Nhập giá" disabled>
-                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-md" type="text" name="so_luong[]" id="" placeholder="Nhập số lượng" disabled>                        
+                                                    <input class="inputChild border outline-none pl-1 bg-gray-200 rounded-md" type="text" name="so_luong[]" id="" placeholder="Nhập số lượng" disabled>
+                                                    <br>
+                                                    <span class="text-red-600 text-xs"><?php if(isset($errors['option_child'][$i])) echo $errors['option_child'][$i]?></span>                 
                                                 </div>
                                             <?php
+                                            $i++;
                                         }
                                             ?>
                                     </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Mô tả</span>
-                                        <textarea class="block border rounded-lg outline-none w w-full" name="mo_ta" id=""></textarea>
+                                        <textarea class="block border rounded-lg outline-none w-full h-max" name="mo_ta" id=""></textarea>
+                                        <span class="text-red-600 text-xs"><?php if(isset($errors['mo_ta'])) echo $errors['mo_ta']?></span>
                                     </label>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 <?php
-if(isset($data['eross'])){
-    extract($data['eross']);
+if(isset($data['errors'])){
+    extract($data['errors']);
 }
 ?>
 <!DOCTYPE html>
@@ -24,8 +24,8 @@ if(isset($data['eross'])){
                 <label class="mt-5 block font-medium" for="">ID</label>
                 <input class="w-1/2 h-8 border rounded-lg mt-2 pl-2" type="text" value="Auto Number" readonly>
                 <label class="mt-5 block font-medium" for="">Tên hãng</label>
-                <input class="w-1/2 h-8 border rounded-lg mt-2 pl-2" name="ten_loai" type="text" placeholder="Tên hãng">
-                <span class="text-red-600"><?php if(isset($eross['ten_loai'])) echo $eross['ten_loai']?></span>
+                <input class="w-1/2 h-8 border rounded-lg mt-2 pl-2" name="ten_hang" type="text" placeholder="Tên hãng">
+                <span class="text-red-600"><?php if(isset($errors['ten_hang'])) echo $errors['ten_hang']?></span>
                 <div class="mt-4">
                     <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_add_hang">Thêm mới</button>
                     <a href="index.php?ctl=hang">

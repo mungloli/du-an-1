@@ -24,7 +24,7 @@ extract($data['list_hang']);
                 <div class="m-3 bg-white p-3 rounded-lg h-full">
                     <div class="flex justify-between pb-4">
                         <h2 class="font-medium text-xl">Danh sách hãng</h2>
-                        <a class="font-xl hover:text-green-800" href="index.php?ctl=add_loai">
+                        <a class="font-xl hover:text-green-800" href="index.php?ctl=add_hang">
                             <i class="mr-2 fa-solid fa-square-plus"></i>Thêm mới
                         </a>
                     </div>

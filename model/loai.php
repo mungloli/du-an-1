@@ -8,6 +8,15 @@ function loai_all(){
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
  }
+
+ function check_loai($ten_loai){
+    $connect=connection();
+    $sql = "SELECT * FROM loai WHERE name='$ten_loai'";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+ }
  function select_loai_by_id($id_loai){
     $connect=connection();
     $sql = "SELECT * FROM loai WHERE id=$id_loai";

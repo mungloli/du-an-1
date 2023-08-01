@@ -20,6 +20,14 @@ function select_san_pham_by_loai_limit_10($id_loai){
     return $result;
  }
 
+ function check_san_pham($ten_sp){
+   $connect=connection();
+   $sql = "SELECT * FROM `san_pham` WHERE name='$ten_sp'";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result;
+}
  function select_san_pham_by_loai($id_loai){
    $connect=connection();
    $sql = "SELECT * FROM `san_pham` WHERE id_loai=$id_loai";

@@ -37,7 +37,7 @@ extract($data['imgs_sp']);
                                 <h2 class="text-2xl py-1 font-medium text-green-800">Tên sản phẩm: <?=$detail_sp['name_sp']?></h2>
                                 <p class="text-lg py-1 font-medium">Thương hiệu: <?=$detail_sp['name_hang']?></p>
                                 <p class="text-lg font-medium">Loại: <?=$detail_sp['name_loai']?></p>
-                                <div class="mt-2 w-full">
+                                <div class="mt-2 w-3/4">
                                     <h2 class="font-medium text-xl mb-3">Mô tả</h2>
                                     <p class="text-lg text"><?=$detail_sp['mo_ta']?></p>
 
