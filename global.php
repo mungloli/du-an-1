@@ -5,7 +5,7 @@
  $config['password'] = '';
 
  $image_dir=$_SERVER['DOCUMENT_ROOT']."/du-an-1/public/img";
-
+ session_start();
 
  function view($path, $data = [])
 {

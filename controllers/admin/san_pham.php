@@ -112,8 +112,6 @@ function edit_sp_page(){
             $id=$_POST['id'];
             if(empty($_POST['ten_sp'])){
                 $errors['ten_sp']="Vui lòng điền vào trường này";
-            }else if(!empty(check_san_pham($_POST['ten_sp']))){
-                $errors['ten_sp']="Sản phẩm này đã tồn tại";
             }else{
                 $name=$_POST['ten_sp'];
             }
@@ -194,13 +192,13 @@ function edit_sp_page(){
         if(isset($_POST['btn_update_ctsp'])){
             if(empty($_POST['gia'])){
                 $errors['gia']="Vui lòng điền vào trường này";
-            }else if($_POST['gia']>1){
+            }else if($_POST['gia']<1){
                 $errors['gia']="Giá tiền phải lớn hơn 0";
             }else{
                 $gia=$_POST['gia'];
             }
 
-            if(empty($_POST['so_luong'])){
+            if(isset($_POST['so_luong']) && $_POST['so_luong']<0){
                 $errors['so_luong']="Vui lòng điền vào trường này";
             }else{
                 $so_luong=$_POST['so_luong'];

@@ -32,7 +32,6 @@ extract($data['list_loai']);
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="p-2 border text-left w-1/12"></th>
                             <th class="p-2 border text-left w-1/12">ID</th>
                             <th class="p-2 border text-left w-6/12">Tên loại</th>
                             <th class="p-2 border text-left w-2/12">Ảnh</th>
@@ -44,7 +43,6 @@ extract($data['list_loai']);
                         foreach($list_loai as $loai){
                             ?>
                             <tr>
-                            <td class="p-2 border"><input type="checkbox" value="<?=$loai['id']?>"></td>
                             <td class="p-2 border"><?=$loai['id']?></td>
                             <td class="p-2 border"><?=$loai['name']?></td>
                             <td class="p-2 border"><img class="w-10 h-5" src="../public/img/<?=$loai['anh']?>" alt=""></td>

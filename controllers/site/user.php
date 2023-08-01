@@ -1,5 +1,4 @@
 <?php 
-session_start();
 function login(){
     view('/page/login');
 }
@@ -9,6 +8,7 @@ function register(){
 function change_pass(){
     view('/page/change_pass');
 }
+
 function user_login(){
     if(isset($_POST['btn_login'])){
         $name=$_POST['ten'];
@@ -17,7 +17,7 @@ function user_login(){
         $user=$tai_khoan[0];
         if(!empty($tai_khoan)){
             if($user['vai_tro'] == 1){
-                $_SESSION['user']=$user;
+                $_SESSION['user_admin']=$user;
                 header('location: ./admin/index.php');
             }else{
                 $json_tai_khoan=json_encode($user);

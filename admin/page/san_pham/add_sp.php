@@ -105,7 +105,7 @@ extract($data['list_dt']);
                                     </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Mô tả</span>
-                                        <textarea class="block border rounded-lg outline-none w-full h-max" name="mo_ta" id=""></textarea>
+                                        <textarea class="block border rounded-lg outline-none w-full h-max" rows="5" name="mo_ta" id=""></textarea>
                                         <span class="text-red-600 text-xs"><?php if(isset($errors['mo_ta'])) echo $errors['mo_ta']?></span>
                                     </label>
                                 </div>

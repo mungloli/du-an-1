@@ -31,7 +31,6 @@ extract($data['list_hang']);
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="p-2 border text-left w-1/12"></th>
                             <th class="p-2 border text-left w-1/12">ID</th>
                             <th class="p-2 border text-left w-8/12">Tên hãng</th>
                             <th class="p-2 border text-left w-2/12">Thao tác</th>
@@ -42,7 +41,6 @@ extract($data['list_hang']);
                         foreach($list_hang as $hang){
                             ?>
                             <tr>
-                            <td class="p-2 border"><input type="checkbox" value="<?=$hang['id']?>"></td>
                             <td class="p-2 border"><?=$hang['id']?></td>
                             <td class="p-2 border"><?=$hang['name']?></td>
                             <td class="p-2 border">
