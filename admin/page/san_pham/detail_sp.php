@@ -1,4 +1,7 @@
 <?
+if(isset($data['errors'])){
+    extract($data['errors']);
+}
 extract($data['detail_sp']);
 extract($data['gia_chi_tiet']);
 extract($data['imgs_sp']);
@@ -67,9 +70,9 @@ extract($data['imgs_sp']);
                                                 <input id="fileInput" class="hidden" type="file" name="img">
                                                 <span class="text-white"><i class="fa-solid fa-plus"></i></span>
                                             </label>
-                                            <!-- <input class="" type="button" onclick="uploadImage()"> -->
                                         </form>
                                         </div>
+                                        <span class="text-red-600 text-xs"></span><?php if(isset($errors['img'])) echo $errors['img'] ?></span>
                                     
                                     </div>
                                     <table class="mt-10">

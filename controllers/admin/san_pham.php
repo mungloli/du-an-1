@@ -35,7 +35,7 @@ function add_sp_new(){
             $errors['img'] = 'Vui lòng chọn file!';
         }else {
             for($i=0;$i<count($_FILES['img']['name']);$i++){
-                $typeImg = ['png'];
+                $typeImg = ['png', 'jpg', 'jpeg', 'webp'];
                 $typeFile = pathinfo($_FILES["img"]['name'][$i], PATHINFO_EXTENSION);
                 if(!in_array(strtolower($typeFile), $typeImg)) {
                     $errors['img'] = 'file phai co dinh dang la png, png, jpeg, webp';
@@ -155,10 +155,26 @@ function edit_sp_page(){
     }
     function add_img(){
         $id_sp=$_GET['id'];
-        $img=save_file('img','/du-an-1/public/img/');
-        echo $img;
-        insert_anh($id_sp,$img);
-        header("location:index.php?ctl=detail_sp&id=$id_sp");
+        $typeImg = ['png', 'jpg', 'jpeg', 'webp'];
+        $typeFile = pathinfo($_FILES["img"]['name'], PATHINFO_EXTENSION);
+        if(!in_array(strtolower($typeFile), $typeImg)) {
+            $errors['img'] = 'file phai co dinh dang la png, png, jpeg, webp';
+        }else {
+            if($_FILES["img"]['size'] > (2*1024*1024) ) {
+                $errors['img'] = 'Kích thước không quá 2MB!';
+            }else{
+                $img=save_file('img','/du-an-1/public/img/');
+                }
+            }
+            if(empty($errors)){
+                insert_anh($id_sp,$img);
+                header("location:index.php?ctl=detail_sp&id=$id_sp");
+            }else{
+                $detail_sp=detail_sanpham($id_sp);
+                $gia_chi_tiet=chi_tiet_by_sp($id_sp);
+                $imgs_sp=select_anh($id_sp);
+                location('/san_pham/detail_sp',['detail_sp'=>$detail_sp, 'gia_chi_tiet'=>$gia_chi_tiet, 'imgs_sp'=>$imgs_sp,'errors'=>$errors]);
+            }
     }
     function delete_gia_chi_tiet_by_id(){
         $id=$_GET['id'];
