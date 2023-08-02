@@ -23,10 +23,19 @@ function san_pham(){
     }else{
         $id_loai=0;
     };
-    $dsnew=check_key_word($kyw,$id_hang,$id_loai);
-    $list_hang=loadall_hang();
-    $dsloai=loai_all();
-    view('/page/san_pham',['dshang'=>$list_hang ,'dsnew'=>$dsnew, 'dsloai'=>$dsloai]);
+    if(isset($_COOKIE['user'])){
+        $user=json_decode($_COOKIE['user'],true);
+        $yeu_thich=select_yeu_thich($user['id']);
+        $dsnew=check_key_word($kyw,$id_hang,$id_loai);
+        $list_hang=loadall_hang();
+        $dsloai=loai_all();
+        view('/page/san_pham',['dshang'=>$list_hang ,'dsnew'=>$dsnew, 'dsloai'=>$dsloai,'yeu_thich'=>$yeu_thich]);
+    }else{
+        $dsnew=check_key_word($kyw,$id_hang,$id_loai);
+        $list_hang=loadall_hang();
+        $dsloai=loai_all();
+        view('/page/san_pham',['dshang'=>$list_hang ,'dsnew'=>$dsnew, 'dsloai'=>$dsloai]);
+    }
     // view('/page/san_pham',['dsnew' => $dsnew]);
 }
 

@@ -12,7 +12,7 @@
                         <div class="search1">
                             <form action="index.php?ctl=sanpham" method="post">
                                 <input type="text" placeholder="Tìm thương hiệu" name="kyw">
-                                <button type="submit" name="timkiem" value="Tìm" id="">
+                                <button  type="submit" name="timkiem" value="Tìm" id="">Tìm</button>
                       </form>
                         </div>
                     </div>

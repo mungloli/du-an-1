@@ -51,55 +51,64 @@ global $img_dir;
                     <div class="block-ct">
                         <?php
                             $i=0;
-                            foreach ($dsnew as $sp) {
-                                extract($sp);
+                            foreach ($dsnew as $san_pham) {
                                 $price=select_gia_min_max_san_pham($id);
                                 $hinh=$img_dir.$img;
                                 if(($i==2) || ($i==5) || ($i==8)){
                                     $mr="";
                                 }else{
                                     $mr="mr";
-                                }
-                                echo '<div class="product">
-                                <div class="sp1 '.$mr.'">
-                                <a href=""><img class="" src="'.$hinh.'" alt=""></a>
-                                <strong>'.$name.'</strong>
-                                <i class="fa-regular fa-star" style="color: rgb(234, 121, 80); margin-left: 30px;"></i>
-                                <i class="fa-regular fa-star" style="color: rgb(234, 121, 80);"></i>
-                                <i class="fa-regular fa-star" style="color: rgb(234, 121, 80);"></i>
-                                <i class="fa-regular fa-star" style="color: rgb(234, 121, 80);"></i>
-                                <i class="fa-regular fa-star" style="color: rgb(234, 121, 80);"></i>
-                                <div class="price">
-                                    <strong>'.number_format($price["gia_min"]).' đ - '.number_format($price["gia_max"]).' đ</strong>
+                                };
+                                ?>
+                                <div  class="product pb-4 border px-3 <?=$mr?>">
+                        <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$san_pham['img']?>" alt=""></a>
+                        <div class="mt-1">
+                            <div class="h-12 overflow-hidden text-ellipsis">
+                            <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold hover:text-green-900"><?=$san_pham['name']?></h3></a>
+                            </div>
+                            <div class="">
+                            <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                            <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                            <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                            <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                            <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
+                            </div>
+                            <div>
+                            <div class=" text-green-900 font-semibold h-10 relative">
+                                <div class="price_product relative">
+                                <?php
+                                // hiển thị giá min và max
+                                    $gia_san_pham=select_gia_min_max_san_pham($san_pham['id']);
+
+                                ?>
+                                <span><?php echo number_format($gia_san_pham['gia_min'])?>đ</span><span class="mx-1">-</span><span><?php echo number_format($gia_san_pham['gia_max'])?>đ</span>
                                 </div>
-                                <div class="sp2">
-                                    <div class="nut" style="margin-left: 30px;">
-                                        <i class="fa-sharp fa-solid fa-cart-plus priv"></i>     
-                                        <i class="fa-regular fa-heart priv"></i>
-                                        <i class="fa-solid fa-eye priv" ></i>
-                                    </div>
-                                    <div class="ttct">
-                                        <div class="image">
-                                            <img src="./view/image/Screenshot 2023-07-07 160651.png" alt="">
-                                        </div>
-                                        <div class="ttsp">
-                                            <strong>Flavia Elite EDP</strong>
-                                            <p>Trạng thái: Còn hàng</p>
-                                            <hr>
-                                            <strong >315.000đ</strong>
-                                            <hr>
-                                            <p>Giới tính:Unisex nhóm hương: Lôi cuốn, thanh lịch, tinh tế hương </p>
-                                            Giới tính: <input type="text" name="" value="UNISEX" readonly><br>
-                                            Xuất xứ: <input type="text" name="" value="Pháp" readonly><br>
-                                            Dung tích: <input type="text" name="" value="CHIẾT 10ML" readonly> <input type="text" name="" value="CHIẾT 20ML" readonly> 
-                                                        <input type="text" name="" value="CHIẾT 30ML" readonly> <input type="text" name="" value="Fullbox 50ML" readonly><br>
-                                            Số lượng: <input type="text" name="" value="1"> <input type="submit" name="" value="Thêm vào giỏ hàng">
-                                        </div>
-                                        <a href="" class="closebtn">&times;</a>
-                                    </div>
+                                <div class="interact_product h-[32px]">
+                                <!-- <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-solid fa-cart-plus"></i></button> -->
+                                <form action="index.php?ctl=product_datail&id=<?=$san_pham['id']?>" class="inline-flex" method="post">
+                                    <button class="btn_product border border-green-900 rounded w-8 h-8 hover:bg-green-900"><i class="icon_product text-green-900 fa-regular fa-eye"></i></button>
+                                </form>
+                                <button value="<?=$san_pham['id']?>" class="btn_wishlist btn_product inline border border-green-900 rounded w-8 h-8 hover:bg-green-900
+                                <?php 
+                                // check yêu thích sản phẩm
+                                if(isset($data['yeu_thich'])){
+                                    extract($data['yeu_thich']);
+                                    $i=0;$count=count($yeu_thich);
+                                for($i;$i<$count;$i++){
+                                    if($yeu_thich[$i]['id_san_pham']==$san_pham['id']){
+                                    echo "bg-green-900 text-white";
+                                    }
+                                }
+                                }
+                                ?>">
+                                <i class="icon_product text-inherit fa-regular fa-heart"></i></button>
                                 </div>
                             </div>
-                        </div>';
+                            </div> 
+                        </div>
+                        </div>
+                                
+                        <?php
                         $i+=1;
                         }
                     ?>
@@ -113,6 +122,44 @@ global $img_dir;
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script>
+        var btn_wishlist=document.querySelectorAll('.btn_wishlist');
+      
+      function wishList(index){
+        let count_wl=document.getElementById('count_wl').innerText;
+        let int_count=parseInt(count_wl);
+        let data=btn_wishlist[index].value;
+        let html = new XMLHttpRequest();
+        html.open('post','http://localhost/du-an-1/ajax/yeu_thich.php',true);
+        html.setRequestHeader('X-Requested-With', 'wishlist');
+        html.onreadystatechange = function(){
+          if(html.readyState===4 && html.status===200){
+           let repo=html.responseText;
+          //  console.log(repo);
+           if(repo==1){
+             btn_wishlist[index].classList.add('bg-green-900');
+             btn_wishlist[index].classList.add('text-white');
+             int_count++;
+             document.getElementById('count_wl').innerText = "" + int_count;
+             console.log(repo);
+           }else{
+            btn_wishlist[index].classList.remove('bg-green-900');
+            btn_wishlist[index].classList.remove('text-white');
+            int_count--;
+            document.getElementById('count_wl').innerText = "" + int_count;
+            console.log(repo);
+           }
+          }
+        }
+        html.send(data);
+      }
+      btn_wishlist.forEach((item,index)=>{
+        item.addEventListener('click',e=>{
+          console.log(e.target);
+          wishList(index);
+        })
+      });
+
+
          const active = document.querySelectorAll(".active");
         const icon = document.querySelectorAll(".fa-angle-up");
         const clickicon = document.querySelectorAll(".clickicon");

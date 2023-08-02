@@ -1,6 +1,6 @@
 <?php 
 function  don_hang(){
-    if(empty($_COOKIE['uses'])){
+    if(isset($_COOKIE['uses'])){
         $user = json_decode($_COOKIE['user'],true);
         $id=$user['id'];
         $don_hang=select_don_hang($id);

@@ -45,9 +45,9 @@ require "controllers/site/user.php";
   case 'logout':
     user_logout();
     break;
-  // case 'product':
-  //   san_pham();
-  //   break;
+  case 'product':
+    san_pham();
+    break;
   case 'btn_change':
     update_pass();
     break;

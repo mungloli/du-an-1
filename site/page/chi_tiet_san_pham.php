@@ -39,7 +39,7 @@
                 <div class="w-2/5">
                     <div class="flex justify-center relative">
                     <div id="pre" class="absolute top-1/2 left-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-left"></i></div>
-                        <img id="img-show" src="" alt="">
+                        <img class="h-80" id="img-show" src="" alt="">
                         <div id="next" class="absolute top-1/2 right-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-right"></i></div>
                     </div>
                     
@@ -66,10 +66,7 @@
                     <span id="gia" class="font-medium text-green-800 text-2xl"> đ</span>
                     <div class="mt-2">
                         <p>
-                            Nhắc đến Aventus hẳn những ai yêu thích nước hoa đều phải dành cho nó nhiều mỹ từ, 
-                            và từ ngữ miêu tả về nó một cách chân thật nhất đó là "vua" của nước hoa. 
-                            Nước hoa nam Creed Aventus đầy sang trọng và hiện đại, mang một phong cách giản dị,  
-                            nhưng đầy chững chạc dành riêng cho phái mạnh.
+                            <?=$san_pham['mo_ta']?>
                         </p>
                     </div>
                     <div class="mt-3">
@@ -100,9 +97,12 @@
                                 <div id="plus" class="px-4 py-2 border-l hover:bg-green-800 text-lg cursor-pointer">+</div>
                             </div>
                         </div>
-                        <div class="flex gap-5 mt-5">
-                            <a class="text-white font-medium rounded-lg bg-green-800 hover:bg-black w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a>
-                            <button class="text-white font-medium rounded-lg bg-green-800 hover:bg-black w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
+                        <div class="flex gap-5 mt-5" id="box_con_hang">
+                            <a class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a>
+                            <button class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                        <div class="mt-5 hidden" id="box_het_hang">
+                            <button class="text-white font-medium rounded-lg bg-green-900 w-1/2 py-3 text-2xl text-center" disabled type="button">Sản phẩm tạm hết hàng</button>
                         </div>
                     </form>
                     <button id="btn_wishlist" onclick="wishlist()" value="<?=$san_pham['id']?>"
@@ -353,6 +353,8 @@
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');
         var label_dt=document.querySelectorAll('.label_dt');
+        var con_hang=document.getElementById('box_con_hang');
+        var het_hang=document.get
         // gửi request để lấy giá tiền
         // tạo function;
         function requestGia(index){
@@ -378,9 +380,18 @@
                     if(newObj.so_luong >0){
                         label_dt[index].classList.add('border-green-800');
                         document.getElementById('tinh-trang').innerText='Còn hàng';
+                        document.getElementById('box_con_hang').classList.remove('hidden');
+                        document.getElementById('box_con_hang').classList.add('flex');
+                        document.getElementById('box_het_hang').classList.remove('block');
+                        document.getElementById('box_het_hang').classList.add('hidden');
+                        
                     }else{
                         label_dt[index].classList.add('border-red-800');
                         document.getElementById('tinh-trang').innerText='Hết hàng'
+                        document.getElementById('box_con_hang').classList.remove('flex');
+                        document.getElementById('box_con_hang').classList.add('hidden');
+                        document.getElementById('box_het_hang').classList.remove('hidden');
+                        document.getElementById('box_het_hang').classList.add('block');
                     };
                 }
             };

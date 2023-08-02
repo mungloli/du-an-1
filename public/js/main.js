@@ -15,3 +15,22 @@ function check_option(el){
         });
     }
 }
+
+
+// var list_li=document.querySelectorAll('.list_li');
+// function sidebar_active(index){
+//         list_li.forEach(el =>{
+//             console.log("abc");
+//             el.classList.remove('border-r-green-900');
+//         })
+//         list_li[index].classList.add('bg-green-600');
+//     }
+//     sidebar_active(0);
+// list_li.forEach((element,index)=>{
+//     element.addEventListener('click',e=>{
+//         console.log("a");
+//        sidebar_active(index);
+//     })
+// }
+// )
+

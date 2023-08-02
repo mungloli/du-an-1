@@ -14,8 +14,8 @@ function user_login(){
         $name=$_POST['ten'];
         $mat_khau=$_POST['mat-khau'];
         $tai_khoan=check_login($name,$mat_khau);
-        $user=$tai_khoan[0];
         if(!empty($tai_khoan)){
+            $user=$tai_khoan[0];
             if($user['vai_tro'] == 1){
                 $_SESSION['user_admin']=$user;
                 header('location: ./admin/index.php');

@@ -49,8 +49,10 @@ global $img_dir;
               <div  class="product pb-4 border px-3">
               <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$san_pham['img']?>" alt=""></a>
               <div class="mt-1">
-                <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold"><?=$san_pham['name']?></h3></a>
-                <div class="mt-3">
+                <div class="h-12">
+                  <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold hover:text-green-900"><?=$san_pham['name']?></h3></a>
+                </div>
+                <div class="">
                   <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                   <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                   <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
