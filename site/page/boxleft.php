@@ -10,9 +10,9 @@
                 <div class="mb">
                     <div class="title nav">Thương hiệu
                         <div class="search1">
-                            <form action="index.php?ctl=sanpham" method="post">
-                                <input type="text" placeholder="Tìm thương hiệu" name="kyw">
-                                <button  type="submit" name="timkiem" value="Tìm" id="">Tìm</button>
+                            <form action="index.php?ctl=sanpham" method="post" class="flex items-end">
+                                <input class="w-48" type="text" placeholder="Tìm thương hiệu" name="kyw">
+                                <button class="bg-[#117b4d] text-white rounded-lg border px-3 py-2" type="submit" name="timkiem" value="Tìm" id="">Tìm</button>
                       </form>
                         </div>
                     </div>

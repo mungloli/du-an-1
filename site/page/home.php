@@ -24,14 +24,14 @@ global $img_dir;
     ?>
     
     <div class="slide-show">
-       <div><img src="public/img/slider_1.webp" alt=""></div>
-       <div><img src="public/img/slider_2.webp" alt=""></div>
-       <div><img src="public/img/slider_3.webp" alt=""></div>
+       <div><img class="h-[700px] w-full" src="public/img/slider_1.webp" alt=""></div>
+       <div><img class="h-[700px] w-full" src="public/img/slider_2.webp" alt=""></div>
+       <div><img class="h-[700px] w-full" src="public/img/slider_3.webp" alt=""></div>
     </div>
     <?php 
     foreach($list_loai as $loai ){
     ?>
-      <section class="perfume_men_product">
+      <section class="perfume_men_product mt-10">
       <div class="max-w-6xl mx-auto">
         <div class="bg-[#064a38] p-2">
           <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>"><h2 class="font-bold uppercase text-white"><?=$loai['name']?></h2></a>          
@@ -39,8 +39,8 @@ global $img_dir;
         <div class="banner_product relative">
           <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>"><img src="<?=$img_dir.$loai['anh']?>" alt=""></a>
         </div>
-        <div class="product_list">
-          <div class=" grid grid-cols-5">
+        <div class="product_list mt-10">
+          <div class=" grid grid-cols-5 gap-4">
             <?php 
             $id_loai=$loai['id'];
             $list_sanPham=select_san_pham_by_loai_limit_10($id_loai);
@@ -98,7 +98,7 @@ global $img_dir;
             ?>
           </div>
         </div>
-        <div class="text-center p-3">
+        <div class="text-center mt-10">
           <a href="index.php?ctl=sanpham&id_loai=<?=$loai['id']?>" class="px-4 py-2 bg-[#064a38] text-white hover:bg-green-950">Xem tất cả <i class="text-xs fa-solid fa-caret-right"></i></a>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <?php
 require "global.php";
 require "model/connection.php";
-require "model/cart.php";
+require "model/gio_hang.php";
 require "model/change_pass.php";
 require "model/chi_tiet_gio_hang.php";
 require "model/dung_tich.php";
@@ -57,9 +57,9 @@ require "controllers/site/user.php";
   case 'product_datail':
     chi_tiet_san_pham();
     break;
-  case 'add_to_cart':
-    cart();
-    break;
+  // case 'add_to_cart':
+  //   cart();
+  //   break;
   // case 'search':
   //   search();
   //   break;

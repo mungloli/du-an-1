@@ -15,26 +15,19 @@
 //    return $result;
 // }
 
-function select_cart_by_group($id_kh,$id_sp,$id_dt){
-   $sql = "SELECT * FROM `chi_tiet_gio_hang` WHERE id_khach_hang=$id_kh AND id_sp=$id_sp AND id_dt=$id_dt";
-   $connect=connection();
-   $stmt = $connect->prepare($sql);
-   $stmt->execute();
-   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   return $result[0];
-}
-function update_so_luong_sp_cart($so_luong,$id_sp,$id_kh,$id_dt){
-   $connect=connection();
-   $sql = "UPDATE `chi_tiet_gio_hang` SET `so_luong`='$so_luong' WHERE id_khach_hang=$id_kh AND id_sp=$id_sp AND id_dt=$id_dt";
-   $stmt = $connect->prepare($sql);
-   $stmt->execute();
-}
-function count_cart($id_kh){
-   $sql = "SELECT COUNT(chi_tiet_gio_hang.id_sp) as count FROM `chi_tiet_gio_hang` WHERE chi_tiet_gio_hang.id_khach_hang=$id_kh";
-   $connect=connection();
-   $stmt = $connect->prepare($sql);
-   $stmt->execute();
-   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   return $result[0];
-}
+// function select_cart_by_group($id_kh,$id_sp,$id_dt){
+//    $sql = "SELECT * FROM `chi_tiet_gio_hang` WHERE id_khach_hang=$id_kh AND id_sp=$id_sp AND id_dt=$id_dt";
+//    $connect=connection();
+//    $stmt = $connect->prepare($sql);
+//    $stmt->execute();
+//    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//    return $result;
+// }
+// function update_so_luong_sp_cart($so_luong,$id_sp,$id_kh,$id_dt){
+//    $connect=connection();
+//    $sql = "UPDATE `chi_tiet_gio_hang` SET `so_luong`='$so_luong' WHERE id_khach_hang=$id_kh AND id_sp=$id_sp AND id_dt=$id_dt";
+//    $stmt = $connect->prepare($sql);
+//    $stmt->execute();
+// }
+
 ?>

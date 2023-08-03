@@ -8,7 +8,7 @@
                 <ul class="">
                     <li class="list_li"><a href="index.php" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-chart-line"></i>Dashboard</a></li>
                     <li class="list_li"><a href="index.php?ctl=hang" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-globe"></i>Quản lý hãng</a></li>
-                    <li class="list_li"><a href="index.php?ctl=loai" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-list-li"></i>Quản lý loại</a></li>
+                    <li class="list_li"><a href="index.php?ctl=loai" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-list"></i>Quản lý loại</a></li>
                     <li class="list_li"><a href="index.php?ctl=san_pham" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-boxes-stacked"></i>Sản phẩm</a></li>
                     <li class="list_li"><a href="" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng</a></li>
                     <li class="list_li"><a href="index.php?ctl=user" class="block w-full pl-3 py-2 text-lg hover:bg-green-900 hover:text-white"><i class="mr-2 fa-solid fa-user-pen"></i></i>Khách hàng</a></li>
