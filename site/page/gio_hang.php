@@ -34,9 +34,9 @@ global $img_dir;
             foreach($list_cart as $cart){
                 ?>
                 
-                <div class="flex items-start justify-between border-b py-3">
+                <div class="flex items-center justify-between border-b py-3">
                         <div class="flex gap-5 w-1/2">
-                            <input class="hidden" type="text" value="<?=$cart['id']?>">
+                            <input class="hidden id_cart" type="text" value="<?=$cart['id']?>">
                             <img class="h-20 w-20" src="<?=$img_dir.$cart['img']?>" alt="">
                             <div class="w-3/4 overflow-hidden">
                                 <div class="h-8 overflow-hidden">
@@ -49,7 +49,8 @@ global $img_dir;
                         <div class="text-center">
                         <p class="font-medium mb-3">Giá</p>
                         <input class="hidden price" type="text" value="<?=$cart['gia']?>">
-                        <span class=""></span>
+                        
+                        <span class=""><?=number_format($cart['gia'])?></span>
                         </div>
                         <div class="text-center">
                             <p class="font-medium mb-3">Số lượng</p>
@@ -61,13 +62,16 @@ global $img_dir;
                             <p class="font-medium mb-3">Thành tiền</p>
                             <span class="show_price"></span><span> VND</span>
                         </div>
+                        <div class="">
+                            <a class="text-lg" href="index.php?ctl=delete_sp_cart&id=<?=$cart['id']?>"><i class="fa-solid fa-trash"></i></a>
+                        </div>
                     </div>
                 <?php
                 $total += ($cart['gia'] * $cart['so_luong']);
             }
             ?>
                </div>
-                <div class="w-1/4 border rounded-xl p-3">
+                <div class="w-1/4 border rounded-xl p-3 h-max">
                     <div class="mt-2 text-center">
                         <h2 class="font-medium text-xl mb-5">Tổng tiền</h2>
                         <div class="flex justify-center gap-2">
@@ -76,8 +80,8 @@ global $img_dir;
                         </div>
                     </div>
                     <div class="mt-10">
-                        <button class="w-full h-10 bg-green-900 text-white text-xl font-medium rounded-lg">Thanh toán ngay</button>
-                        <a href=""><button class="w-full h-10 bg-green-900 text-xl font-medium text-white rounded-lg mt-3">Tiếp tục mua hàng</button></a>
+                        <a href="index.php?ctl=checkout_cart"><button class="w-full h-10 bg-green-900 text-white text-xl font-medium rounded-lg" type="button">Thanh toán ngay</button></a>
+                        <a href="index.php?ctl=sanpham"><button type="button" class="w-full h-10 bg-green-900 text-xl font-medium text-white rounded-lg mt-3">Tiếp tục mua hàng</button></a>
                     </div>   
                 </div>
                 </form>
@@ -96,6 +100,7 @@ global $img_dir;
         var price=document.querySelectorAll('.price');
         var show_price=document.querySelectorAll('.show_price');
         var total =document.getElementById('total');
+        var list_id_cart=document.querySelectorAll('.id_cart');
         function render(amount,index){
             count[index].value=amount;
             let money= price[index].value *amount;
@@ -106,20 +111,49 @@ global $img_dir;
             })
             total.innerText=total_value;
         }
+        
+        
+        
+        function update_sl_data(so_luong,id_cart){
+            let html = new XMLHttpRequest();
+            
+            console.log(id_cart);
+            let data={
+                sl: so_luong,
+                id_cart: id_cart};
+            let json_data=JSON.stringify(data);
+            html.open('post','http://localhost/du-an-1/ajax/cart.php',true);
+            html.onreadystatechange = function() {
+                if (html.readyState === 4 && html.status === 200) {
+                    console.log(html.responseText);
+                }
+            }
+            html.send(json_data);
+        }
+        count.forEach((element,index)=>{
+            element.addEventListener('input',()=>{
+               let amount=element.value;
+                // amount=parseInt(amount);
+                amount=(isNaN(amount)||amount==0 ? 1:amount);
+                render(amount,index);
+            });
+        })
         minus.forEach((element,index)=>{
             element.addEventListener('click',e=>{
                 let value=count[index].value;
+                let id_cart=list_id_cart[index].value;
                 value--;
                 render(value,index);
-                console.log(value);
+                update_sl_data(value,id_cart);
             })
         })
         plus.forEach((element,index)=>{
             element.addEventListener('click',e=>{
                 let value=count[index].value;
+                let id_cart=list_id_cart[index].value;
                 value++;
                 render(value,index);
-                console.log(value);
+                update_sl_data(value,id_cart);
             })
         })
         show_price.forEach((element,index)=>{

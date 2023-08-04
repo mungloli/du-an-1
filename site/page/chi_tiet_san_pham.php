@@ -1,8 +1,11 @@
 <?php 
     extract($data['san_pham']);
     extract($data['dung_tich']);
-    if(isset($data['yeu_thich'])){
-        extract($data['yeu_thich']);
+    // if(isset($data['yeu_thich'])){
+    //     extract($data['yeu_thich']);
+    // }
+    if(isset($data['mess'])){
+        extract($data['mess']);
     }
     extract($data['imgs']);
     $id_sp=$san_pham['id'];
@@ -350,6 +353,10 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script>
+        <?php if(isset($mess)) echo "alert('.$mess.');
+        "
+        ?>
+        
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');
         var label_dt=document.querySelectorAll('.label_dt');

@@ -9,6 +9,7 @@ require "model/hang.php";
 require "model/loai.php";
 require "model/san_pham.php";
 require "model/user.php";
+require "model/van_chuyen.php";
 require "model/anh_san_pham.php";
 require "model/chi_tiet_don_hang.php";
 require "model/yeu_thich.php";
@@ -57,22 +58,18 @@ require "controllers/site/user.php";
   case 'product_datail':
     chi_tiet_san_pham();
     break;
-  // case 'add_to_cart':
-  //   cart();
-  //   break;
+  case 'add_to_cart':
+    add_cart();
+    break;
   // case 'search':
   //   search();
   //   break;
   case 'sanpham':
     san_pham();
-  // case 'by-loai':
-  //   select_sp_by_loai();
-  //   break;
-  // case 'by-hang':
-  //   select_sp_by_hang();
-    break;
-  case 'bill':
-    bill();
+  case 'delete_sp_cart':
+    delete_cart();
+  case 'checkout_cart':
+    checkout_cart();
     break;
   case 'cart':
     list_cart();
