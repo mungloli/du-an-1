@@ -22,6 +22,7 @@ require "controllers/site/san_pham.php";
 require "controllers/site/bill.php";
 require "controllers/site/cart.php";
 require "controllers/site/user.php";
+require "controllers/site/chi_tiet_don_hang.php";
 
  $ctl= $_GET['ctl'] ?? '';
  switch($ctl){
@@ -77,6 +78,9 @@ require "controllers/site/user.php";
     break;
   case 'yeu_thich':
     yeu_thich();
+    break;
+  case 'ct_don_hang':
+    ct_don_hang_page();
     break;
   default: echo "Page not pound";
   

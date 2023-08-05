@@ -142,37 +142,7 @@
                     <div class=" border px-3">
                         <div>
                             <div class="relative">
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p class="text-center">
-                                    <img class="mx-auto" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
+                                <p>Đng cập nhật</p>
                                 <div class="absolute bottom-0 left-0 w-full h-1/4 more_info"></div>
                             </div>
                             <div class="text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>

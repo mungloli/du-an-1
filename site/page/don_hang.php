@@ -1,5 +1,6 @@
 <?php 
 extract($data['don_hang']);
+
 global $img_dir;
 ?>
 
@@ -15,12 +16,15 @@ global $img_dir;
 </head>
 <body>
     <?php require "site/layout/header.php"?>
-    <main class="mt-20">
+    <main class="mt-20 max-w-6xl mx-auto ">
+        <div class="mb-10">
+            <h2 class="font-medium text-2xl">Đơn hàng của tôi</h2>
+        </div>
         <?php
         foreach($don_hang as $dh){
              $tong_tien=0;
             ?>
-    <div class="max-w-6xl mx-auto mt-5 shadow-xl p-5">
+    <div class="mt-5 shadow-xl p-5">
                 <?php 
                 $ct_don_hang=select_chi_tiet_don_hang($dh['id']);
                 foreach($ct_don_hang as $ctdh){
@@ -66,9 +70,9 @@ global $img_dir;
                 }
                 
                 ?>
-                    <div>
-                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button>
-                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
+                    <div class="flex gap-5">
+                        <a href="index.php?ctl=ct_don_hang&id=<?=$dh['id']?>"><button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button></a>
+                        <button class="huy_dh hidden px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
                     </div>
                 
                 
@@ -81,5 +85,18 @@ global $img_dir;
         
     </main>
     <?php require "site/layout/footer.php"?>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+        let huy_dh=document.querySelectorAll('.huy_dh')
+        let trang_thai=<?=$dh['trang_thai']?>;
+        console.log(trang_thai);
+        for(let i=0;i<huy_dh.length;i++){
+            if(trang_thai==0){
+            huy_dh[i].classList.remove('hidden');
+            huy_dh[i].classList.add('block');
+            }
+        }
+    </script>
 </body>
 </html>

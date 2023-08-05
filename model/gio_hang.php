@@ -26,14 +26,12 @@
    $stmt = $connect->prepare($sql);
    $stmt->execute();
 }
-//  function check_cart($id_kh){
-//     $connect=connection();
-//     $sql = "SELECT * FROM `gio_hang` WHERE id_khach_hang=$id_kh";
-//     $stmt = $connect->prepare($sql);
-//     $stmt->execute();
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $result;
-//  }
+function delete_gio_hang_by_kh($id_kh){
+   $connect=connection();
+   $sql = "DELETE FROM `gio_hang` WHERE id_khach_hang=$id_kh" ;
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+}
  function select_cart($id_kh){
    $connect=connection();
    $sql = "SELECT gio_hang.*, san_pham.name as ten_sp, loai.name as ten_loai, 
@@ -54,7 +52,7 @@
 }
 
 function count_cart($id_kh){
-   $sql = "SELECT COUNT(chi_tiet_gio_hang.id_sp) as count FROM `gio_hang` WHERE gio_hang.id_khach_hang=$id_kh";
+   $sql = "SELECT COUNT(gio_hang.id) as count FROM `gio_hang` WHERE gio_hang.id_khach_hang=$id_kh";
    $connect=connection();
    $stmt = $connect->prepare($sql);
    $stmt->execute();

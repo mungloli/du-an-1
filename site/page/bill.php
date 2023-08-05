@@ -1,6 +1,7 @@
 <?php
  extract($data['list_cart']);
  extract($data['van_chuyen']);
+ extract($data['count_cart']);
  global $img_dir;
 ?>
 <!DOCTYPE html>
@@ -115,7 +116,7 @@
                     <div class="col-md-4 order-md-2 mb-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-muted">Giỏ hàng</span>
-                            <span class="badge badge-secondary badge-pill">2</span>
+                            <span class="badge badge-secondary badge-pill"><?=$count_cart['count']?></span>
                         </h4>
                         <?php
                         $total=0;
@@ -127,7 +128,7 @@
                                 <div class="flex">
                                     <img class="w-16 h-16" src="<?=$img_dir.$cart['img']?>" alt="">
                                     <div class="">
-                                        <h6 class="my-0"><?=$cart['ten_sp']?></h6>
+                                        <h6 class="my-0"><?=$cart['ten_sp']?><span> / <?=$cart['dung_tich']?>ml</span></h6>
                                         <small class="text-muted"><?=$cart['gia']?> x <?=$cart['so_luong']?></small>
                                     </div>
                                 </div>
@@ -153,10 +154,11 @@
                         </div>
                         <div class="flex justify-between border-t py-3">
                             <p class="text-2xl">Tổng tiền:</p>
-                            <span id="total_price" class="text-2xl">1000000 đ</span>
+                            <input class="hidden value-tt" value="0" type="text" name="tong_tien">
+                            <span id="total_price" class="text-2xl"></span>
                         </div>
                         <div class="border-t pt-3 flex justify-between items-center">
-                            <a href="" class="text-green-900 font-medium hover:text-green-900"><i class="mr-2 fa-solid fa-angle-left"></i>Trở về giỏ hàng</a>
+                            <a href="index.php?ctl=cart" class="text-green-900 font-medium hover:text-green-900"><i class="mr-2 fa-solid fa-angle-left"></i>Trở về giỏ hàng</a>
                             <button name="btn_checkout" class="px-4 py-2 text-xl font-medium rounded-lg text-white bg-green-900">Đặt hàng</button>
                         </div>
                     </div>
@@ -178,21 +180,27 @@
     <script src="public/boostrap/popper.min.js"></script>
     <script src="public/boostrap/bootstrap.min.js"></script>
     <script>
-
+        
+        // console.log(inputElement);
         function change_select() {
             var select_vc=document.getElementById("select_vc");
              let selectedOption = select_vc.options[select_vc.selectedIndex];
              let data =selectedOption.getAttribute("data-other-value");
              document.getElementById('gia-vc').innerText=data+""+"đ";
+             
              render();   
         }
 
         function render(){
             let gia_tam_tinh=parseInt(document.getElementById('gia_tam_tinh').innerText);
             let gia_vc=parseInt(document.getElementById('gia-vc').innerText);
+            var inputElement=document.getElementsByClassName('value-tt');
             document.getElementById('total_price').innerText=gia_tam_tinh+gia_vc+" "+"đ";
+            inputElement.value = gia_tam_tinh+gia_vc;
+            console.log(inputElement);
         }
         render();
+        
     </script>
 </body>
 

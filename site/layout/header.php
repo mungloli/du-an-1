@@ -2,7 +2,7 @@
   if(isset($_COOKIE["user"])){
     $user=json_decode($_COOKIE["user"],true);
     $count_Wishlist=count_wishlist($user['id']);
-    // $count_cart=count_cart($user['id']);
+    $count_cart=count_cart($user['id']);
   }
 ?>
 <header>

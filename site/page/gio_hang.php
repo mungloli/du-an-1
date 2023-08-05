@@ -22,11 +22,11 @@ global $img_dir;
     <?php
     include "site/layout/header.php";
     ?> 
-        <main class="w-[1180px] mx-auto mt-5 ">
+        <main class="w-[1180px] mx-auto mt-5">
             <div class="border rounded-xl px-5 py-4">
                 <h1 class="text-4xl font-medium">Giỏ hàng</h1>
             </div>
-            <div class="border rounded-xl mt-5 gap-5 p-3 flex">
+            <div class="border rounded-xl mt-5 gap-5 p-3 flex <?php if(empty($list_cart)) echo "hidden"?>">
             <div class="w-3/4">
             <form action="">
             <?php 

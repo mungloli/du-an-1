@@ -18,7 +18,7 @@ global $img_dir;
   <script src="tailwind.config.js"></script>
   <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body >
     <?php
     include "site/layout/header.php";
     ?>
