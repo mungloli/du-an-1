@@ -47,16 +47,22 @@ global $img_dir;
             </div>
             <div class="border-t-2 flex justify-between pt-3">
                 <?php if($dh['trang_thai']==0){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đã xác nhận đơn hàng</p>';
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đang chờ xác nhận</p>';
                 }else if($dh['trang_thai']==1){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đã xác nhận đơn hàng</p>';
                 }else if($dh['trang_thai']==2){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã đến nơi</p>
-                    <div>
-                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
-                    </div>
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã được gửi cho bên vận chuyển</p>
                     ';
                     
+                }else if($dh['trang_thai']==3){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
+                }else if($dh['trang_thai']==4){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã tới nơi</p>
+                    <div>
+                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
+                    </div>';
+                }else if($dh['trang_thai']==5){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Hoàn thành</p>';
                 }
                 
                 ?>

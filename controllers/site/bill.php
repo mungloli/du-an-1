@@ -5,4 +5,5 @@
         $van_chuyen=select_van_chuyen();
         view('/page/bill',['list_cart'=>$list_cart,'van_chuyen'=>$van_chuyen]);
     }
+    
 ?>

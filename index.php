@@ -13,6 +13,7 @@ require "model/van_chuyen.php";
 require "model/anh_san_pham.php";
 require "model/chi_tiet_don_hang.php";
 require "model/yeu_thich.php";
+require "model/don_hang.php";
 require "controllers/site/home.php";
 require "controllers/site/chi_tiet_san_pham.php";
 require "controllers/site/don_hang.php";
@@ -61,9 +62,9 @@ require "controllers/site/user.php";
   case 'add_to_cart':
     add_cart();
     break;
-  // case 'search':
-  //   search();
-  //   break;
+  case 'checkout':
+    insert_dh();
+    break;
   case 'sanpham':
     san_pham();
   case 'delete_sp_cart':
