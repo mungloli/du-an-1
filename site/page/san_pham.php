@@ -2,6 +2,18 @@
 extract($data['dshang']);
 extract($data['dsnew']);
 extract($data['dsloai']);
+    // Số bản ghi trên mỗi trang
+    $records_per_page = 12;
+    
+    // Sử dụng array_chunk để phân chia mảng dữ liệu thành các trang nhỏ hơn
+    $paginated_data = array_chunk($dsnew, $records_per_page);
+    
+    // Xác định trang hiện tại mà người dùng đang xem
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $current_page = max(1, min($current_page, count($paginated_data)));
+    
+    // Hiển thị dữ liệu trên trang hiện tại
+    $dsnew = $paginated_data[$current_page - 1];
 global $img_dir;
 ?>
 <!DOCTYPE html>
@@ -113,10 +125,23 @@ global $img_dir;
                         }
                     ?>
                     </div>
+                    <div class="mt-10 text-center">
+                <?php 
+                if ($current_page > 1) {
+                    echo "<a class='px-2 py-1 mx-1 hover:text-green-900' href='index.php?ctl=product&page=" . ($current_page - 1) . "'>Pre</a> ";
+                  }
+                // Hiển thị các liên kết phân trang
+                for ($i = 1; $i <= count($paginated_data); $i++) {
+                    echo "<a class='px-2 py-1 text-white bg-green-900 mx-1' href='index.php?ctl=product&page=$i'>$i</a> ";
+                }
+                if ($current_page < count($paginated_data)) {
+                    echo "<a class='px-2 py-1 mx-1 hover:text-green-900' href='index.php?ctl=product&page=" . ($current_page + 1) . "'>Next</a> ";
+                  }
+                ?>
+            </div>
                 </div>
             </div>
-        </div>
-    </div>
+            
     </main>
     <?php require "site/layout/footer.php"?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -159,9 +184,8 @@ global $img_dir;
         })
       });
 
-
          const active = document.querySelectorAll(".active");
-        const icon = document.querySelectorAll(".fa-angle-up");
+        const icon = document.querySelectorAll(".fa-chevron-down");
         const clickicon = document.querySelectorAll(".clickicon");
         const icon3 = document.querySelectorAll(".fa-eye");
         const nut = document.querySelectorAll(".nut");

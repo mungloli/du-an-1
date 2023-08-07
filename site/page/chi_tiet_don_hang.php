@@ -81,7 +81,7 @@ global $img_dir;
                                 <p>Thành tiền</p>
                             </div>
                             <div class="p-2 w-1/4 text-right border">
-                                <span class="text-xl text-green-900 font-medium"><?=$total + $don_hang['gia_vc'] ?> đ</span>
+                                <span class="text-xl text-green-900 font-medium"><?=number_format($total + $don_hang['gia_vc']) ?> đ</span>
                             </div>
                         </div>
                         <div class="flex">

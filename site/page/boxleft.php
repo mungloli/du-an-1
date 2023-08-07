@@ -51,7 +51,7 @@
                             <li>
                                 <a href="">THƯƠNG HIỆU</a>
                                 <div class="clickicon">
-                                    <i class="fa-solid fa-angle-up"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="active formactive">
                                     <ul>
@@ -68,7 +68,7 @@
                             <li>
                                 <a href="">NƯỚC HOA</a>
                                 <div class="clickicon">
-                                    <i class="fa-solid fa-angle-up"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="active formactive">
                                     <ul>

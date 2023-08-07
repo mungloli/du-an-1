@@ -66,8 +66,6 @@ require "controllers/site/chi_tiet_don_hang.php";
   case 'checkout':
     insert_dh();
     break;
-  case 'sanpham':
-    san_pham();
   case 'delete_sp_cart':
     delete_cart();
   case 'checkout_cart':

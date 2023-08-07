@@ -10,7 +10,7 @@ function  don_hang(){
         if(isset($_POST['btn_checkout'])){
         $user= json_decode($_COOKIE['user'],true);
         $id_kh=$user['id'];
-
+        $total=$_POST['tong_tien'];
             if(empty($_POST['kh_ten'])){
                 $errors['kh_ten']="Vui lòng điền vào trường này";
             }else{
@@ -34,9 +34,11 @@ function  don_hang(){
                 $van_chuyen=$_POST['van_chuyen'];
             }
         }
-        
+        // echo "<pre>";
+        // print_r($_POST);
+        // print_r($errors);
         if(empty($errors)){
-            $id_dh=insert_don_hang($id_kh,$dia_chi,$van_chuyen,$ten_kh,$sdt);
+            $id_dh=insert_don_hang($id_kh,$dia_chi,$van_chuyen,$ten_kh,$sdt,$total);
             $id_sp=$_POST['id_sp'];
             $so_luong=$_POST['so_luong'];
             $gia=$_POST['gia'];

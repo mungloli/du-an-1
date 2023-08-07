@@ -58,16 +58,16 @@
                 </div>
                 <div class="w-3/5">
                     <h1 class="text-3xl font-medium"><?=$san_pham['name']?></h1>
-                    <div class="">
+                    <div class="my-2">
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                     </div>
-                    <p>Tình trạng: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
+                    <p class="mb-2">Tình trạng: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
                     <span id="gia" class="font-medium text-green-800 text-2xl"> đ</span>
-                    <div class="mt-2">
+                    <div class="mt-3">
                         <p>
                             <?=$san_pham['mo_ta']?>
                         </p>
@@ -139,13 +139,13 @@
                             <li class="font-medium text-xl text-white">Đánh giá</li>
                         </ul>
                     </div>
-                    <div class=" border px-3">
+                    <div class="border px-3 h-[91%]">
                         <div>
                             <div class="relative">
-                                <p>Đng cập nhật</p>
+                                <p>Đang cập nhật</p>
                                 <div class="absolute bottom-0 left-0 w-full h-1/4 more_info"></div>
                             </div>
-                            <div class="text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>
+                            <div class="hidden text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>
                         </div>
                         <!-- cách sử dụng -->
                         <div class="hidden">

@@ -2,6 +2,9 @@
  extract($data['list_cart']);
  extract($data['van_chuyen']);
  extract($data['count_cart']);
+ if(isset($data['errors'])){
+    extract($data['errors']);
+ }
  global $img_dir;
 ?>
 <!DOCTYPE html>
@@ -47,6 +50,7 @@
                                 <label class="font-medium" for="kh_ten">Họ tên</label>
                                 <input type="text" class="form-control" name="kh_ten" id="kh_ten"
                                     value="" >
+                                    <span class="text-red-600 text-xs"><?php if(isset($errors['kh_ten'])) echo $errors['kh_ten']?></span>
                             </div>
                             <!-- <div class="col-md-12">
                                 <label for="kh_email">Email</label>
@@ -57,19 +61,21 @@
                                 <label class="font-medium" for="kh_diachi">Địa chỉ</label>
                                 <input type="text" class="form-control" name="kh_diachi" id="kh_diachi"
                                     value="" require="">
+                                    <span class="text-red-600 text-xs"><?php if(isset($errors['kh_diachi'])) echo $errors['kh_diachi']?></span>
                             </div>
                             <div class="flex justify-between w-full gap-8 items-center px-[15px]">
                             <div class="w-1/2 mt-3">
                                 <label class="font-medium" for="kh_dienthoai">Điện thoại</label>
                                 <input type="text" class="form-control" name="kh_dienthoai" id="kh_dienthoai"
                                     value="" require="">
+                                    <span class="text-red-600 text-xs"><?php if(isset($errors['kh_dienthoai'])) echo $errors['kh_dienthoai']?></span>
                             </div>
                             
                             <div class="w-1/2 mt-3">
                                 <label class="font-medium" for="">Đơn vị vận chuyển
                                     </label>
                                     <select class="border py-2 rounded-sm block" name="van_chuyen" id="select_vc" onchange="change_select()">
-                                        <option class="hidden" value="">Chọn đơn vị vận chuyển</option>
+                                        <option class="hidden" value="" selected>Chọn đơn vị vận chuyển</option>
                                         <?php 
                                         foreach($van_chuyen as $vc){
                                             ?>
@@ -77,7 +83,9 @@
                                             <?php
                                         }
                                         ?>
+                                        
                                     </select>
+                                    <span class="text-red-600 text-xs"><?php if(isset($errors['van_chuyen'])) echo $errors['van_chuyen']?></span>
                             </div>
                             </div>
                             <div class="col-md-12 mt-3">
@@ -85,13 +93,13 @@
                                 <div class="d-block my-3">
                                     <label class="w-1/2 border rounded-lg flex py-2 px-1 gap-2">
                                         <input id="httt-1" name="httt" type="radio"
-                                            value="1">
+                                            value="1" checked>
                                             <div class="flex justify-between items-center w-11/12">
                                                 <p>Thanh toán khi nhận hàng</p>
                                                 <span><i class="fa-regular fa-money-bill-1"></i></span>
                                             </div>
                                     </label>
-                                    <label class="w-1/2 border rounded-lg flex py-2 px-1 gap-2">
+                                    <!-- <label class="w-1/2 border rounded-lg flex py-2 px-1 gap-2">
                                         <input id="httt-2" name="httt" type="radio"
                                             value="2">
                                             <div class="flex justify-between items-center w-11/12">
@@ -99,7 +107,7 @@
                                                 <span><i class="fa-regular fa-credit-card"></i></span>
                                             </div>
                                         </label>
-                                        <!-- <span class="text-red-600 text-xs">* Chức năng đang phát triển</span> -->
+                                        <span class="text-red-600 text-xs">* Chức năng đang phát triển</span>
                                     <label class="w-1/2 border rounded-lg flex py-2 px-1 gap-2">
                                         <input id="httt-3" name="httt" type="radio" class=""
                                             value="3">
@@ -108,7 +116,7 @@
                                             <img class="h-3" src="public//img/vnpayqr-icon.webp" alt="">
                                         </div>
                                     </label>
-                                    <!-- <span class="text-red-600 text-xs">* Chức năng đang phát triển</span> -->
+                                    <span class="text-red-600 text-xs">* Chức năng đang phát triển</span> -->
                                 </div>
                             </div>
                         </div>
@@ -187,17 +195,16 @@
              let selectedOption = select_vc.options[select_vc.selectedIndex];
              let data =selectedOption.getAttribute("data-other-value");
              document.getElementById('gia-vc').innerText=data+""+"đ";
-             
              render();   
         }
 
         function render(){
             let gia_tam_tinh=parseInt(document.getElementById('gia_tam_tinh').innerText);
             let gia_vc=parseInt(document.getElementById('gia-vc').innerText);
-            var inputElement=document.getElementsByClassName('value-tt');
+            let inputElement=document.querySelector('.value-tt');
             document.getElementById('total_price').innerText=gia_tam_tinh+gia_vc+" "+"đ";
-            inputElement.value = gia_tam_tinh+gia_vc;
-            console.log(inputElement);
+            inputElement.value = gia_tam_tinh + gia_vc;
+            // console.log(inputElement);
         }
         render();
         

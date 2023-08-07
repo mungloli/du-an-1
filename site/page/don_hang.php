@@ -21,16 +21,13 @@ global $img_dir;
             <h2 class="font-medium text-2xl">Đơn hàng của tôi</h2>
         </div>
         <?php
-        foreach($don_hang as $dh){
-             $tong_tien=0;
+        foreach($don_hang as $dh){  
             ?>
     <div class="mt-5 shadow-xl p-5">
                 <?php 
                 $ct_don_hang=select_chi_tiet_don_hang($dh['id']);
                 foreach($ct_don_hang as $ctdh){
                     $tong_tien_sp= $ctdh['so_luong'] * $ctdh['gia'];
-                    $tong_tien += $tong_tien_sp;
-                    
                     ?>
                     <div class="flex py-4 items-center border-b">
                         <img class="w-[80px] h-[80px]" src="<?=$img_dir.$ctdh['img']?>" alt="">
@@ -47,7 +44,7 @@ global $img_dir;
                 }
                     ?>
             <div class="py-3 text-right">
-                <p class="text-2xl text-green-900">Tổng tiền: <?= number_format($tong_tien)?> đ</p>
+                <p class="text-2xl text-green-900">Tổng tiền: <?= number_format($dh['tong_tien'])?> đ</p>
             </div>
             <div class="border-t-2 flex justify-between pt-3">
                 <?php if($dh['trang_thai']==0){

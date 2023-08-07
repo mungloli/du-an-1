@@ -1,8 +1,8 @@
 <?php 
-function insert_don_hang($id_kh,$dia_chi,$id_vc,$ten_kh,$sdt){
+function insert_don_hang($id_kh,$dia_chi,$id_vc,$ten_kh,$sdt,$tong_tien){
     $connect=connection();
-    $sql = "INSERT INTO `don_hang`(`id_khach_hang`, `dia_chi`, `id_vc`, `ten_kh`, `sdt`) 
-    VALUES ('$id_kh','$dia_chi','$id_vc','$ten_kh','$sdt')";
+    $sql = "INSERT INTO `don_hang`(`id_khach_hang`, `dia_chi`, `id_vc`, `ten_kh`, `sdt`,`tong_tien`) 
+    VALUES ('$id_kh','$dia_chi','$id_vc','$ten_kh','$sdt','$tong_tien')";
     $stmt = $connect->prepare($sql);
     $stmt->execute();
     $id=$connect->lastInsertId();
@@ -26,5 +26,27 @@ function insert_don_hang($id_kh,$dia_chi,$id_vc,$ten_kh,$sdt){
    $stmt->execute();
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
    return $result[0];
+}
+function don_hang_all(){
+   $connect=connection();
+   $sql = "SELECT * FROM don_hang";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result;
+}
+function select_don_hang_admin($id_don_hang){
+   $connect=connection();
+   $sql = "SELECT * FROM don_hang WHERE id=$id_don_hang";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result[0];
+}
+function update_don_hang($id, $trang_thai){
+   $connect=connection();
+   $sql="UPDATE `don_hang` SET `trang_thai`='$trang_thai' WHERE id=$id";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
 }
 ?>

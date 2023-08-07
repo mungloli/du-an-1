@@ -32,6 +32,6 @@
     function delete_cart(){
         $id=$_GET['id'];
         delete_product_cart($id);
-        header("location: index.php?ctl=cart");
+        header("location: index.php?ctl=cart");       
     }
 ?>
