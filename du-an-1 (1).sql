@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 02, 2023 lúc 07:26 AM
+-- Thời gian đã tạo: Th8 07, 2023 lúc 05:50 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -38,14 +38,9 @@ CREATE TABLE `anh_san_pham` (
 --
 
 INSERT INTO `anh_san_pham` (`id`, `id_san_pham`, `img`) VALUES
-(1, 2, 'id1_1.webp'),
-(2, 2, 'id1_2.webp'),
 (4, 3, 'id_3_1.webp'),
 (5, 3, 'id_3_2.webp'),
 (6, 3, 'id_3_3.webp'),
-(7, 4, 'id4_1.webp'),
-(8, 4, 'id4_2.webp'),
-(11, 2, 'id1_3.webp'),
 (13, 8, 'sp1.png'),
 (14, 8, 'sp2.png'),
 (15, 8, 'sp3.png'),
@@ -100,9 +95,9 @@ INSERT INTO `anh_san_pham` (`id`, `id_san_pham`, `img`) VALUES
 (67, 26, 'sp55.png'),
 (68, 26, 'sp56.png'),
 (69, 26, 'sp57.png'),
-(70, 27, 'sp58.png'),
-(71, 27, 'sp59.png'),
-(72, 27, 'sp60.png');
+(73, 28, 'sp58.png'),
+(74, 28, 'sp59.png'),
+(75, 28, 'sp60.png');
 
 -- --------------------------------------------------------
 
@@ -126,30 +121,12 @@ CREATE TABLE `chi_tiet_don_hang` (
 INSERT INTO `chi_tiet_don_hang` (`id`, `id_san_pham`, `id_dung_tich`, `so_luong`, `gia`, `id_don_hang`) VALUES
 (2, 2, 2, 3, 50000, 2),
 (3, 3, 53, 1, 89000, 2),
-(4, 5, 2, 1, 50000, 3);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chi_tiet_gio_hang`
---
-
-CREATE TABLE `chi_tiet_gio_hang` (
-  `id` int(10) NOT NULL,
-  `id_khach_hang` int(10) NOT NULL,
-  `id_sp` int(10) NOT NULL,
-  `so_luong` int(10) NOT NULL,
-  `id_dt` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `chi_tiet_gio_hang`
---
-
-INSERT INTO `chi_tiet_gio_hang` (`id`, `id_khach_hang`, `id_sp`, `so_luong`, `id_dt`) VALUES
-(1, 1, 2, 1, 1),
-(3, 3, 2, 1, 1),
-(6, 1, 2, 3, 53);
+(7, 26, 1, 2, 380000, 5),
+(8, 24, 1, 1, 247000, 5),
+(11, 28, 2, 1, 220000, 9),
+(12, 12, 53, 1, 730000, 10),
+(13, 15, 1, 7, 311000, 14),
+(14, 20, 2, 1, 520000, 14);
 
 -- --------------------------------------------------------
 
@@ -170,10 +147,7 @@ CREATE TABLE `chi_tiet_sp` (
 --
 
 INSERT INTO `chi_tiet_sp` (`id`, `id_sanPham`, `id_theTich`, `gia`, `so_luong`) VALUES
-(2, 2, 2, 564000, 87),
-(3, 2, 1, 258000, 0),
-(4, 2, 53, 1054000, 24),
-(9, 8, 1, 250000, 38),
+(9, 8, 1, 250000, 0),
 (10, 8, 2, 420000, 13),
 (11, 8, 53, 849000, 44),
 (12, 9, 1, 380000, 54),
@@ -227,9 +201,8 @@ INSERT INTO `chi_tiet_sp` (`id`, `id_sanPham`, `id_theTich`, `gia`, `so_luong`) 
 (63, 26, 1, 380000, 13),
 (64, 26, 2, 770000, 9),
 (65, 26, 53, 1849000, 17),
-(66, 27, 1, 230000, 14),
-(67, 27, 2, 483000, 7),
-(68, 27, 53, 953000, 13);
+(69, 28, 1, 220000, 12),
+(70, 28, 2, 220000, 35);
 
 -- --------------------------------------------------------
 
@@ -254,16 +227,23 @@ CREATE TABLE `don_hang` (
   `id` int(10) NOT NULL,
   `id_khach_hang` int(10) NOT NULL,
   `dia_chi` varchar(255) NOT NULL,
-  `trang_thai` int(10) NOT NULL
+  `trang_thai` int(10) NOT NULL DEFAULT 0,
+  `id_vc` int(10) NOT NULL,
+  `ten_kh` varchar(100) NOT NULL,
+  `sdt` varchar(11) NOT NULL,
+  `tong_tien` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `don_hang`
 --
 
-INSERT INTO `don_hang` (`id`, `id_khach_hang`, `dia_chi`, `trang_thai`) VALUES
-(2, 1, 'trinh van bo - nam tu liem - ha noi', 0),
-(3, 1, 'trinh van bo - nam tu liem - ha noi', 1);
+INSERT INTO `don_hang` (`id`, `id_khach_hang`, `dia_chi`, `trang_thai`, `id_vc`, `ten_kh`, `sdt`, `tong_tien`) VALUES
+(2, 1, 'trinh van bo - nam tu liem - ha noi', 3, 1, '', '0', 0),
+(5, 3, 'hà nội', 0, 2, 'nguyễn xuân Mừng', '0962013945', 1033000),
+(9, 3, 'Hà nội', 0, 1, 'Mừng Lolicon', '01234567', 244000),
+(10, 3, 'Hà nội', 0, 1, 'Mừng Lolicon', '01234567', 754000),
+(14, 3, 'Hà nội', 3, 2, 'nguyễn xuân Mừng', '01234567', 2723000);
 
 -- --------------------------------------------------------
 
@@ -293,16 +273,11 @@ INSERT INTO `dung_tich` (`id`, `dungTichThuc`) VALUES
 
 CREATE TABLE `gio_hang` (
   `id` int(10) NOT NULL,
-  `id_khach_hang` int(10) NOT NULL
+  `id_khach_hang` int(10) NOT NULL,
+  `id_san_pham` int(10) NOT NULL,
+  `so_luong` int(10) NOT NULL,
+  `id_dt` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `gio_hang`
---
-
-INSERT INTO `gio_hang` (`id`, `id_khach_hang`) VALUES
-(2, 1),
-(3, 3);
 
 -- --------------------------------------------------------
 
@@ -320,7 +295,6 @@ CREATE TABLE `hang` (
 --
 
 INSERT INTO `hang` (`id`, `name`) VALUES
-(1, 'Dior'),
 (2, 'Gucci'),
 (3, 'Louis Vuitton'),
 (4, 'Viktor & Rolf'),
@@ -373,9 +347,7 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id`, `name`, `mo_ta`, `id_danh_gia`, `id_loai`, `id_hang`) VALUES
-(2, 'Creed Aventus For Men EDP', 'Nhắc đến Aventus hẳn những ai yêu thích nước hoa đều phải dành cho nó nhiều mỹ từ, và từ ngữ miêu tả về nó một cách chân thật nhất đó là \"vua\" của nước hoa. Nước hoa nam Creed Aventus đầy sang trọng và hiện đại, mang một phong cách giản dị, nhưng đầy chững chạc dành riêng cho phái mạnh.', 0, 1, 1),
 (3, 'nuoc hoa gucci', '', 0, 2, 2),
-(4, 'nuoc hoa unisex', '', 0, 3, 1),
 (8, 'Viktor & Rolf Spicebomb Extreme', 'Nước hoa nam Viktor & Rolf Spicebomb Extreme có mùi hương ngọt ngào, khá dễ chịu, cuốn hút hơn phiên bản cũ, khiến phái đẹp mê đắm. Chính sự kết hợp hoàn hảo và táo bạo không theo quy tắc, Spicebomb Extreme được đánh giá là một trong 10 loại nước hoa dành', 0, 1, 4),
 (9, 'Elite EDP', 'Nếu bạn là 1 Fan của nước hoa nam Roja Elysium thì nước hoa nam Flavia Elite EDP  sẽ là lựa chọn tối ưu hơn về chi phí bởi đây chính là bản dupe hoàn hảo của Elysium với mùi hương sang trọng, lịch lãm, thời thượng cùng độ bám toả tốt.', 0, 1, 5),
 (10, 'Un Jardin SurleToit EDT', 'Nước hoa unisex Hermes Un Jardin Sur Le Toit EDT là chai nước hoa rất sống động, sắc sảo và mới lạ. Mùi hương của nó gợi cho ta về một khu vườn bí ẩn và xinh đẹp, nằm giữa thành phố ánh sáng Paris.', 0, 2, 6),
@@ -394,7 +366,7 @@ INSERT INTO `san_pham` (`id`, `name`, `mo_ta`, `id_danh_gia`, `id_loai`, `id_han
 (24, 'Herrera 212 Sexy Woman EDP', 'Nước hoa nữ 212 Sexy Women EDP tạo nên một sức hút quyến rũ cho phái đẹp ngay từ lần xịt đầu tiên đến tận nốt hương cuối cùng.', 0, 2, 5),
 (25, 'De Marly Delina EDP', 'Nếu nhà Parfums De Marly cho ra mắt nhưng mùi hương dành cho nam giới mang một sức hút mãnh liệt và kiêu ngạo thì ngược lại, những mùi hương dành cho nữ như nước hoa Delina  đều toát lên một vẻ đẹp tao nhã nhưng lại có sức hút đến bất ngờ. ', 0, 2, 3),
 (26, 'Icon For Men EDP', 'Chai nước hoa Dunhill Icon được thiết kế dành riêng cho nam giới luôn được các tín đồ yêu thích nước hoa săn đón với mùi hương đặc biệt nam tính, sang trọng. Người đàn ông khoác lên mình hương thơm Icon là một quý ông nam tính và tinh tế.', 0, 1, 9),
-(27, 'Tom Ford Ombre Leather EDP', 'Nước hoa Tom Ford Ombré Leather  không phải là một mùi hương dễ ngửi, nhưng càng ngửi thì bạn sẽ càng yêu thích. Mùi hương đâu đó là dư âm của sự cổ điển, tươi mát và cũng chính sự cá tính này đã tạo nên sự không giới hạn để cả chàng và nàng đều có thể th', 0, 3, 1);
+(28, 'fiurnder', 'nvmijsvjks', 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -425,6 +397,26 @@ INSERT INTO `tai_khoan` (`id`, `user_name`, `email`, `vai_tro`, `mat_khau`) VALU
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `van_chuyen`
+--
+
+CREATE TABLE `van_chuyen` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `gia` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `van_chuyen`
+--
+
+INSERT INTO `van_chuyen` (`id`, `name`, `gia`) VALUES
+(1, 'Giao hàng tiết kiệm', 24000),
+(2, 'Giao hàng nhanh', 26000);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `yeu_thich`
 --
 
@@ -433,14 +425,6 @@ CREATE TABLE `yeu_thich` (
   `id_san_pham` int(10) NOT NULL,
   `id_khach_hang` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `yeu_thich`
---
-
-INSERT INTO `yeu_thich` (`id`, `id_san_pham`, `id_khach_hang`) VALUES
-(3, 2, 1),
-(6, 2, 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -460,14 +444,7 @@ ALTER TABLE `chi_tiet_don_hang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_dung_tich` (`id_dung_tich`),
   ADD KEY `id_san_pham` (`id_san_pham`),
-  ADD KEY `id_don_hang` (`id_don_hang`);
-
---
--- Chỉ mục cho bảng `chi_tiet_gio_hang`
---
-ALTER TABLE `chi_tiet_gio_hang`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `chi_tiet_gio_hang_ibfk_1` (`id_khach_hang`);
+  ADD KEY `chi_tiet_don_hang_ibfk_4` (`id_don_hang`);
 
 --
 -- Chỉ mục cho bảng `chi_tiet_sp`
@@ -490,7 +467,8 @@ ALTER TABLE `danh_gia`
 --
 ALTER TABLE `don_hang`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_khach_hang` (`id_khach_hang`);
+  ADD KEY `id_khach_hang` (`id_khach_hang`),
+  ADD KEY `id_vc` (`id_vc`);
 
 --
 -- Chỉ mục cho bảng `dung_tich`
@@ -503,7 +481,9 @@ ALTER TABLE `dung_tich`
 --
 ALTER TABLE `gio_hang`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `gio_hang_ibfk_1` (`id_khach_hang`);
+  ADD KEY `gio_hang_ibfk_1` (`id_khach_hang`),
+  ADD KEY `id_san_pham` (`id_san_pham`),
+  ADD KEY `id_dt` (`id_dt`);
 
 --
 -- Chỉ mục cho bảng `hang`
@@ -532,6 +512,12 @@ ALTER TABLE `tai_khoan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `van_chuyen`
+--
+ALTER TABLE `van_chuyen`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `yeu_thich`
 --
 ALTER TABLE `yeu_thich`
@@ -547,25 +533,19 @@ ALTER TABLE `yeu_thich`
 -- AUTO_INCREMENT cho bảng `anh_san_pham`
 --
 ALTER TABLE `anh_san_pham`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `chi_tiet_gio_hang`
---
-ALTER TABLE `chi_tiet_gio_hang`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_sp`
 --
 ALTER TABLE `chi_tiet_sp`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT cho bảng `danh_gia`
@@ -577,7 +557,7 @@ ALTER TABLE `danh_gia`
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `dung_tich`
@@ -589,7 +569,7 @@ ALTER TABLE `dung_tich`
 -- AUTO_INCREMENT cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `hang`
@@ -607,13 +587,19 @@ ALTER TABLE `loai`
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `tai_khoan`
 --
 ALTER TABLE `tai_khoan`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `van_chuyen`
+--
+ALTER TABLE `van_chuyen`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `yeu_thich`
@@ -636,13 +622,7 @@ ALTER TABLE `anh_san_pham`
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_dung_tich`) REFERENCES `dung_tich` (`id`),
-  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_4` FOREIGN KEY (`id_don_hang`) REFERENCES `don_hang` (`id`);
-
---
--- Các ràng buộc cho bảng `chi_tiet_gio_hang`
---
-ALTER TABLE `chi_tiet_gio_hang`
-  ADD CONSTRAINT `chi_tiet_gio_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `gio_hang` (`id_khach_hang`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_4` FOREIGN KEY (`id_don_hang`) REFERENCES `don_hang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `chi_tiet_sp`
@@ -655,27 +635,22 @@ ALTER TABLE `chi_tiet_sp`
 -- Các ràng buộc cho bảng `danh_gia`
 --
 ALTER TABLE `danh_gia`
-  ADD CONSTRAINT `danh_gia_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`),
-  ADD CONSTRAINT `danh_gia_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`);
+  ADD CONSTRAINT `danh_gia_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`);
 
 --
 -- Các ràng buộc cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  ADD CONSTRAINT `don_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`);
+  ADD CONSTRAINT `don_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`),
+  ADD CONSTRAINT `don_hang_ibfk_2` FOREIGN KEY (`id_vc`) REFERENCES `van_chuyen` (`id`);
 
 --
 -- Các ràng buộc cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
-  ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `san_pham`
---
-ALTER TABLE `san_pham`
-  ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_hang`) REFERENCES `hang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `san_pham_ibfk_2` FOREIGN KEY (`id_loai`) REFERENCES `loai` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `tai_khoan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`),
+  ADD CONSTRAINT `gio_hang_ibfk_3` FOREIGN KEY (`id_dt`) REFERENCES `dung_tich` (`id`);
 
 --
 -- Các ràng buộc cho bảng `yeu_thich`

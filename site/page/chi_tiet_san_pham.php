@@ -32,6 +32,12 @@
   .more_info{
     background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.33) 33%, rgba(255,255,255,0.8) 83%, #fff);
   }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
   </style>
 </head>
 <body>
@@ -65,7 +71,7 @@
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                     </div>
-                    <p class="mb-2">Tình trạng: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
+                    <p class="mb-2">Tồn kho: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
                     <span id="gia" class="font-medium text-green-800 text-2xl"> đ</span>
                     <div class="mt-3">
                         <p>
@@ -96,7 +102,7 @@
                             <span class="font-medium">Số lượng</span>
                             <div class="border w-max mt-2 flex">
                                 <div id="minus" class="px-4 py-2 border-r hover:bg-green-800 text-lg cursor-pointer">-</div>
-                                <input id="amount" class="w-10 text-center outline-none" type="text" value="1" name="so-luong">
+                                <input id="amount" class="w-10 text-center outline-none" type="number" max="" required value="1" name="so-luong">
                                 <div id="plus" class="px-4 py-2 border-l hover:bg-green-800 text-lg cursor-pointer">+</div>
                             </div>
                         </div>
@@ -354,17 +360,16 @@
                     let newObj = JSON.parse(html.responseText);
                     var giasp= new Intl.NumberFormat().format(newObj.gia);
                     gia.innerText=giasp + ' đ';
+                    document.getElementById('tinh-trang').innerText=newObj.so_luong;
+                    document.getElementById('amount').setAttribute('max',newObj.so_luong);
                     if(newObj.so_luong >0){
                         label_dt[index].classList.add('border-green-800');
-                        document.getElementById('tinh-trang').innerText='Còn hàng';
                         document.getElementById('box_con_hang').classList.remove('hidden');
                         document.getElementById('box_con_hang').classList.add('flex');
                         document.getElementById('box_het_hang').classList.remove('block');
                         document.getElementById('box_het_hang').classList.add('hidden');
                         
                     }else{
-                        label_dt[index].classList.add('border-red-800');
-                        document.getElementById('tinh-trang').innerText='Hết hàng'
                         document.getElementById('box_con_hang').classList.remove('flex');
                         document.getElementById('box_con_hang').classList.add('hidden');
                         document.getElementById('box_het_hang').classList.remove('hidden');
@@ -407,8 +412,11 @@
          });
          plus.addEventListener('click',e=>{
             amount++;
+            let max=document.getElementById('amount').getAttribute('max');
             // qlt.value=amount;
-            render(amount)
+            if(amount <= max){
+                render(amount);
+            }
          })
          qlt.addEventListener('input',()=>{
             amount=qlt.value;

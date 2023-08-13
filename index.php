@@ -14,6 +14,7 @@ require "model/anh_san_pham.php";
 require "model/chi_tiet_don_hang.php";
 require "model/yeu_thich.php";
 require "model/don_hang.php";
+require "model/chi_tiet_sp.php";
 require "controllers/site/home.php";
 require "controllers/site/chi_tiet_san_pham.php";
 require "controllers/site/don_hang.php";

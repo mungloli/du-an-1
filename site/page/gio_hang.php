@@ -17,6 +17,13 @@ global $img_dir;
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
   <link rel="stylesheet" href="public/css/style.css">
+  <style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  </style>
 </head>
 <body>
     <?php
@@ -32,6 +39,7 @@ global $img_dir;
             <?php 
             $total=0;
             foreach($list_cart as $cart){
+                $ctsp=chi_tiet_sp_cart($cart['id_san_pham'],$cart['id_dt']);
                 ?>
                 
                 <div class="flex items-center justify-between border-b py-3">
@@ -55,7 +63,7 @@ global $img_dir;
                         <div class="text-center">
                             <p class="font-medium mb-3">Số lượng</p>
                             <button type="button"  class="p-1 minus"><i class="fa-solid fa-minus"></i></button>
-                            <input class="w-10 text-center amount" value="<?=$cart['so_luong']?>">
+                            <input class="w-10 text-center amount" max="<?=$ctsp['so_luong']?>" min="1" value="<?=$cart['so_luong']?>" type="number">
                             <button id=""  type="button" class="p-1 plus"><i class="fa-solid fa-plus"></i></button>
                         </div>
                         <div class="text-center">
@@ -149,11 +157,14 @@ global $img_dir;
         })
         plus.forEach((element,index)=>{
             element.addEventListener('click',e=>{
+                let max=count[index].getAttribute('max');
                 let value=count[index].value;
                 let id_cart=list_id_cart[index].value;
                 value++;
-                render(value,index);
-                update_sl_data(value,id_cart);
+                if(value <= max){
+                    render(value,index);
+                    update_sl_data(value,id_cart);
+                }
             })
         })
         show_price.forEach((element,index)=>{
