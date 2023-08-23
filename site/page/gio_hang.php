@@ -101,7 +101,15 @@ global $img_dir;
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
-       
+       var number = 1234567.89;
+        var options = {
+            style: 'currency',
+            currency: 'VND', // Mã tiền tệ của Việt Nam
+            currencyDisplay: 'symbol', // Hiển thị ký hiệu tiền tệ (đ)
+        };
+        var formatter = new Intl.NumberFormat('vi-VN', options);
+
+var formattedNumber = formatter.format(number); // 1.234.567,89 ₫
         var minus= document.querySelectorAll('.minus');
         var plus =document.querySelectorAll('.plus');
         var count=document.querySelectorAll('.amount');
@@ -112,12 +120,12 @@ global $img_dir;
         function render(amount,index){
             count[index].value=amount;
             let money= price[index].value *amount;
-            show_price[index].innerHTML=money;
+            show_price[index].innerHTML=formatter.format(money);
             let total_value=0;
             show_price.forEach(element=>{
-                total_value += parseInt(element.innerHTML);
+                total_value += money;
             })
-            total.innerText=total_value;
+            total.innerText=formatter.format(total_value);
         }
         
         

@@ -26,6 +26,10 @@
                     update_so_luong_sp_cart($sl_new,$id_sp,$id_kh,$id_dt);
                     header("location: index.php?ctl=cart");
                 }
+            }else{
+                $id_sp=$_POST['id-sp'];
+                setcookie('mess','Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng',time()+1000);
+                header("location:index.php?ctl=product_datail&id=$id_sp");
             }
         }
     }

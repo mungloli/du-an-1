@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 07, 2023 lúc 05:50 PM
+-- Thời gian đã tạo: Th8 23, 2023 lúc 05:34 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -278,6 +278,13 @@ CREATE TABLE `gio_hang` (
   `so_luong` int(10) NOT NULL,
   `id_dt` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `gio_hang`
+--
+
+INSERT INTO `gio_hang` (`id`, `id_khach_hang`, `id_san_pham`, `so_luong`, `id_dt`) VALUES
+(16, 3, 8, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -569,7 +576,7 @@ ALTER TABLE `dung_tich`
 -- AUTO_INCREMENT cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `hang`

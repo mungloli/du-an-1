@@ -329,10 +329,6 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script>
-        <?php if(isset($mess)) echo "alert('.$mess.');
-        "
-        ?>
-        
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');
         var label_dt=document.querySelectorAll('.label_dt');
@@ -353,7 +349,6 @@
                 html.open('post','http://localhost/du-an-1/ajax/chi_tiet_san_pham.php',true);
                 html.onreadystatechange = function() {
                 if (html.readyState === 4 && html.status === 200) {
-                    console.log(html.responseText);
                     label_dt.forEach(item=>{
                         item.classList.remove('border-green-800','border-red-800');
                     });
@@ -445,14 +440,12 @@
                 icon_wishlist.classList.add('text-green-900');
                 text_wishlist.classList.add('text-green-900')
                 text_wishlist.innerText="Đã yêu thích";
-                console.log(repo);
             }else{
                 int_count--;
                 document.getElementById('count_wl').innerText = "" + int_count;
                 text_wishlist.classList.remove('text-green-900');
                 icon_wishlist.classList.remove('text-green-900');
                 text_wishlist.innerText="Thêm vào mục yêu thích";
-                console.log(repo);
             }
             }
             }
@@ -496,7 +489,12 @@
             updateImg(curentIndex);
          })
          updateImg(0);
-        
+         <?php
+         if(isset($_COOKIE['mess'])){
+            $mess=$_COOKIE['mess'];
+            echo "alert('$mess')";
+         }
+         ?>
     </script>
 </body>
 </html>
