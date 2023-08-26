@@ -69,7 +69,9 @@ global $img_dir;
                 ?>
                     <div class="flex gap-5">
                         <a href="index.php?ctl=ct_don_hang&id=<?=$dh['id']?>"><button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button></a>
+                        <div class="<?php if($dh['trang_thai']==0){echo "block";} else {echo "hidden";}?>">
                         <button class="huy_dh hidden px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
+                        </div>
                     </div>
                 
                 

@@ -19,7 +19,8 @@ global $img_dir;
 <body>
     <?php require "site/layout/header.php" ?>
     <main class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-3 gap-4">
+      <h2 class="mt-20 text-3xl font-medium">Sản phẩm yêu thích</h2>
+      <div class="grid grid-cols-3 gap-4 mt-10">
         <?php 
         foreach($yeu_thich as $yt){
           $gia = select_gia_min_max_san_pham($yt['id_san_pham'])

@@ -10,7 +10,7 @@
  function view($path, $data = [])
 {
     extract($data);
-    include_once "site/" . $path . ".php";
+    include_once "site/". $path .".php";
 }
 
 function location($path, $data = [])

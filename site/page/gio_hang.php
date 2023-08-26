@@ -30,7 +30,7 @@ global $img_dir;
     include "site/layout/header.php";
     ?> 
         <main class="w-[1180px] mx-auto mt-5">
-            <div class="border rounded-xl px-5 py-4">
+            <div class="">
                 <h1 class="text-4xl font-medium">Giỏ hàng</h1>
             </div>
             <div class="border rounded-xl mt-5 gap-5 p-3 flex <?php if(empty($list_cart)) echo "hidden"?>">
@@ -87,12 +87,15 @@ global $img_dir;
                             <span class="font-medium text-green-900 text-2xl"> VND</span>
                         </div>
                     </div>
-                    <div class="mt-10">
+                    <div class="mt-10 text-center">
                         <a href="index.php?ctl=checkout_cart"><button class="w-full h-10 bg-green-900 text-white text-xl font-medium rounded-lg" type="button">Thanh toán ngay</button></a>
                         <a href="index.php?ctl=sanpham"><button type="button" class="w-full h-10 bg-green-900 text-xl font-medium text-white rounded-lg mt-3">Tiếp tục mua hàng</button></a>
                     </div>   
                 </div>
                 </form>
+            </div>
+            <div class="<?php if(empty($list_cart)){echo "block";} else {echo "hidden";} ?> py-16 w-full flex items-center justify-between">
+                <img class="w-max h-max mx-auto" src="public/img/gio_hang_trong.jfif" alt="">
             </div>
         </main>
 

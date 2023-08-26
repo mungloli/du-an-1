@@ -1,9 +1,9 @@
 <?php 
     extract($data['san_pham']);
     extract($data['dung_tich']);
-    // if(isset($data['yeu_thich'])){
-    //     extract($data['yeu_thich']);
-    // }
+    if(isset($data['yeu_thich'])){
+        extract($data['yeu_thich']);
+    }
     if(isset($data['mess'])){
         extract($data['mess']);
     }
@@ -117,21 +117,13 @@
                     <button id="btn_wishlist" onclick="wishlist()" value="<?=$san_pham['id']?>"
                              class="yt_parent mt-3 border w-max p-3 
                             hover:border-green-950 hover:text-green-950 cursor-pointer">
-                        <i id="icon_wishlist" class="yt_child text-gray-200
-                        <?php if(isset($yeu_thich)){
-                                echo "text-green-900";
-                            }?>
-                        fa-solid fa-heart"></i>
-                        <span id="text_wishlist" class="
-                        <?php if(isset($yeu_thich)){
-                                echo "text-green-900";
-                            }?> yt_child">
-                            <?php if(isset($yeu_thich)){
-                                echo "Đã yêu thích";
-                            }else{
-                                echo"Thêm vào mục yêu thích";
-                            }
-                            ?></span>
+                        <i id="icon_wishlist" class="
+                        <?php if(!empty($data['yeu_thich'])) echo "text-green-900"?>
+                         yt_child text-gray-200 mr-2 fa-solid fa-heart"></i>
+                        <span id="text_wishlist" class="<?php if(!empty($data['yeu_thich'])) echo "text-green-900"?>">
+                            <?php if(!empty($data['yeu_thich'])){echo "Đã yêu thích";}
+                            else echo "Thêm vào mục yêu thích"  ?>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -365,6 +357,7 @@
                         document.getElementById('box_het_hang').classList.add('hidden');
                         
                     }else{
+                        label_dt[index].classList.add('border-red-800');
                         document.getElementById('box_con_hang').classList.remove('flex');
                         document.getElementById('box_con_hang').classList.add('hidden');
                         document.getElementById('box_het_hang').classList.remove('hidden');
@@ -452,6 +445,7 @@
             html.send(data);
 
         }
+
         var img_show =document.querySelector('#img-show');
         var list_img =document.querySelectorAll('#imgs');
         var img =document.querySelectorAll('#imgs img');
