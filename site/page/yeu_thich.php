@@ -28,7 +28,7 @@ global $img_dir;
           <div class="flex align-top p-3 shadow-lg">
           <img class="h-[100px] w-[100px]" src="<?=$img_dir.$yt['img']?>" alt="">
           <div class="ml-3">
-            <h2 class="text-2xl text-[#064a38] font-medium"><?=$yt['name_sp']?></h2>
+            <h2 class="text-2xl text-[#064a38] font-medium cursor-pointer"><?=$yt['name_sp']?></h2>
             <p class="font-medium">Thương hiệu: <?=$yt['name_hang']?></p>
             <p class="font-medium">Loại: <?=$yt['name_loai']?></p>
             <p class="font-medium">Giá: <?=number_format($gia['gia_min'])?> đ - <?=number_format($gia['gia_max'])?> đ</p>

@@ -11,7 +11,6 @@ extract($data['dsloai']);
     // Xác định trang hiện tại mà người dùng đang xem
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     $current_page = max(1, min($current_page, count($paginated_data)));
-    
     // Hiển thị dữ liệu trên trang hiện tại
     $dsnew = $paginated_data[$current_page - 1];
 global $img_dir;
@@ -44,7 +43,7 @@ global $img_dir;
             </div>
                 <div class="content">
                     <div class="blog">Tất cả sản phẩm</div>
-                    <div class="view">
+                    <!-- <div class="view">
                         <div class="sel">
                             <strong>Xếp theo:</strong>
                             <input type="radio" name="sp"><a href="">Hàng mới</a>
@@ -59,7 +58,7 @@ global $img_dir;
                                 <i class="fa-solid fa-list"></i> Cột
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="block-ct">
                         <?php
                             $i=0;
@@ -73,7 +72,7 @@ global $img_dir;
                                 };
                                 ?>
                                 <div  class="product pb-4 border px-3 <?=$mr?>">
-                        <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$san_pham['img']?>" alt=""></a>
+                        <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><img class="h-[180px] w-full" src="<?= $img_dir.$san_pham['img']?>" alt=""></a>
                         <div class="mt-1">
                             <div class="h-12 overflow-hidden text-ellipsis">
                             <a href="?ctl=product_datail&id=<?=$san_pham['id']?>"><h3 class="name_product font-semibold hover:text-green-900"><?=$san_pham['name']?></h3></a>
@@ -132,8 +131,9 @@ global $img_dir;
                   }
                 // Hiển thị các liên kết phân trang
                 for ($i = 1; $i <= count($paginated_data); $i++) {
-                    echo "<a class='px-2 py-1 text-white bg-green-900 mx-1' href='index.php?ctl=product&page=$i'>$i</a> ";
+                    echo "<a class='" . ($current_page == $i ? 'bg-green-900 text-white' : 'bg-white') . " px-2 py-1 mx-1' href='index.php?ctl=product&page=$i'>$i</a> ";
                 }
+                    
                 if ($current_page < count($paginated_data)) {
                     echo "<a class='px-2 py-1 mx-1 hover:text-green-900' href='index.php?ctl=product&page=" . ($current_page + 1) . "'>Next</a> ";
                   }

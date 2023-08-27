@@ -26,9 +26,9 @@
                         ?>
                     </div>
                 </div>
-                <div class="mb">
+                <!-- <div class="mb">
                     <div class="title nav">Giá sản phẩm</div>
-                    <div class="srcollbar">
+                    <div class="srcollbar"> -->
                         <!-- <?php
                             foreach ($dsnew as $sp) {
                                 extract($sp);
@@ -36,12 +36,12 @@
                                 echo '<input type="checkbox"> <a href="'.$linkhang.'">'.$price.'</a> <br>';
                             }
                         ?> -->
-                        <a class="block" href=""><input class="mr-2" type="checkbox">0 đ - 200.000 đ</a>
+                        <!-- <a class="block" href=""><input class="mr-2" type="checkbox">0 đ - 200.000 đ</a>
                         <a class="block" href=""><input class="mr-2" type="checkbox">200.000 đ - 500.000 đ</a>
                         <a class="block" href=""><input class="mr-2" type="checkbox">500.000 đ - 1.000.000 đ</a>
-                        <a class="block" href=""><input class="mr-2" type="checkbox"> >1.000.000 đ</a>
-                    </div>
-                </div>
+                        <a class="block" href=""><input class="mr-2" type="checkbox"> >1.000.000 đ</a> -->
+                    <!-- </div>
+                </div> -->
                 <div class="mb">
                     <div class="title">DANH MỤC</div>
                     <div class="menu formtitle ">

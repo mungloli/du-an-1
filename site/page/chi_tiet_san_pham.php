@@ -315,6 +315,10 @@
                 </div>
             </div>
         </div>
+        <div>
+            <!-- <h2>Sản phẩm liên quan</h2> -->
+
+        </div>
     </main>
     <?php require "site/layout/footer.php"?>
 
