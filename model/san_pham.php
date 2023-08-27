@@ -20,6 +20,14 @@ function select_san_pham_by_loai_limit_10($id_loai){
     return $result;
  }
 
+ function check_san_pham($ten_sp){
+   $connect=connection();
+   $sql = "SELECT * FROM `san_pham` WHERE name='$ten_sp'";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result;
+}
  function select_san_pham_by_loai($id_loai){
    $connect=connection();
    $sql = "SELECT * FROM `san_pham` WHERE id_loai=$id_loai";
@@ -65,9 +73,10 @@ function select_san_pham_by_loai_limit_10($id_loai){
  };
  function select_sp(){
    $connect=connection();
-   $sql="SELECT san_pham.id,san_pham.mo_ta,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong FROM `san_pham`
-   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id
-   GROUP by san_pham.id";
+   $sql="SELECT san_pham.id,loai.name as ten_loai,hang.name as ten_hang,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong 
+   FROM `san_pham` JOIN loai ON loai.id=san_pham.id_loai 
+   JOIN hang ON hang.id=san_pham.id_hang 
+   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id GROUP by san_pham.id order by san_pham.id desc";
    $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

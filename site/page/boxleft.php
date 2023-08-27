@@ -10,9 +10,9 @@
                 <div class="mb">
                     <div class="title nav">Thương hiệu
                         <div class="search1">
-                            <form action="index.php?ctl=sanpham" method="post">
-                                <input type="text" placeholder="Tìm thương hiệu" name="kyw">
-                                <button type="submit" name="timkiem" value="Tìm" id="">
+                            <form action="index.php?ctl=sanpham" method="post" class="flex items-end">
+                                <input class="w-48" type="text" placeholder="Tìm thương hiệu" name="kyw">
+                                <button class="bg-[#117b4d] text-white rounded-lg border px-3 py-2" type="submit" name="timkiem" value="Tìm" id="">Tìm</button>
                       </form>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <li>
                                 <a href="">THƯƠNG HIỆU</a>
                                 <div class="clickicon">
-                                    <i class="fa-solid fa-angle-up"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="active formactive">
                                     <ul>
@@ -68,7 +68,7 @@
                             <li>
                                 <a href="">NƯỚC HOA</a>
                                 <div class="clickicon">
-                                    <i class="fa-solid fa-angle-up"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="active formactive">
                                     <ul>

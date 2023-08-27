@@ -1,4 +1,7 @@
 <?
+if(isset($data['errors'])){
+    extract($data['errors']);
+}
 extract($data['chi_tiet_sp']);
 
 ?>
@@ -36,10 +39,12 @@ extract($data['chi_tiet_sp']);
                                     <span class="text-xl font-medium">Giá</span>
                                     <input class="block border rounded-md h-10 w-[400px] mt-2 pl-2" type="text" value="<?=$chi_tiet_sp['gia'] ?>" name="gia">
                                 </label>
+                                <span class="text-red-600 text-xs"><?php if(isset($errors['gia'])) echo $errors['gia']?></span>
                                 <label class="block mt-5">
                                     <span class="text-xl font-medium">Số lượng</span>
                                     <input class="block border rounded-md h-10 w-[400px] mt-2 pl-2" type="text" value="<?=$chi_tiet_sp['so_luong'] ?>" name="so_luong">
                                 </label>
+                                <span class="text-red-600 text-xs"><?php if(isset($errors['so_luong'])) echo $errors['so_luong']?></span> <br>
                                 <button name="btn_update_ctsp" class="px-7 py-2 rounded-lg mt-5 bg-green-900 text-white text-lg">Cập nhật</button>
                             </form>
                         </div>

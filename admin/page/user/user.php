@@ -1,5 +1,7 @@
-<?
+<?php
+$user_admin=$_SESSION['user_admin'];
 extract($data['list_user']);
+
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +33,8 @@ extract($data['list_user']);
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="p-2 border text-left w-1/12"></th>
                             <th class="p-2 border text-left w-1/12">ID</th>
-                            <th class="p-2 border text-left w-3/12">Tên tài khoản</th>
+                            <th class="p-2 border text-left w-4/12">Tên tài khoản</th>
                             <th class="p-2 border text-left w-4/12">Email</th>
                             <th class="p-2 border text-left w-2/12">Vai trò</th>
                             <th class="p-2 border text-left w-1/12">Thao tác</th>
@@ -44,7 +45,6 @@ extract($data['list_user']);
                         foreach($list_user as $user){
                             ?>
                             <tr>
-                            <td class="p-2 border"><input type="checkbox" value="<?=$user['id']?>"></td>
                             <td class="p-2 border"><?=$user['id']?></td>
                             <td class="p-2 border"><?=$user['user_name']?></td>
                             <td class="p-2 border"><?=$user['email']?></td>
@@ -57,7 +57,7 @@ extract($data['list_user']);
                                 <a class="px-2 py-1 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
                                 href="index.php?ctl=edit_user&id=<?=$user['id']?>">Sửa</a>
                                 
-                                <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
+                                <a class="<?php if($user['id'] == $user_admin['id'] ) echo "hidden"?> px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
                                 href="index.php?ctl=delete_user&id=<?=$user['id']?>">Xóa</a>
                             </td>
                         </tr>
@@ -72,5 +72,6 @@ extract($data['list_user']);
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
-</html>
+</html> 

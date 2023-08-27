@@ -1,5 +1,6 @@
 <?php 
 extract($data['don_hang']);
+
 global $img_dir;
 ?>
 
@@ -15,18 +16,18 @@ global $img_dir;
 </head>
 <body>
     <?php require "site/layout/header.php"?>
-    <main class="mt-20">
+    <main class="mt-20 max-w-6xl mx-auto ">
+        <div class="mb-10">
+            <h2 class="font-medium text-2xl">Đơn hàng của tôi</h2>
+        </div>
         <?php
-        foreach($don_hang as $dh){
-             $tong_tien=0;
+        foreach($don_hang as $dh){  
             ?>
-    <div class="max-w-6xl mx-auto mt-5 shadow-xl p-5">
+    <div class="mt-5 shadow-xl p-5">
                 <?php 
                 $ct_don_hang=select_chi_tiet_don_hang($dh['id']);
                 foreach($ct_don_hang as $ctdh){
                     $tong_tien_sp= $ctdh['so_luong'] * $ctdh['gia'];
-                    $tong_tien += $tong_tien_sp;
-                    
                     ?>
                     <div class="flex py-4 items-center border-b">
                         <img class="w-[80px] h-[80px]" src="<?=$img_dir.$ctdh['img']?>" alt="">
@@ -43,26 +44,34 @@ global $img_dir;
                 }
                     ?>
             <div class="py-3 text-right">
-                <p class="text-2xl text-green-900">Tổng tiền: <?= number_format($tong_tien)?> đ</p>
+                <p class="text-2xl text-green-900">Tổng tiền: <?= number_format($dh['tong_tien'])?> đ</p>
             </div>
             <div class="border-t-2 flex justify-between pt-3">
                 <?php if($dh['trang_thai']==0){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đã xác nhận đơn hàng</p>';
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đang chờ xác nhận</p>';
                 }else if($dh['trang_thai']==1){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đã xác nhận đơn hàng</p>';
                 }else if($dh['trang_thai']==2){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã đến nơi</p>
-                    <div>
-                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
-                    </div>
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã được gửi cho bên vận chuyển</p>
                     ';
                     
+                }else if($dh['trang_thai']==3){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
+                }else if($dh['trang_thai']==4){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã tới nơi</p>
+                    <div>
+                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
+                    </div>';
+                }else if($dh['trang_thai']==5){
+                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Hoàn thành</p>';
                 }
                 
                 ?>
-                    <div>
-                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button>
-                        <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
+                    <div class="flex gap-5">
+                        <a href="index.php?ctl=ct_don_hang&id=<?=$dh['id']?>"><button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết sản phẩm</button></a>
+                        <div class="<?php if($dh['trang_thai']==0){echo "block";} else {echo "hidden";}?>">
+                        <button class="huy_dh hidden px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
+                        </div>
                     </div>
                 
                 
@@ -75,5 +84,18 @@ global $img_dir;
         
     </main>
     <?php require "site/layout/footer.php"?>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+        let huy_dh=document.querySelectorAll('.huy_dh')
+        let trang_thai=<?=$dh['trang_thai']?>;
+        console.log(trang_thai);
+        for(let i=0;i<huy_dh.length;i++){
+            if(trang_thai==0){
+            huy_dh[i].classList.remove('hidden');
+            huy_dh[i].classList.add('block');
+            }
+        }
+    </script>
 </body>
 </html>

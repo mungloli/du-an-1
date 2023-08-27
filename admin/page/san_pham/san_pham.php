@@ -36,7 +36,8 @@ extract($data['imgs']);
                             <th class="p-2 border text-left w-3/12">Tên sản phẩm</th>
                             <th class="p-2 border text-left w-1/12">Hình ảnh</th>
                             <th class="p-2 border text-left w-1/12">Số lượng</th>
-                            <th class="p-2 border text-left w-5/12">Mô tả</th>
+                            <th class="p-2 border text-left w-3/12">Danh mục</th>
+                            <th class="p-2 border text-left w-2/12">Thương hiệu</th>
                             <th class="p-2 border text-left w-1/12">Thao tác</th>
                         </tr>
                     </thead>
@@ -50,7 +51,8 @@ extract($data['imgs']);
                             <td class="p-2 border"><?=$sp['name']?></td>
                             <td class="p-2 border"><img class="w-20 h-20" src="../public/img/<?=$imgs[0]['img']?>" alt=""></td>
                             <td class="p-2 border"><?=$sp['so_luong']?></td>
-                            <td class="p-2 border overflow-hidden"><?=$sp['mo_ta']?></td>
+                            <td class="p-2 border"><?=$sp['ten_loai']?></td>
+                            <td class="p-2 border"><?=$sp['ten_hang']?></td>
                             <td class="p-2 border">
                                 <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
                                 href="index.php?ctl=delete_sp&id=<?=$sp['id']?>">Xóa</a>
@@ -70,5 +72,6 @@ extract($data['imgs']);
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

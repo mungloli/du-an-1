@@ -1,6 +1,6 @@
 <?php
-if(isset($data['eross'])){
-    extract($data['eross']);
+if(isset($data['errors'])){
+    extract($data['errors']);
 }
 ?>
 <!DOCTYPE html>
@@ -25,10 +25,10 @@ if(isset($data['eross'])){
                 <input class="w-1/2 h-8 border rounded-lg mt-2 pl-2" type="text" value="Auto Number" readonly>
                 <label class="mt-5 block font-medium" for="">Tên hãng</label>
                 <input class="w-1/2 h-8 border rounded-lg mt-2 pl-2" name="ten_loai" type="text" placeholder="Tên loại">
-                <span class="text-red-600"><?php if(isset($eross['ten_loai'])) echo $eross['ten_loai']?></span>
+                <span class="text-red-600"><?php if(isset($errors['ten_loai'])) echo $errors['ten_loai']?></span>
                 <label class="mt-5 block font-medium" for="">Ảnh</label>
                 <input class="" name="img" type="file">
-                <span class="text-red-600"><?php if(isset($eross['img'])) echo $eross['img']?></span>
+                <span class="text-red-600"><?php if(isset($errors['img'])) echo $errors['img']?></span>
                 <div class="mt-4">
                     <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_add_loai">Thêm mới</button>
                     <a href="index.php?ctl=loai">
@@ -41,5 +41,6 @@ if(isset($data['eross'])){
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

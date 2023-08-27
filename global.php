@@ -5,12 +5,12 @@
  $config['password'] = '';
 
  $image_dir=$_SERVER['DOCUMENT_ROOT']."/du-an-1/public/img";
-
+ session_start();
 
  function view($path, $data = [])
 {
     extract($data);
-    include_once "site/" . $path . ".php";
+    include_once "site/". $path .".php";
 }
 
 function location($path, $data = [])

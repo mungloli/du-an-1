@@ -54,4 +54,12 @@ function chi_tiet_by_sp($id){
     $stmt = $connect->prepare($sql);
     $stmt->execute();
  }
+ function chi_tiet_sp_cart($id_sp,$id_dt){
+   $connect=connection();
+    $sql = "SELECT `so_luong` FROM `chi_tiet_sp` WHERE id_sanPham=$id_sp AND id_theTich=$id_dt";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result[0];
+ }
 ?>

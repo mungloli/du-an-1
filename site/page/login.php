@@ -43,7 +43,7 @@ if(isset($_COOKIE['mess_re'])){
                 <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_login">Đăng Nhập</button>
               </div>
               <div class="flex justify-between items-center mt-5">
-                <a class="text-green-900 hover:underline" href="">Quên mật khẩu</a>
+                <!-- <a class="text-green-900 hover:underline" href="index.php?ctl=change_pass">Quên mật khẩu</a> -->
                 <p>Bạn chưa có tài khoản đăng ký: <a class="text-green-900 hover:underline font-bold" href="?ctl=register">Tại dây</a></p>
               </div>
             </form>

@@ -25,16 +25,19 @@ function add_loai_new(){
 
         if($_POST['ten_loai']==""){
             $errors['ten_loai']="Vui lòng điền vào trường này";
+        }else if(!empty(check_loai($_POST['ten_loai']))){
+            $errors['ten_loai']="Loại này đã tồn tại";
         }else{
             $tenloai=$_POST['ten_loai'];
         }         
     }
+
     if(empty($errors)){
             $hinh=save_file('img','/du-an-1/public/img/');
             add_loai($tenloai,$hinh);
             header('location: index.php?ctl=loai');
     }else{
-        echo "lỗi";
+        location('/loai/add_loai',['errors'=>$errors]);
     }
 }
 function edit_loai(){
@@ -46,9 +49,12 @@ function edit_loai(){
 
 function update_loai_by_id(){
     if(isset($_POST['btn_update_loai'])){
-        if($_POST['ten_loai']==""){
+        if(empty($_POST['ten_loai'])){
             $errors['ten_loai']="Vui lòng điền vào trường này";
+        }else{
+            $ten_loai=$_POST['ten_loai'];
         }
+
         $typeImg = ['png', 'jpg', 'jpeg', 'webp'];
         $typeFile = pathinfo($_FILES["img_loai"]['name'], PATHINFO_EXTENSION);
         if(strlen($_FILES["img_loai"]['name']) == 0 && isset($_POST['old_img_loai'])){
@@ -71,15 +77,12 @@ function update_loai_by_id(){
     }
     if(empty($errors)){
         $id_loai=$_POST['id_loai'];
-        $ten_loai=$_POST['ten_loai'];
-        update_loai($id_loai,$ten_loai,$hinh[0]);
-        // location('/loai/loai');
+        update_loai($id_loai,$ten_loai,$hinh);
+        location('/loai/loai');
         header('location: index.php?ctl=loai');
-}
-
-// else{
-//     location('loai/edit_loai',['errors'=>$errors]);
-// }
+    }else{
+        location('loai/edit_loai',['errors'=>$errors]);
+    }
 }
 function delete_loai_by_id(){
     $id_loai=$_GET['id'];

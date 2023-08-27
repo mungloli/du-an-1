@@ -24,14 +24,13 @@ extract($data['list_hang']);
                 <div class="m-3 bg-white p-3 rounded-lg h-full">
                     <div class="flex justify-between pb-4">
                         <h2 class="font-medium text-xl">Danh sách hãng</h2>
-                        <a class="font-xl hover:text-green-800" href="index.php?ctl=add_loai">
+                        <a class="font-xl hover:text-green-800" href="index.php?ctl=add_hang">
                             <i class="mr-2 fa-solid fa-square-plus"></i>Thêm mới
                         </a>
                     </div>
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="p-2 border text-left w-1/12"></th>
                             <th class="p-2 border text-left w-1/12">ID</th>
                             <th class="p-2 border text-left w-8/12">Tên hãng</th>
                             <th class="p-2 border text-left w-2/12">Thao tác</th>
@@ -42,7 +41,6 @@ extract($data['list_hang']);
                         foreach($list_hang as $hang){
                             ?>
                             <tr>
-                            <td class="p-2 border"><input type="checkbox" value="<?=$hang['id']?>"></td>
                             <td class="p-2 border"><?=$hang['id']?></td>
                             <td class="p-2 border"><?=$hang['name']?></td>
                             <td class="p-2 border">
@@ -64,5 +62,6 @@ extract($data['list_hang']);
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

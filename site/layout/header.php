@@ -36,7 +36,7 @@
                   </a>
                 </div>
                 <div class="relative">
-                  <i class="px-2 cursor-pointer fa-solid fa-cart-shopping"></i>
+                  <a href="index.php?ctl=cart"><i class="px-2 cursor-pointer fa-solid fa-cart-shopping"></i></a>
                   <button class="w-4 h-4 rounded-full absolute -top-1 right-0 text-xs bg-red-500 text-center" >
                     <?php 
                     if(isset($count_cart['count'])){
@@ -90,7 +90,7 @@
                   $list_hang=hang_all();
                   foreach($list_hang as $hang ){
                     ?>
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="index.php?ctl=by-hang&id-hang=<?=$hang['id']?>"><?=$hang['name']?></a></li>
+                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="index.php?ctl=sanpham&id_hang=<?=$hang['id']?>"><?=$hang['name']?></a></li>
                     <?php
                   }
                   ?>

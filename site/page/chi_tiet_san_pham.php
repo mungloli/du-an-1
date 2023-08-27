@@ -4,6 +4,9 @@
     if(isset($data['yeu_thich'])){
         extract($data['yeu_thich']);
     }
+    if(isset($data['mess'])){
+        extract($data['mess']);
+    }
     extract($data['imgs']);
     $id_sp=$san_pham['id'];
     global $img_dir;
@@ -29,6 +32,12 @@
   .more_info{
     background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.33) 33%, rgba(255,255,255,0.8) 83%, #fff);
   }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
   </style>
 </head>
 <body>
@@ -39,7 +48,7 @@
                 <div class="w-2/5">
                     <div class="flex justify-center relative">
                     <div id="pre" class="absolute top-1/2 left-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-left"></i></div>
-                        <img id="img-show" src="" alt="">
+                        <img class="h-80" id="img-show" src="" alt="">
                         <div id="next" class="absolute top-1/2 right-0 bg-slate-300 px-3 py-5"><i class="fa-solid fa-angle-right"></i></div>
                     </div>
                     
@@ -55,21 +64,18 @@
                 </div>
                 <div class="w-3/5">
                     <h1 class="text-3xl font-medium"><?=$san_pham['name']?></h1>
-                    <div class="">
+                    <div class="my-2">
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                     </div>
-                    <p>Tình trạng: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
+                    <p class="mb-2">Tồn kho: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
                     <span id="gia" class="font-medium text-green-800 text-2xl"> đ</span>
-                    <div class="mt-2">
+                    <div class="mt-3">
                         <p>
-                            Nhắc đến Aventus hẳn những ai yêu thích nước hoa đều phải dành cho nó nhiều mỹ từ, 
-                            và từ ngữ miêu tả về nó một cách chân thật nhất đó là "vua" của nước hoa. 
-                            Nước hoa nam Creed Aventus đầy sang trọng và hiện đại, mang một phong cách giản dị,  
-                            nhưng đầy chững chạc dành riêng cho phái mạnh.
+                            <?=$san_pham['mo_ta']?>
                         </p>
                     </div>
                     <div class="mt-3">
@@ -96,33 +102,28 @@
                             <span class="font-medium">Số lượng</span>
                             <div class="border w-max mt-2 flex">
                                 <div id="minus" class="px-4 py-2 border-r hover:bg-green-800 text-lg cursor-pointer">-</div>
-                                <input id="amount" class="w-10 text-center outline-none" type="text" value="1" name="so-luong">
+                                <input id="amount" class="w-10 text-center outline-none" type="number" max="" required value="1" name="so-luong">
                                 <div id="plus" class="px-4 py-2 border-l hover:bg-green-800 text-lg cursor-pointer">+</div>
                             </div>
                         </div>
-                        <div class="flex gap-5 mt-5">
-                            <a class="text-white font-medium rounded-lg bg-green-800 hover:bg-black w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a>
-                            <button class="text-white font-medium rounded-lg bg-green-800 hover:bg-black w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
+                        <div class="flex gap-5 mt-5" id="box_con_hang">
+                            <a class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a>
+                            <button class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                        <div class="mt-5 hidden" id="box_het_hang">
+                            <button class="text-white font-medium rounded-lg bg-green-900 w-1/2 py-3 text-2xl text-center" disabled type="button">Sản phẩm tạm hết hàng</button>
                         </div>
                     </form>
                     <button id="btn_wishlist" onclick="wishlist()" value="<?=$san_pham['id']?>"
                              class="yt_parent mt-3 border w-max p-3 
                             hover:border-green-950 hover:text-green-950 cursor-pointer">
-                        <i id="icon_wishlist" class="yt_child text-gray-200
-                        <?php if(isset($yeu_thich)){
-                                echo "text-green-900";
-                            }?>
-                        fa-solid fa-heart"></i>
-                        <span id="text_wishlist" class="
-                        <?php if(isset($yeu_thich)){
-                                echo "text-green-900";
-                            }?> yt_child">
-                            <?php if(isset($yeu_thich)){
-                                echo "Đã yêu thích";
-                            }else{
-                                echo"Thêm vào mục yêu thích";
-                            }
-                            ?></span>
+                        <i id="icon_wishlist" class="
+                        <?php if(!empty($data['yeu_thich'])) echo "text-green-900"?>
+                         yt_child text-gray-200 mr-2 fa-solid fa-heart"></i>
+                        <span id="text_wishlist" class="<?php if(!empty($data['yeu_thich'])) echo "text-green-900"?>">
+                            <?php if(!empty($data['yeu_thich'])){echo "Đã yêu thích";}
+                            else echo "Thêm vào mục yêu thích"  ?>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -136,43 +137,13 @@
                             <li class="font-medium text-xl text-white">Đánh giá</li>
                         </ul>
                     </div>
-                    <div class=" border px-3">
+                    <div class="border px-3 h-[91%]">
                         <div>
                             <div class="relative">
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p class="text-center">
-                                    <img class="mx-auto" src="public/img/19bdcdbc-e405-4f18-89a0-8ba031e7269b.jpg" alt="">
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
-                                <p>
-                                    Đứng top chai nước hoa nam thành công nhất hành tinh, 
-                                    chính là nước hoa nam Bleu De Chanel EDP. Đối với những 
-                                    anh "soái ca" đích thực đang tìm kiếm một mùi hương nam 
-                                    tính lịch lãm và đẳng cấp thì lựa chọn đỉnh nhất quả đất 
-                                    chính là anh chàng Bleu De Chanel này đấy nhé.
-                                </p>
+                                <p>Đang cập nhật</p>
                                 <div class="absolute bottom-0 left-0 w-full h-1/4 more_info"></div>
                             </div>
-                            <div class="text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>
+                            <div class="hidden text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>
                         </div>
                         <!-- cách sử dụng -->
                         <div class="hidden">
@@ -353,6 +324,8 @@
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');
         var label_dt=document.querySelectorAll('.label_dt');
+        var con_hang=document.getElementById('box_con_hang');
+        var het_hang=document.get
         // gửi request để lấy giá tiền
         // tạo function;
         function requestGia(index){
@@ -368,19 +341,27 @@
                 html.open('post','http://localhost/du-an-1/ajax/chi_tiet_san_pham.php',true);
                 html.onreadystatechange = function() {
                 if (html.readyState === 4 && html.status === 200) {
-                    console.log(html.responseText);
                     label_dt.forEach(item=>{
                         item.classList.remove('border-green-800','border-red-800');
                     });
                     let newObj = JSON.parse(html.responseText);
                     var giasp= new Intl.NumberFormat().format(newObj.gia);
                     gia.innerText=giasp + ' đ';
+                    document.getElementById('tinh-trang').innerText=newObj.so_luong;
+                    document.getElementById('amount').setAttribute('max',newObj.so_luong);
                     if(newObj.so_luong >0){
                         label_dt[index].classList.add('border-green-800');
-                        document.getElementById('tinh-trang').innerText='Còn hàng';
+                        document.getElementById('box_con_hang').classList.remove('hidden');
+                        document.getElementById('box_con_hang').classList.add('flex');
+                        document.getElementById('box_het_hang').classList.remove('block');
+                        document.getElementById('box_het_hang').classList.add('hidden');
+                        
                     }else{
                         label_dt[index].classList.add('border-red-800');
-                        document.getElementById('tinh-trang').innerText='Hết hàng'
+                        document.getElementById('box_con_hang').classList.remove('flex');
+                        document.getElementById('box_con_hang').classList.add('hidden');
+                        document.getElementById('box_het_hang').classList.remove('hidden');
+                        document.getElementById('box_het_hang').classList.add('block');
                     };
                 }
             };
@@ -419,8 +400,11 @@
          });
          plus.addEventListener('click',e=>{
             amount++;
+            let max=document.getElementById('amount').getAttribute('max');
             // qlt.value=amount;
-            render(amount)
+            if(amount <= max){
+                render(amount);
+            }
          })
          qlt.addEventListener('input',()=>{
             amount=qlt.value;
@@ -449,20 +433,19 @@
                 icon_wishlist.classList.add('text-green-900');
                 text_wishlist.classList.add('text-green-900')
                 text_wishlist.innerText="Đã yêu thích";
-                console.log(repo);
             }else{
                 int_count--;
                 document.getElementById('count_wl').innerText = "" + int_count;
                 text_wishlist.classList.remove('text-green-900');
                 icon_wishlist.classList.remove('text-green-900');
                 text_wishlist.innerText="Thêm vào mục yêu thích";
-                console.log(repo);
             }
             }
             }
             html.send(data);
 
         }
+
         var img_show =document.querySelector('#img-show');
         var list_img =document.querySelectorAll('#imgs');
         var img =document.querySelectorAll('#imgs img');
@@ -500,7 +483,12 @@
             updateImg(curentIndex);
          })
          updateImg(0);
-        
+         <?php
+         if(isset($_COOKIE['mess'])){
+            $mess=$_COOKIE['mess'];
+            echo "alert('$mess')";
+         }
+         ?>
     </script>
 </body>
 </html>

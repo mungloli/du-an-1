@@ -1,5 +1,4 @@
 <?php 
-session_start();
 function login(){
     view('/page/login');
 }
@@ -9,15 +8,16 @@ function register(){
 function change_pass(){
     view('/page/change_pass');
 }
+
 function user_login(){
     if(isset($_POST['btn_login'])){
         $name=$_POST['ten'];
         $mat_khau=$_POST['mat-khau'];
         $tai_khoan=check_login($name,$mat_khau);
-        $user=$tai_khoan[0];
         if(!empty($tai_khoan)){
+            $user=$tai_khoan[0];
             if($user['vai_tro'] == 1){
-                $_SESSION['user']=$user;
+                $_SESSION['user_admin']=$user;
                 header('location: ./admin/index.php');
             }else{
                 $json_tai_khoan=json_encode($user);

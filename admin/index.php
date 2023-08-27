@@ -6,12 +6,14 @@ require "../model/hang.php";
 require "../model/user.php";
 require "../model/anh_san_pham.php";
 require "../model/san_pham.php";
+require "../model/don_hang.php";
 require "../model/dung_tich.php";
 require "../model/chi_tiet_sp.php";
 require "../controllers/admin/doashboard.php";
 require "../controllers/admin/loai.php";
 require "../controllers/admin/hang.php";
 require "../controllers/admin/user.php";
+require "../controllers/admin/don_hang.php";
 require "../controllers/admin/san_pham.php";
 
 $ctl= $_GET['ctl'] ?? '';
@@ -110,7 +112,16 @@ switch($ctl){
     case "update_chi_tiet_sp":
         update_chi_tiet_sp_by_id();
         break;
-    }
+    case "quan_li_don_hang":
+        list_don_hang();
+        break; 
+    case "edit_don_hang":
+        edit_don_hang();
+        break; 
+    case "update_don_hang":
+        update_don_hang_by_id();
+        break;
     
+    }
     
 ?>

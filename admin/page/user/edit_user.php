@@ -1,4 +1,7 @@
 <?php
+if(isset($data['errors'])){
+    extract($data['errors']);
+}
 extract($data['user'])
 ?>
 <!DOCTYPE html>
@@ -26,27 +29,31 @@ extract($data['user'])
                 <label class="mt-5 w-1/2 font-medium" for="">Tên Tài khoản
                 <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="user_name" type="text" placeholder="Tên tài khoản"
                 value="<?=$user['user_name']?>">
-                <span class="text-red-600"><?php if(isset($eross['user_name'])) echo $eross['user_name']?></span>
+                <span class="text-red-600 text-xs"><?php if(isset($errors['user_name'])) echo $errors['user_name']?></span>
                 </label>
                 <label class="mt-5 w-1/2 block font-medium" for="">Email
                 <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="email" type="text" placeholder="Email"
                 value="<?=$user['email']?>">
                 </label>
+                <span class="text-red-600 text-xs"><?php if(isset($errors['email'])) echo $errors['email']?></span>
                 <div class="mt-5 w-1/2">
                     <p class="font-medium">Vai trò</p>
                     <input type="radio" name="vai_tro" id="0"<?php if($user['vai_tro']==0) echo "checked"?>>
                     <label class="" for="0">Người dùng</label>
                     <input class="ml-5" type="radio" name="vai_tro" id="1" <?php if($user['vai_tro']==1) echo "checked"?>>
                     <label class="" for="1">Quản trị</label>
+                    <span class="text-red-600 text-xs"><?php if(isset($errors['vai_tro'])) echo $errors['vai_tro']?></span>
                 </div>
                 
                 <label class="mt-5 w-1/2 block font-medium" for="">Mật khẩu
                 <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="mat_khau" type="password" placeholder="Mật khẩu"
                 value="<?=$user['mat_khau']?>">
+                <span class="text-red-600 text-xs"><?php if(isset($errors['mat_khau'])) echo $errors['mat_khau']?></span>
                 </label>
                 <label class="mt-5 w-1/2 block font-medium" for="">Xác nhận mật khẩu
                 <input class="block h-8 w-4/5 border rounded-lg mt-2 pl-2" name="confirm_mat_khau" type="password" placeholder="Mật khẩu"
                 value="<?=$user['mat_khau']?>">
+                <span class="text-red-600 text-xs"><?php if(isset($errors['confirm_mat_khau'])) echo $errors['confirm_mat_khau']?></span>
                 </label>
                 <div class="mt-4">
                     <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_update_user">Thêm mới</button>
@@ -60,5 +67,6 @@ extract($data['user'])
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

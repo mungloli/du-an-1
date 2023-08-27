@@ -1,4 +1,7 @@
 <?
+if($data['errors']){
+    extract($data['errors']);
+}
 extract($data['sp']);
 extract($data['list_loai']);
 extract($data['list_hang']);
@@ -36,8 +39,9 @@ extract($data['list_hang']);
                                     <label class="mt-5 block">
                                         <span class="font-medium text-lg">Tên sản phẩm</span> 
                                         <input class="block mt-1 border h-8 rounded-md outline-none p-1" name="ten_sp" type="text" value="<?=$sp['name']?>">
+                                        <span class="text-red-600 text-xs"><?php if(isset($errors['ten_sp'])) echo $errors['ten_sp']?></span>
                                     </label>
-                                    <div class="mt-3">
+                                    <div class="mt-3 flex">
                                         <label>
                                             <span class="text-lg font-medium">Thương hiệu</span> 
                                             <select name="hang" id="">
@@ -54,6 +58,8 @@ extract($data['list_hang']);
                                                 }
                                                 ?>
                                             </select>
+                                            <br>
+                                            <span class="text-red-600 text-xs"><?php if(isset($errors['hang'])) echo $errors['hang']?></span>
                                         </label>
                                         <label class="ml-5">
                                             <span class="text-lg font-medium">Loại hàng:</span> 
@@ -71,11 +77,14 @@ extract($data['list_hang']);
                                                 }
                                                 ?>
                                             </select>
+                                            <br>
+                                            <span class="text-red-600 text-xs"><?php if(isset($errors['loai'])) echo $errors['loai']?></span>
                                         </label>
                                     </div>
                                     <label class="mt-5 block">
                                         <span class="text-lg font-medium">Mô tả</span>
-                                        <textarea class="block border rounded-lg outline-none w w-full" name="mo_ta" id=""><?=$sp['mo_ta']?></textarea>
+                                        <textarea class="border rounded-lg outline-none w-full" rows="5" name="mo_ta" id=""><?=$sp['mo_ta']?></textarea>
+                                        <span class="text-red-600 text-xs"><?php if(isset($errors['mo_ta'])) echo $errors['mo_ta']?></span>
                                     </label>
                                     
                                 </div>
@@ -94,5 +103,6 @@ extract($data['list_hang']);
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

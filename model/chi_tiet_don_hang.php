@@ -1,14 +1,25 @@
 <?php 
-   function select_don_hang($id_kh){
-    $connect=connection();
-    $sql = "SELECT * FROM `don_hang` WHERE id_khach_hang=$id_kh" ;
+   
+
+function insert_chi_tiet_don_hang($id_sp,$id_dt,$so_luong,$gia,$id_don_hang){
+   $connect=connection();
+    $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_dung_tich`, `so_luong`, `gia`, `id_don_hang`) VALUES ";
+    for ($i = 0; $i < count($id_sp); $i++) {
+      $sp = $id_sp[$i];
+      $dt = $id_dt[$i];
+      $sl=$so_luong[$i];
+      $price=$gia[$i];
+      // Nếu không phải phần tử đầu tiên, thêm dấu phẩy phía trước
+      if ($i > 0) {
+          $sql .= ", ";
+      }
+      
+      // Thêm giá trị vào câu lệnh SQL
+      $sql .= "('$sp','$dt','$sl','$price','$id_don_hang')";
+  } 
     $stmt = $connect->prepare($sql);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
- }
-
-
+}
  function select_chi_tiet_don_hang($id_don_hang){
    $connect=connection();
    $sql = 

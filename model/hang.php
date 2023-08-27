@@ -17,8 +17,16 @@ function hang_all(){
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result[0];
  }
- function update_hang($id, $tenhang){
+ function check_hang($name){
     $connect=connection();
+    $sql = "SELECT * FROM hang WHERE name = '$name'";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+ }
+ function update_hang($id, $tenhang){
+     $connect=connection();
     $sql="update hang set name='".$tenhang."' where id=".$id;
     $stmt = $connect->prepare($sql);
     $stmt->execute();

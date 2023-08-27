@@ -1,4 +1,7 @@
 <?
+if(isset($data['errors'])){
+    extract($data['errors']);
+}
 extract($data['detail_sp']);
 extract($data['gia_chi_tiet']);
 extract($data['imgs_sp']);
@@ -37,7 +40,7 @@ extract($data['imgs_sp']);
                                 <h2 class="text-2xl py-1 font-medium text-green-800">Tên sản phẩm: <?=$detail_sp['name_sp']?></h2>
                                 <p class="text-lg py-1 font-medium">Thương hiệu: <?=$detail_sp['name_hang']?></p>
                                 <p class="text-lg font-medium">Loại: <?=$detail_sp['name_loai']?></p>
-                                <div class="mt-2 w-full">
+                                <div class="mt-2 w-3/4">
                                     <h2 class="font-medium text-xl mb-3">Mô tả</h2>
                                     <p class="text-lg text"><?=$detail_sp['mo_ta']?></p>
 
@@ -67,9 +70,9 @@ extract($data['imgs_sp']);
                                                 <input id="fileInput" class="hidden" type="file" name="img">
                                                 <span class="text-white"><i class="fa-solid fa-plus"></i></span>
                                             </label>
-                                            <!-- <input class="" type="button" onclick="uploadImage()"> -->
                                         </form>
                                         </div>
+                                        <span class="text-red-600 text-xs"></span><?php if(isset($errors['img'])) echo $errors['img'] ?></span>
                                     
                                     </div>
                                     <table class="mt-10">
@@ -117,6 +120,7 @@ extract($data['imgs_sp']);
     </div>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../public/js/main.js"></script>
     <script>
         // Lắng nghe sự kiện khi người dùng chọn ảnh
 document.getElementById("fileInput").addEventListener("change", function() {
