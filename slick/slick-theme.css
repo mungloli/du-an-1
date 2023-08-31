@@ -27,8 +27,8 @@
 
     display: block;
 
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -39,16 +39,16 @@
     color: transparent;
     border: none;
     outline: none;
-    background: transparent;
+    background-color: red;
 }
 .slick-prev:hover,
 .slick-prev:focus,
 .slick-next:hover,
 .slick-next:focus
 {
-    color: transparent;
+    color: white;
     outline: none;
-    background: transparent;
+    background: green;
 }
 .slick-prev:hover:before,
 .slick-prev:focus:before,

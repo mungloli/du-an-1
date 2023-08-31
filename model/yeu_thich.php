@@ -10,9 +10,9 @@
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
      }
-     function select_yeu_thich_by_sp($id_sp){
+     function select_yeu_thich_by_sp($id_sp,$id_kh){
         $connect=connection();
-        $sql = "SELECT * FROM `yeu_thich` WHERE id_san_pham=$id_sp";
+        $sql = "SELECT * FROM `yeu_thich` WHERE id_san_pham=$id_sp AND id_khach_hang=$id_kh";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

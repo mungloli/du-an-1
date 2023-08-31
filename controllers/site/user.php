@@ -21,6 +21,7 @@ function user_login(){
                 header('location: ./admin/index.php');
             }else{
                 $json_tai_khoan=json_encode($user);
+                setcookie("mess_login","Đăng nhập thành công",time()+1000);
                 setcookie("user",$json_tai_khoan,time()+(86400*7));
                 header('location:index.php');
             }
@@ -33,6 +34,7 @@ function user_login(){
 
 function user_logout(){
     setcookie("user",'',time()-1000);
+    setcookie("mess_login",'',time()-1000);
     header('location:index.php');
 }
 function user_register(){

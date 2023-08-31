@@ -63,14 +63,14 @@ function select_san_pham_by_loai_limit_10($id_loai){
     return $result[0];
  }
 
- function select_gioi_tinh($id_sp){
-    $connect=connection();
-    $sql = "SELECT `loai`.`name` as name FROM san_pham JOIN loai ON san_pham.id_loai=loai.id WHERE san_pham.id=$id_sp;";
-    $stmt = $connect->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result[0];
- };
+//  function select_gioi_tinh($id_sp){
+//     $connect=connection();
+//     $sql = "SELECT `loai`.`name` as name FROM san_pham JOIN loai ON san_pham.id_loai=loai.id WHERE san_pham.id=$id_sp;";
+//     $stmt = $connect->prepare($sql);
+//     $stmt->execute();
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result[0];
+//  };
  function select_sp(){
    $connect=connection();
    $sql="SELECT san_pham.id,loai.name as ten_loai,hang.name as ten_hang,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong 

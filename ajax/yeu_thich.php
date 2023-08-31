@@ -42,6 +42,6 @@ function add_wishlist($id_sp,$id_kh){
     }
 }
 else{
-    echo "http://localhost/du-an-1/index.php?ctl=login";
+    echo "Bạn cần đăng nhập để thực hiện tính năng này";
 }
 ?>

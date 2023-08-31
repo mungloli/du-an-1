@@ -16,6 +16,7 @@ global $img_dir;
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
+  <link rel="stylesheet" href="public/css/toast.css">
   <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body >
@@ -147,11 +148,23 @@ global $img_dir;
         </div>
       </div>
     </div>
+    <div id="toast"></div>
     <?php require "site/layout/footer.php"?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="public/js/main.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
+      <?php if(isset($_COOKIE['mess_login'])){
+        echo '
+        toast({
+          title: "Thành công",
+          message: "' . $_COOKIE["mess_login"] . '",
+          type: "success",
+          });
+        ';
+      }?>
+
       var btn_wishlist=document.querySelectorAll('.btn_wishlist');
       
       function wishList(index){
@@ -171,12 +184,19 @@ global $img_dir;
              int_count++;
              document.getElementById('count_wl').innerText = "" + int_count;
              console.log(repo);
-           }else{
+           }else if(repo==2){
             btn_wishlist[index].classList.remove('bg-green-900');
             btn_wishlist[index].classList.remove('text-white');
             int_count--;
             document.getElementById('count_wl').innerText = "" + int_count;
             console.log(repo);
+           }else{
+            console.log(repo)
+              toast({
+              title: "Thất bại",
+              message: repo,
+              type: "error",
+              });
            }
           }
         }

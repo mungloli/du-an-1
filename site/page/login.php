@@ -3,9 +3,6 @@ if(isset($data['errors'])){
   extract($data['errors']);
   
 }
-if(isset($_COOKIE['mess_re'])){
-  $dang_ki=true;
-}
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +17,7 @@ if(isset($_COOKIE['mess_re'])){
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
+  <link rel="stylesheet" href="public/css/toast.css">
   <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
@@ -50,18 +48,24 @@ if(isset($_COOKIE['mess_re'])){
           </div>
         </div>
     </div>
+    <div id="toast"></div>
     <?php
     include "site/layout/footer.php";
-    
     ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <scrip type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="public/js/main.js"></script>
     <script>
 
       <?php
-      if($dang_ki){
-        echo "alert('Đăng kí tài khoản thành công')";
+      if(isset($_COOKIE['mess_re'])){
+        echo 'toast({
+          title: "Thành công!",
+          message: "Bạn đã đăng ký tài khoản thành công.",
+          type: "success",
+          duration: 5000
+          });';
       }
       ?>
     </script>

@@ -1,9 +1,9 @@
 <?php 
     extract($data['san_pham']);
     extract($data['dung_tich']);
-    if(isset($data['yeu_thich'])){
-        extract($data['yeu_thich']);
-    }
+    extract($data['sp_cung_loai']);
+    extract($data['yeu_thich']);
+    print_r($data['yeu_thich']);
     if(isset($data['mess'])){
         extract($data['mess']);
     }
@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
+  <link rel="stylesheet" href="public/css/toast.css">
   <link rel="stylesheet" href="public/css/style.css">
   <style>
     .yt_parent:hover .yt_child{
@@ -42,7 +43,7 @@
 </head>
 <body>
     <?php require "site/layout/header.php"?>
-    <main>
+    <main class="relative">
         <div class="max-w-6xl mx-auto ">
             <div class="flex gap-8">
                 <div class="w-2/5">
@@ -64,13 +65,13 @@
                 </div>
                 <div class="w-3/5">
                     <h1 class="text-3xl font-medium"><?=$san_pham['name']?></h1>
-                    <div class="my-2">
+                    <!-- <div class="my-2">
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
                         <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                    </div>
+                    </div> -->
                     <p class="mb-2">Tồn kho: <span id="tinh-trang" class="text-green-800 font-medium">Còn hàng</span></p>
                     <span id="gia" class="font-medium text-green-800 text-2xl"> đ</span>
                     <div class="mt-3">
@@ -107,7 +108,7 @@
                             </div>
                         </div>
                         <div class="flex gap-5 mt-5" id="box_con_hang">
-                            <a class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a>
+                            <!-- <a class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center block" href="">Mua ngay</a> -->
                             <button class="text-white font-medium rounded-lg bg-green-900 hover:bg-green-950 w-1/2 py-3 text-2xl text-center" name="btn-add-cart">Thêm vào giỏ hàng</button>
                         </div>
                         <div class="mt-5 hidden" id="box_het_hang">
@@ -144,134 +145,6 @@
                                 <div class="absolute bottom-0 left-0 w-full h-1/4 more_info"></div>
                             </div>
                             <div class="hidden text-center py-3 text-blue-600"><a class="px-4" href="#">Xem thêm <i class="fa-solid fa-angle-down"></i></a></div>
-                        </div>
-                        <!-- cách sử dụng -->
-                        <div class="hidden">
-                            Cách sử dụng nước hoa:
-                            <br>
-                            <br>
-                            1. Xịt nước hoa khi cơ thể sạch, khô, hoặc sau khi thoa dưỡng ẩm để giữ mùi lâu hơn.
-                            <br>
-                            <br>
-                            2. Giữ chai xịt cách cơ thể khoảng 12cm – 15cm và hướng đầu vòi xịt về mình. Nếu nước hoa làm ướt da thì nghĩa là bạn đang xịt ở khoảng cách quá 
-                            <br>
-                            <br>
-                            3. Xịt nước hoa vào các điểm mạch đập (cổ, ngực, các điểm mạch, cẳng tay hoặc khuỷu tay): đây là những vùng có mạch máu nằm gần bề mặt da. Các điểm này ấm hơn những nơi khác, hơi ấm giúp khuếch tán mùi hương tốt.
-                            <br>
-                            <br>
-                            - Nước hoa ban đêm thường được xịt lên cổ hoặc gần vùng cổ. Lý do là vì hương nước hoa ban đêm không lưu lại lâu.
-                            <br>
-                            <br>
-                            - Nước hoa ban ngày thường được xịt vào hông hoặc đầu gối. Đó là vì hương nước hoa ban ngày tỏa hương suốt ngày và thơm dai hơn. Bạn nên dùng thêm chút kem dưỡng ẩm gần chỗ định xức nước hoa để mùi hương lưu lại lâu hơn.
-                            <br>
-                            <br>
-                            4. Sử dụng nước hoa phù hợp theo mùa, thời tiết vì sức nóng và độ ẩm sẽ tăng mạnh mùi hương.
-                            <br>
-                            <br>
-                            5. Nước hoa có thể bám và tỏa mùi tốt hay không còn phụ thuộc vào cơ địa, thời gian, không gian sử dụng.
-                            <br>
-                            <br>
-                            Bảo quản nước hoa:
-                            <br>
-                            <br>
-                            Nước hoa không chỉ loãng và mất hương thơm theo thời gian, mà còn bị biến màu, biến chất dẫn đến mùi nước hoa có mùi khó chịu. Nếu bảo quản không đúng cách, nước hoa có thể bắt đầu hỏng sau vài tháng. 
-                            <br>
-                            <br>
-                            1. Ánh sáng: tiếp xúc trực tiếp với ánh sáng trong một khoảng thời gian chắc chắn sẽ khiến nước hoa bị biến chất. Nên để nước hoa trong hộp, nơi tối, khô thoáng (tủ đồ, kệ tủ).
-                            <br>
-                            <br>
-                            2. Nhiệt độ: nhiệt độ dao động quá cao sẽ nhanh chóng làm hỏng mùi hương. Vì vậy để nước hoa trong nhà tắm có khả năng hư hỏng nhanh hơn nhiều so với nước hoa được lưu trữ trong không gian khác(tủ đồ, kệ tủ,...).
-                            <br>
-                            <br>
-                            Hạn sử dụng:
-                            <br>
-                            <br>
-                            Nước hoa thường không có hạn sử dụng. Ở một số Quốc gia, việc ghi chú hạn sử dụng là điều bắt buộc để hàng hóa được bán ra trên thị trường. Hầu hết nước hoa có hạn sử dụng 24 đến 36 tháng, và tính từ ngày bạn mở sản phẩm hay phát xịt đầu tiên.	
-                        </div>
-                        <!-- Chính sánh bảo hành -->
-                        <div class="hidden">
-                            Parfumerie luôn mong muốn mang đến cho Quý Khách Hàng những trải nghiệm dịch vụ mua sắm tốt nhất. Chúng tôi phục vụ nhu cầu mua hàng trên toàn quốc với chính sách đổi trả cụ thể như sau:
-                            <br>
-                            <br>
-                            1.&nbsp;Thời hạn đổi trả trong vòng 03 ngày kể từ khi Quý Khách Hàng nhận sản phẩm của Parfumerie tại Cửa hàng hoặc từ Đơn vị giao hàng.
-                            <br>
-                            <br>
-                            2. Chỉ áp dụng đổi trả cho sản phẩm nước hoa Fullbox, không áp dụng cho Nước hoa chiết.
-                            <br>
-                            <br>
-                            3. Việc đổi trả hàng chỉ áp dụng với những sản phẩm bị lỗi kỹ thuật do nhà sản xuất.
-                            <br>
-                            - Quý Khách Hàng&nbsp;vui lòng thông báo ngay khi kiểm tra hàng lúc nhận và cần&nbsp;lập&nbsp;biên bản xác nhận&nbsp;giữa người mua và nhân viên giao hàng trong trường hợp sản phẩm nước hoa bị đổ, vỡ, rò rỉ hoặc các lỗi vật lý khác bên ngoài.
-                            <br>
-                            - Quý Khách Hàng vui lòng cung cấp hình ảnh &amp; video thấy rõ lỗi kỹ thuật của sản phẩm gửi cho Parfumerie để xác minh ngay khi khui hộp sản phẩm.
-                            <br>
-                            <br>
-                            4.&nbsp;Sản phẩm mua rồi, Quý khách hàng vui lòng không trả hàng nếu không phải lỗi của sản phẩm.
-                            <br>
-                            <br>
-                            5. Bảo hành: Nước hoa là sản phẩm đặc thù nên không&nbsp;áp dụng&nbsp;chính sách bảo hành.
-                            <br>
-                            <br>
-                            6. Các trường hợp từ chối đổi trả - bảo hành:
-                            <br>
-                            - Quá thời hạn quy định.
-                            Không phải lỗi của sản phẩm.
-                            <br>
-                            <br>
-                            - Không xác minh được do Parfumerie cung cấp.
-                            Không có tem bảo hành của Parfumerie hoặc tem bảo hành bị rách/vỡ không còn nguyên vẹn.
-                            <br>
-                            - Sản phẩm không còn nguyên vẹn, bị biến dạng hoặc hư hỏng nặng.
-                            <br>
-                            - Các sản phẩm giảm giá từ 30% trở lên.
-                            <br>
-                            Trân trọng cảm ơn.
-                        </div>
-                        <!-- đánh giá -->
-                        <div class="hidden">
-                            <div class="flex">
-                                <div class="w-2/5 text-center">
-                                    <div class="text-4xl font-medium text-green-600"><p>5/5</p></div>
-                                    <div class="">
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                    </div>
-                                    <span>Có 1 bình luận</span>
-                                </div>
-                                <div class="w-3/5">
-                                    <h2 class="font-medium text-xl pl-1 mb-3">Bình luận</h2>
-                                    <form action="">
-                                        <div class="flex items-start justify-around">
-                                        <textarea class="border w-3/4" name="" id="" cols="" rows="5" placeholder="Nhập bình luận"></textarea>
-                                            <select class="w-1/5 items-start border text-lg px-2" name="" id="">
-                                                <option value="">1 Sao</option>
-                                                <option value="">2 Sao</option>
-                                                <option value="">3 Sao</option>
-                                                <option value="">4 Sao</option>
-                                                <option value="" selected>5 Sao</option>
-                                            </select>
-                                        </div>
-                                        <button class="px-5 py-3 text-white bg-green-800 rounded-lg float-right mt-5">Gửi bình luận</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="mt-3 border-t py-5">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <h2 class="font-medium text-xl">Mung Loli</h2>
-                                    <div class="">
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                        <span><i class="text-sm text-yellow-400 fa-regular fa-star"></i></span>
-                                    </div>
-                                </div>
-                                <p class="text-sm text-gray-600">Ngày: 2/2/2023</p>
-                                <p class="mt-2">Sản phẩm rất tốt phù hơp với giá tiền.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -315,16 +188,56 @@
                 </div>
             </div>
         </div>
-        <div>
-            <!-- <h2>Sản phẩm liên quan</h2> -->
+        <div class="max-w-6xl mx-auto mt-5">
+            <h2 class="text-2xl font-medium">Sản phẩm liên quan</h2>
+            <div class="multiple-items mt-5">
+            <?php 
+            foreach($sp_cung_loai as $sp_cl){
+              ?>
+              <div  class="product pb-4 border px-3 <?php if($sp_cl['id']==$san_pham['id']) echo "hidden-slide"?>">
+              <a href="?ctl=product_datail&id=<?=$sp_cl['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$sp_cl['img']?>" alt=""></a>
+              <div class="mt-1">
+                <div class="h-12">
+                  <a href="?ctl=product_datail&id=<?=$sp_cl['id']?>"><h3 class="name_product font-semibold hover:text-green-900"><?=$sp_cl['name']?></h3></a>
+                </div>
+                <div>
+                  <div class=" text-green-900 font-semibold h-10 relative">
+                    <div class="relative mt-3">
+                      <?php
+                      // hiển thị giá min và max
+                        $gia_san_pham=select_gia_min_max_san_pham($sp_cl['id']);
 
+                      ?>
+                      <span><?php echo number_format($gia_san_pham['gia_min'])?>đ</span><span class="mx-1">-</span><span><?php echo number_format($gia_san_pham['gia_max'])?>đ</span>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            </div>
+              <?php
+            }
+            ?>
+          
         </div>
+        </div>
+        <div id="toast"></div>
     </main>
     <?php require "site/layout/footer.php"?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="public/js/main.js"></script>
     <script>
+        
+        $('.multiple-items').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: true
+        });
+
+
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');
         var label_dt=document.querySelectorAll('.label_dt');
@@ -437,12 +350,18 @@
                 icon_wishlist.classList.add('text-green-900');
                 text_wishlist.classList.add('text-green-900')
                 text_wishlist.innerText="Đã yêu thích";
-            }else{
+            }else if(repo==2){
                 int_count--;
                 document.getElementById('count_wl').innerText = "" + int_count;
                 text_wishlist.classList.remove('text-green-900');
                 icon_wishlist.classList.remove('text-green-900');
                 text_wishlist.innerText="Thêm vào mục yêu thích";
+            }else{
+                toast({
+              title: "Thất bại",
+              message: repo,
+              type: "error",
+              });
             }
             }
             }
