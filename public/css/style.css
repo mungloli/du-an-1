@@ -101,13 +101,6 @@
   .hidden-slide {
     display: none !important;
 }
-.slick-next,.slick-next{
-  border: 1px solid green;
-  width: 40px;
-  height: 40px;
-  color: green;
-  font-size: 20px;
-}
   @keyframes hovermenu{
     from{
       transform: scale(0);

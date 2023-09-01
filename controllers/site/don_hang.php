@@ -34,9 +34,6 @@ function  don_hang(){
                 $van_chuyen=$_POST['van_chuyen'];
             }
         }
-        // echo "<pre>";
-        // print_r($_POST);
-        // print_r($errors);
         if(empty($errors)){
             $id_dh=insert_don_hang($id_kh,$dia_chi,$van_chuyen,$ten_kh,$sdt,$total);
             $id_sp=$_POST['id_sp'];
@@ -45,6 +42,15 @@ function  don_hang(){
             $id_dt=$_POST['dung_tich'];
             insert_chi_tiet_don_hang($id_sp,$id_dt,$so_luong,$gia,$id_dh);
             delete_gio_hang_by_kh($id_kh);
+            for($i=0;$i<count($id_sp);$i++){
+                echo $id_sp[$i];
+                echo $id_dt[$i];
+                $chi_tiet_so_luong=chi_tiet_sp_bill($id_sp[$i],$id_dt[$i]);
+                $inventory=$chi_tiet_so_luong['so_luong'] - $so_luong[$i];
+                update_chi_tiet_sp_to_checkout($id_sp[$i],$id_dt[$i],$inventory);
+            }
+            echo $chi_tiet_so_luong['so_luong'];
+            update_chi_tiet_sp_to_checkout($id_sp,$id_dt,$so_luong);
             header('location: index.php?ctl=don_hang');
         }else{
             $list_cart=select_cart($id_kh);
@@ -52,6 +58,13 @@ function  don_hang(){
             $count_cart=count_cart($user['id']);
             view('/page/bill',['list_cart'=>$list_cart,'van_chuyen'=>$van_chuyen,'errors'=>$errors,'count_cart'=>$count_cart]);
         }
+    }
+
+    function cancel_dh(){
+        $id=$_GET['id'];
+        $trang_thai=4;
+        update_don_hang($id, $trang_thai);
+        header('location: index.php?ctl=don_hang');
     }
 
 ?>

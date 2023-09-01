@@ -52,26 +52,19 @@ global $img_dir;
                 }else if($dh['trang_thai']==1){
                     echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-circle-check"></i>Đã xác nhận đơn hàng</p>';
                 }else if($dh['trang_thai']==2){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã được gửi cho bên vận chuyển</p>
-                    ';
-                    
-                }else if($dh['trang_thai']==3){
                     echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đang giao hàng</p>';
-                }else if($dh['trang_thai']==4){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Đơn hàng đã tới nơi</p>
-                    <div>
-                    <button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xác nhận đã lấy hàng</button>
-                    </div>';
-                }else if($dh['trang_thai']==5){
-                    echo '<p class="text-green-600"><i class="mr-2 fa-solid fa-truck-fast"></i>Hoàn thành</p>';
+                }else if($dh['trang_thai']==3){
+                    echo '<p class="text-green-600"><i class="mr-2 fas fa-check-circle"></i>Hoàn thành</p>';
+                }if($dh['trang_thai']==4){
+                    echo '<p class="text-red-600"><i class="mr-2 fa-solid fa-circle-xmark"></i>Đơn hàng đã bị hủy</p>';
                 }
                 
                 ?>
                     <div class="flex gap-5">
                         <a href="index.php?ctl=ct_don_hang&id=<?=$dh['id']?>"><button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Xem chi tiết đơn hàng</button></a>
-                        <!-- <div class="<?php if($dh['trang_thai']==0){echo "block";} else {echo "hidden";}?>">
-                        <button class="huy_dh hidden px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button>
-                        </div> -->
+                        <div class="<?php if($dh['trang_thai']==0){echo "block";} else {echo "hidden";}?>">
+                        <a href="index.php?ctl=cancel_dh&id=<?=$dh['id']?>"><button class="px-3 py-2 bg-green-900 text-white font-medium hover:bg-[#064a38] duration-300">Hủy đơn hàng</button></a>
+                        </div>
                     </div>
                 
                 
@@ -86,16 +79,5 @@ global $img_dir;
     <?php require "site/layout/footer.php"?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script>
-        let huy_dh=document.querySelectorAll('.huy_dh')
-        let trang_thai=<?=$dh['trang_thai']?>;
-        console.log(trang_thai);
-        for(let i=0;i<huy_dh.length;i++){
-            if(trang_thai==0){
-            huy_dh[i].classList.remove('hidden');
-            huy_dh[i].classList.add('block');
-            }
-        }
-    </script>
 </body>
 </html>

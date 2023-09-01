@@ -71,12 +71,19 @@ function select_san_pham_by_loai_limit_10($id_loai){
 //     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //     return $result[0];
 //  };
- function select_sp(){
+ function select_sp($keyword, $id_loai){
    $connect=connection();
    $sql="SELECT san_pham.id,loai.name as ten_loai,hang.name as ten_hang,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong 
    FROM `san_pham` JOIN loai ON loai.id=san_pham.id_loai 
    JOIN hang ON hang.id=san_pham.id_hang 
-   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id GROUP by san_pham.id order by san_pham.id desc";
+   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id";
+   if(!empty($keyword)){
+      $sql .="WHERE san_pham.name like '%".$keyword."%'";
+   }else if($id_loai<0){
+      $sql .="WHERE san_pham.id_loai='".$id_loai."' GROUP by san_pham.id order by san_pham.id desc";
+   }else{
+      $sql .="GROUP by san_pham.id order by san_pham.id desc";
+   }
    $stmt = $connect->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

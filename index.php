@@ -81,6 +81,9 @@ require "controllers/site/chi_tiet_don_hang.php";
   case 'ct_don_hang':
     ct_don_hang_page();
     break;
+  case 'cancel_dh':
+    cancel_dh();
+    break;
   default: echo "Page not pound";
   
  }

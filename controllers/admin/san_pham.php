@@ -1,7 +1,14 @@
 <?php 
 
 function list_san_pham(){
-    $list_sp=select_sp();
+    if(!empty($_POST['keyword'])){
+        $keyword=$_POST['keyword'];
+        $id_loai=0;
+        $list_sp=select_sp($keyword,$id_loai);
+    }else if(!empty($_POST['id_loai'])){
+
+    }
+    
     
     location('/san_pham/san_pham',['list_sp'=>$list_sp]);
 }

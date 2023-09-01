@@ -190,18 +190,18 @@
         </div>
         <div class="max-w-6xl mx-auto mt-5">
             <h2 class="text-2xl font-medium">Sản phẩm liên quan</h2>
-            <div class="multiple-items mt-5">
+            <div class="grid grid-cols-6 mt-5">
             <?php 
             foreach($sp_cung_loai as $sp_cl){
               ?>
               <div  class="product pb-4 border px-3 <?php if($sp_cl['id']==$san_pham['id']) echo "hidden-slide"?>">
-              <a href="?ctl=product_datail&id=<?=$sp_cl['id']?>"><img class="h-[205px] w-full" src="<?= $img_dir.$sp_cl['img']?>" alt=""></a>
+              <a href="?ctl=product_datail&id=<?=$sp_cl['id']?>"><img class="h-[150px] w-full" src="<?= $img_dir.$sp_cl['img']?>" alt=""></a>
               <div class="mt-1">
                 <div class="h-12">
                   <a href="?ctl=product_datail&id=<?=$sp_cl['id']?>"><h3 class="name_product font-semibold hover:text-green-900"><?=$sp_cl['name']?></h3></a>
                 </div>
                 <div>
-                  <div class=" text-green-900 font-semibold h-10 relative">
+                  <div class=" text-green-900 font-semibold relative">
                     <div class="relative mt-3">
                       <?php
                       // hiển thị giá min và max
@@ -229,14 +229,6 @@
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script type="text/javascript" src="public/js/main.js"></script>
     <script>
-        
-        $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            arrows: true
-        });
-
 
         var dung_tich=document.querySelectorAll('.dung_tich');
         var gia=document.getElementById('gia');

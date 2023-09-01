@@ -43,10 +43,10 @@
                 <span class="text-red-600"><?php if(isset($errors['tel'])) echo $errors['tel']?></span><br>
                 <label class="mt-5 block font-medium" for="">Trạng thái</label>
                 <select name="trang_thai">
-                    <option <?php if($don_hang['trang_thai']==1) echo "selected"?> value="1">Đang xử lí</option>
-                    <option <?php if($don_hang['trang_thai']==2) echo "selected"?> value="2">Đặt hàng thành </option>
-                    <option <?php if($don_hang['trang_thai']==3) echo "selected"?> value="3">Đang vận chuyển</option>
-                    <option <?php if($don_hang['trang_thai']==4) echo "selected"?> value="4">Đã giao hàng</option>
+                    <option <?php if($don_hang['trang_thai']==0) echo "selected"?> value="0">Chờ xác nhận đơn hàng</option>
+                    <option <?php if($don_hang['trang_thai']==1) echo "selected"?> value="1">Đã xác nhận đơn hàng</option>
+                    <option <?php if($don_hang['trang_thai']==2) echo "selected"?> value="2">Đang vận chuyển</option>
+                    <option <?php if($don_hang['trang_thai']==3) echo "selected"?> value="3">Hoàn thành</option>
                 </select>
                 <span class="text-red-600"><?php if(isset($errors['trang_thai'])) echo $errors['trang_thai']?></span><br><br>
                 <div class="mt-4">

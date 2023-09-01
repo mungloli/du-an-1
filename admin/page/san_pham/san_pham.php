@@ -29,6 +29,18 @@ extract($data['imgs']);
                             <i class="mr-2 fa-solid fa-square-plus"></i>Thêm mới
                         </a>
                     </div>
+                    <div>
+                        <p>Bộ lọc</p>
+                        <div>
+                            <form action="" class="flex">
+                                <input class="border h-8" type="text">
+                                <button class="h-8 w-8 border"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                            <select name="" id="">
+                                <option value="">head</option>
+                            </select>
+                        </div>
+                    </div>
                 <table class="w-full">
                     <thead>
                         <tr>

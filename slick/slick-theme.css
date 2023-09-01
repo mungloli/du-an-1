@@ -36,10 +36,10 @@
 
     cursor: pointer;
 
-    color: transparent;
-    border: none;
+    color: green;
+    border: 1px solid green;
     outline: none;
-    background-color: red;
+    background-color:transparent;
 }
 .slick-prev:hover,
 .slick-prev:focus,
@@ -88,11 +88,11 @@
 }
 .slick-prev:before
 {
-    content: '←';
+    content: '';
 }
 [dir='rtl'] .slick-prev:before
 {
-    content: '→';
+    content: '';
 }
 
 .slick-next

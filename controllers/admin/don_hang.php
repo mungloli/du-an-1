@@ -6,20 +6,20 @@
 
     function get_ttdh($n){
         switch ($n) {
+            case '0':
+                $tt="Chờ xác nhận";
+            break;
             case '1':
-                $tt="Đang xử lí";
+                $tt="Xác nhận thành công";
             break;
             case '2':
-                $tt="Đặt hàng thành công";
-            break;
-            case '3':
                 $tt="Đang vận chuyển";
             break;
-            case '4':
-                $tt="Đã giao hàng";
+            case '3':
+                $tt="Hoàn thành";
             break;
             default:
-                $tt="Đang xử lí";
+                $tt="Đã hủy";
             break;
         }
         return $tt;

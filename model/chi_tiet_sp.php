@@ -28,6 +28,14 @@ function chi_tiet_by_sp($id){
     $stmt->execute();
     
  }
+ function update_chi_tiet_sp_to_checkout($id_sp,$id_dt,$so_luong){
+   $connect=connection();
+   $sql = "UPDATE `chi_tiet_sp` SET `so_luong`='$so_luong' 
+   WHERE id_sanPham =$id_sp AND id_theTich=$id_dt";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   
+}
  function delete_chi_tiet_sp($id){
     $connect=connection();
     $sql = "DELETE FROM `chi_tiet_sp` WHERE id=$id"; 
@@ -55,6 +63,15 @@ function chi_tiet_by_sp($id){
     $stmt->execute();
  }
  function chi_tiet_sp_cart($id_sp,$id_dt){
+   $connect=connection();
+    $sql = "SELECT `so_luong` FROM `chi_tiet_sp` WHERE id_sanPham=$id_sp AND id_theTich=$id_dt";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result[0];
+ }
+
+ function chi_tiet_sp_bill($id_sp,$id_dt){
    $connect=connection();
     $sql = "SELECT `so_luong` FROM `chi_tiet_sp` WHERE id_sanPham=$id_sp AND id_theTich=$id_dt";
     $stmt = $connect->prepare($sql);

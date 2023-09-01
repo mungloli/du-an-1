@@ -51,8 +51,8 @@
                                 <td class="p-2 border"><?=$kh?></td>
                                 <td class="p-2 border"><?=$ttdh?></td>
                                 <td class="p-2 border">
-                                    <!-- <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
-                                    href="index.php?ctl=delete_sp&id=<?=$don_hang['id']?>">Xóa</a> -->
+                                    <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
+                                    href="index.php?ctl=ct_don_hang&id=<?=$don_hang['id']?>">Chi tiết</a>
                                     <a class="px-2 py-1 block w-max mt-2 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
                                     href="index.php?ctl=edit_don_hang&id=<?=$don_hang['id']?>">Sửa</a>
                                 </td>
