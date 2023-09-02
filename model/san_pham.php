@@ -76,10 +76,10 @@ function select_san_pham_by_loai_limit_10($id_loai){
    $sql="SELECT san_pham.id,loai.name as ten_loai,hang.name as ten_hang,san_pham.name,SUM(chi_tiet_sp.so_luong) as so_luong 
    FROM `san_pham` JOIN loai ON loai.id=san_pham.id_loai 
    JOIN hang ON hang.id=san_pham.id_hang 
-   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id";
+   JOIN chi_tiet_sp ON chi_tiet_sp.id_sanPham=san_pham.id ";
    if(!empty($keyword)){
       $sql .="WHERE san_pham.name like '%".$keyword."%'";
-   }else if($id_loai<0){
+   }else if($id_loai>0){
       $sql .="WHERE san_pham.id_loai='".$id_loai."' GROUP by san_pham.id order by san_pham.id desc";
    }else{
       $sql .="GROUP by san_pham.id order by san_pham.id desc";
@@ -157,5 +157,13 @@ function update_san_pham($id,$name,$mo_ta,$id_loai,$id_hang){
    $sql="UPDATE `san_pham` SET`name`='$name',`mo_ta`='$mo_ta',`id_loai`='$id_loai',`id_hang`='$id_hang' WHERE id=$id";
    $stmt = $connect->prepare($sql);
    $stmt->execute();
+}  
+function thong_ke_san_pham_by_loai($id_loai){
+   $connect=connection();
+   $sql="SELECT COUNT(san_pham.id) as sl_sp FROM `san_pham` WHERE san_pham.id_loai=$id_loai";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result[0];
 }  
 ?>

@@ -1,6 +1,7 @@
 <?
 extract($data['list_sp']);
 extract($data['imgs']);
+extract($data['list_loai']);
 ?>
 
 <!DOCTYPE html>
@@ -31,17 +32,27 @@ extract($data['imgs']);
                     </div>
                     <div>
                         <p>Bộ lọc</p>
-                        <div>
-                            <form action="" class="flex">
-                                <input class="border h-8" type="text">
-                                <button class="h-8 w-8 border"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div class="flex gap-10">
+                            <form action="index.php?ctl=san_pham" class="flex" method="post">
+                                <input class="border h-8 pl-2 rounded-l-md outline-none" type="text" name="keyword">
+                                <button class="h-8 w-8 border hover:bg-green-900 hover:text-white rounded-r-md"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
-                            <select name="" id="">
-                                <option value="">head</option>
+                            <form action="index.php?ctl=san_pham" method="post" id="form_option">
+                            <span>Danh mục :</span>
+                            <select name="id_loai" id="danh_muc" class="border rounded ml-2">
+                                <option class="hidden" value="">Chọn danh mục</option>
+                                <?php 
+                                foreach($list_loai as $loai){
+                                    ?>
+                                    <option value="<?=$loai['id']?>"><?=$loai['name']?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
+                            </form>
                         </div>
                     </div>
-                <table class="w-full">
+                <table class="w-full mt-8">
                     <thead>
                         <tr>
                             <th class="p-2 border text-left w-1/12">ID</th>
@@ -85,5 +96,12 @@ extract($data['imgs']);
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="../public/js/main.js"></script>
+    <script>
+        const select_danh_muc =document.getElementById('danh_muc');
+        select_danh_muc.addEventListener('change',e=>{
+            const form_option =document.getElementById('form_option');
+            form_option.submit();
+        })
+    </script>
 </body>
 </html>

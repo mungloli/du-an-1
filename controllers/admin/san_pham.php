@@ -4,13 +4,20 @@ function list_san_pham(){
     if(!empty($_POST['keyword'])){
         $keyword=$_POST['keyword'];
         $id_loai=0;
+        $list_loai=loai_all();
         $list_sp=select_sp($keyword,$id_loai);
     }else if(!empty($_POST['id_loai'])){
-
+        $keyword="";
+        $id_loai=$_POST['id_loai'];
+        $list_loai=loai_all();
+        $list_sp=select_sp($keyword,$id_loai);
+    }else{
+        $keyword="";
+        $id_loai=0;
+        $list_loai=loai_all();
+        $list_sp=select_sp($keyword,$id_loai);
     }
-    
-    
-    location('/san_pham/san_pham',['list_sp'=>$list_sp]);
+    location('/san_pham/san_pham',['list_sp'=>$list_sp,'list_loai'=>$list_loai]);
 }
 
 function detail_san_pham_by_id(){
