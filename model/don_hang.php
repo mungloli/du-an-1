@@ -49,4 +49,16 @@ function update_don_hang($id, $trang_thai){
    $stmt = $connect->prepare($sql);
    $stmt->execute();
 }
+function thong_ke_don_hang(){
+   $connect=connection();
+   $sql = "SELECT
+   MONTH(date) AS month,
+   YEAR(date) AS year,
+   SUM(tong_tien) AS doanh_thu FROM don_hang WHERE trang_thai=3 GROUP BY YEAR(date), MONTH(date) ";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result;
+}
+
 ?>

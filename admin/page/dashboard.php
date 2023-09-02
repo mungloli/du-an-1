@@ -1,6 +1,8 @@
 <?php
 extract($data['list_loai']);
-// print_r($data['list_loai']);
+extract($data['tk_dh']);
+extract($data['tkspdb']);
+extract($data['tksp']);
 ?>
 
 <!DOCTYPE html>
@@ -23,21 +25,23 @@ extract($data['list_loai']);
                 <div class="bg-white rounded-xl m-3 h-16 pl-3 flex items-center">
                     <h1 class="font-medium text-3xl">Dashboard</h1>
                 </div>
-                <div class="flex gap-5">
-                    <div class="rounded-lg bg-white w-1/2 p-5 h-40">
+                <div class="flex gap-5 m-3">
+                    <div class="rounded-lg bg-white w-1/4 p-5 h-40">
                         <span>Số lượng sản phẩm có trên shop</span>
-                        <p class="text-5xl text-center">30</p>
+                        <p class="text-5xl text-center mt-5"><?=$tksp['sl_sp']?></p>
                     </div>
-                    <div class="rounded-lg bg-white w-1/2 p-5">
+                    <div class="rounded-lg bg-white w-1/4 p-5">
                         <span>Tổng số lượng sản phẩm đã bán ra</span>
-                        <p class="text-5xl text-center">30</p>
+                        <p class="text-5xl text-center mt-5"><?=$tkspdb['so_luong']?></p>
                     </div>
-                    <div id="piechart_3d">
+                    <div id="piechart_3d" class="w-2/4">
 
                     </div>
                 </div>
                 
-                
+                <div id="chart_div">
+
+                </div>
             </div>
         </div>
     </div>
@@ -46,8 +50,6 @@ extract($data['list_loai']);
     <script src="../public/js/main.js"></script>
     <script>
       google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
@@ -68,6 +70,54 @@ extract($data['list_loai']);
         chart.draw(data, options);
       }
 
+function drawChartCols() {
+  var data = google.visualization.arrayToDataTable([
+    ['', ''],
+    <?php 
+    $dataForChart = []; // Tạo mảng để lưu dữ liệu cho biểu đồ
+
+    for ($i = 1; $i < 13; $i++) {
+      $found = false;
+      foreach ($tk_dh as $doanh_thu) {
+        if ($doanh_thu['month'] == $i) {
+          $dataForChart[] = ['' . $i, $doanh_thu['doanh_thu']];
+          $found = true;
+          break; // Thoát khỏi vòng lặp foreach khi đã tìm thấy
+        }
+      }
+
+      // Nếu không tìm thấy dữ liệu cho tháng $i, thêm giá trị 0
+      if (!$found) {
+        $dataForChart[] = ['' . $i, 0];
+      }
+    }
+
+    // Duyệt qua mảng dữ liệu và in ra biểu đồ
+    foreach ($dataForChart as $row) {
+      echo "['" . $row[0] . "', " . $row[1] . "],";
+    }
+    ?>
+  ]);
+
+  var options = {
+    title: 'Biểu đồ doanh thu theo tháng năm 2023',
+    hAxis: {
+      title: 'Month'
+    },
+    vAxis: {
+      title: ''
+    }
+  };
+
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+}
+
+google.charts.setOnLoadCallback(function () {
+    drawChart();
+    drawChartCols();
+});
     </script>
 </body>
 </html>

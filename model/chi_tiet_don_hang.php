@@ -35,6 +35,18 @@ function insert_chi_tiet_don_hang($id_sp,$id_dt,$so_luong,$gia,$id_don_hang){
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
    return $result;
 }
+function thong_ke_san_pham_da_ban(){
+  $connect=connection();
+  $sql = "SELECT COUNT(ctdh.so_luong) AS so_luong 
+  FROM chi_tiet_don_hang AS ctdh 
+  JOIN don_hang AS dh ON dh.id = ctdh.id_don_hang
+  WHERE dh.trang_thai = 3
+  ORDER BY ctdh.so_luong";
+  $stmt = $connect->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $result[0];
+}
 ?>
 
 

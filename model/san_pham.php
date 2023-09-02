@@ -166,4 +166,12 @@ function thong_ke_san_pham_by_loai($id_loai){
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
    return $result[0];
 }  
+function thong_ke_san_pham(){
+   $connect=connection();
+   $sql="SELECT COUNT(san_pham.id) as sl_sp FROM `san_pham`";
+   $stmt = $connect->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   return $result[0];
+}  
 ?>
