@@ -54,7 +54,7 @@
                   <h2 class="text-white cursor-default">Xin Chào:<br> <span><?php echo $user['user_name']?></span></h2>
                   <div class="account_menu">
                     <ul class=" w-max shadow-lg bg-white p-3">
-                      <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li>
+                      <!-- <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="#">Thông tin</a></li> -->
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=don_hang">Đơn hàng</a></li>
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=change_pass">Đổi mật khẩu</a></li>
                       <li class="px-2 py-1"><a class="p-1 transition ease-linear duration-300 hover:text-green-700" href="?ctl=logout">Đăng xuất</a></li>               
@@ -83,7 +83,7 @@
               
             </li>
             <li class="item_menu relative ">
-              <a class=" p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <p class=" p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" >Thương hiệu <i class="text-sm fa-solid fa-chevron-right"></i></p>
               <div class="menu_child absolute top-[100%] left-0 pt-4 z-10">
                 <ul class=" grid grid-cols-4  w-[600px] shadow-lg bg-white p-3">
                 <?php
@@ -99,7 +99,7 @@
             </li>
             <!-- loai -->
             <li class="item_menu_2 relative">
-              <a class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" href="#">Nước hoa <i class="text-sm fa-solid fa-chevron-right"></i></a>
+              <p class="p-3 text-xl font-semibold transition-colors duration-300 hover:text-green-700" >Nước hoa <i class="text-sm fa-solid fa-chevron-right"></i></p>
               <div class="menu_child_2 absolute top-[100%] left-0 pt-4 z-10">
                 <ul class="w-max shadow-lg bg-white p-3">
                   <?php 

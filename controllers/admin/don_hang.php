@@ -48,4 +48,10 @@
             location('don_hang/edit_don_hang',['errors'=>$errors]);
         }
     }
+    function ct_don_hang_admin(){
+        $id=$_GET['id'];
+        $don_hang=select_don_hang_by_id($id);
+        $ct_don_hang=select_chi_tiet_don_hang($don_hang['id']);
+        location('/don_hang/chi_tiet_don_hang',['don_hang'=>$don_hang,'ct_don_hang'=>$ct_don_hang]);
+    }
 ?>

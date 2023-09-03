@@ -1,7 +1,6 @@
 <?php 
 if(isset($data['errors'])){
   extract($data['errors']);
-  
 }
 
 ?>

@@ -104,7 +104,6 @@ global $img_dir;
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script>
-       var number = 1234567.89;
         var options = {
             style: 'currency',
             currency: 'VND', // Mã tiền tệ của Việt Nam
@@ -112,7 +111,6 @@ global $img_dir;
         };
         var formatter = new Intl.NumberFormat('vi-VN', options);
 
-var formattedNumber = formatter.format(number); // 1.234.567,89 ₫
         var minus= document.querySelectorAll('.minus');
         var plus =document.querySelectorAll('.plus');
         var count=document.querySelectorAll('.amount');

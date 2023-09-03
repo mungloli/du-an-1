@@ -53,7 +53,7 @@ extract($data['list_user']);
                                 echo "Người dùng";
                             }else echo "Quản trị";
                             ?></td>
-                            <td class="p-2 border">
+                            <td class="p-2 border flex gap-2">
                                 <a class="px-2 py-1 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
                                 href="index.php?ctl=edit_user&id=<?=$user['id']?>">Sửa</a>
                                 

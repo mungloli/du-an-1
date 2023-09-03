@@ -19,10 +19,6 @@ function update_user_by_id(){
         if(empty($_POST['user_name'])){
             $errors['user_name']="Vui lòng điền vào trường này";
         }else{
-            $user=check_user($_POST['user_name']);
-            if(!empty($user)){
-                $errors['user_name']="Tài khoản đã tồn tại";
-            }else{
                 $name=$_POST['user_name'];
             }
         }
@@ -56,10 +52,10 @@ function update_user_by_id(){
         }else{
             $mat_khau=$_POST['mat_khau'];
         }
-        }
+        
         if(empty($errors)){  
         update_user($name,$email,$vai_tro,$mat_khau,$id);
-        header("location: index.php?crl=user");
+        header("location: index.php?ctl=user");
         }else{
         $user=select_user_by_id($id);
         location('/user/edit_user',['user'=>$user,'errors'=>$errors]);

@@ -21,7 +21,7 @@ function user_login(){
                 header('location: ./admin/index.php');
             }else{
                 $json_tai_khoan=json_encode($user);
-                setcookie("mess_login","Đăng nhập thành công",time()+1000);
+                setcookie("mess_login","Đăng nhập thành công",time()+1);
                 setcookie("user",$json_tai_khoan,time()+(86400*7));
                 header('location:index.php');
             }
@@ -95,8 +95,11 @@ function update_pass(){
         $new_may_khau_2=$_POST['mat-khau-new-2'];
         if($user['mat_khau']==$mat_khau && $new_may_khau == $new_may_khau_2){
             update_new_pass($new_may_khau,$id);
+            $user['mat_khau']=$new_may_khau;
+            header('location: index.php?ctl=home');
         }else{
-            echo "Không thể thay đổi tài khoản mật khẩu";
+            $errors['change_pass']= "Thông tin thay đổi không đúng";
+            view('/page/change_pass',['errors'=>$errors]);
         }
     }
 }

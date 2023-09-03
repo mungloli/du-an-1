@@ -1,3 +1,8 @@
+<?php 
+if(isset($data['errors'])){
+  extract($data['errors']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +39,9 @@
               <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau-new">
               <label class="font-bold mt-3 block" for="">Nhập lại mật khẩu mới</label>
               <input class="block rounded h-10 w-full pl-1 border" type="password" name="mat-khau-new-2">
+              <span class="text-red-600"><?php if(isset($errors['change_pass'])) echo $errors['change_pass']?></span>
               <div class="mt-8 text-center">
-                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_change-pass">Đăng Nhập</button>
+                <button class="w-full rounded-3xl bg-green-900 h-10 text-white hover:bg-[#064a38]" name="btn_change-pass">Xác nhận</button>
               </div>
             </form>
           </div>

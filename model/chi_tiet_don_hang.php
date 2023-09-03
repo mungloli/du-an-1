@@ -35,6 +35,14 @@ function insert_chi_tiet_don_hang($id_sp,$id_dt,$so_luong,$gia,$id_don_hang){
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
    return $result;
 }
+function select_ctdh_by_bill($id_don_hang){
+  $connect=connection();
+  $sql = "SELECT * FROM `chi_tiet_don_hang` WHERE id_don_hang=$id_don_hang";
+  $stmt = $connect->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $result;
+}
 function thong_ke_san_pham_da_ban(){
   $connect=connection();
   $sql = "SELECT COUNT(ctdh.so_luong) AS so_luong 

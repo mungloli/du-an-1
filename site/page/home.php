@@ -107,47 +107,6 @@ global $img_dir;
     <?php
     }
     ?>
-    <div class="blog p-7">
-      <div class="max-w-6xl mx-auto border">
-        <div class="text-center py-4">
-          <h3 class="font-bold uppercase text-2xl border-b border-green-950 inline">Thông tin</h3>
-        </div>
-        <div class="grid grid-cols-4">
-          <div class="p-3">
-            <a href=""><img src="public/img/posts1.webp" alt=""></a>
-            <div>
-              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
-              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
-              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
-            </div>
-          </div>
-          <div class="p-3">
-            <a href=""><img src="public/img/posts1.webp" alt=""></a>
-            <div>
-              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
-              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
-              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
-            </div>
-          </div>
-          <div class="p-3">
-            <a href=""><img src="public/img/posts1.webp" alt=""></a>
-            <div>
-              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
-              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
-              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
-            </div>
-          </div>
-          <div class="p-3">
-            <a href=""><img src="public/img/posts1.webp" alt=""></a>
-            <div>
-              <h2 class="hover:text-green-800 font-bold">05 chai nước hoa thơm lâu mà nam giới không nên bỏ qua</h2>
-              <div class="py-2"><span class="text-gray-400 text-sm">Đăng bởi <b>MungLoli</b> - 14/2/2023</span></div>
-              <p class="text-gray-600 text-sm">Đâu là mùi hương nước hoa thơm lâu cho nam? Chính là câu hỏi mà hầu hết nam giới quan tâm muốn bi...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="toast"></div>
     <?php require "site/layout/footer.php"?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -160,6 +119,15 @@ global $img_dir;
         toast({
           title: "Thành công",
           message: "' . $_COOKIE["mess_login"] . '",
+          type: "success",
+          });
+        ';
+      }?>
+      <?php if(isset($_COOKIE['change_pass'])){
+        echo '
+        toast({
+          title: "Thành công",
+          message: "' . $_COOKIE["change_pass"] . '",
           type: "success",
           });
         ';
@@ -183,15 +151,22 @@ global $img_dir;
              btn_wishlist[index].classList.add('text-white');
              int_count++;
              document.getElementById('count_wl').innerText = "" + int_count;
-             console.log(repo);
+             toast({
+              title: "Thành công",
+              message: "Đã thêm sản phẩm vào danh mục yêu thích thành công",
+              type: "success",
+              });
            }else if(repo==2){
             btn_wishlist[index].classList.remove('bg-green-900');
             btn_wishlist[index].classList.remove('text-white');
             int_count--;
             document.getElementById('count_wl').innerText = "" + int_count;
-            console.log(repo);
+            toast({
+              title: "Thành công",
+              message: "Đã bỏ sản phẩm khỏi danh mục yêu thích",
+              type: "success",
+              });
            }else{
-            console.log(repo)
               toast({
               title: "Thất bại",
               message: repo,

@@ -124,7 +124,7 @@ switch($ctl){
             update_don_hang_by_id();
             break;
         case 'ct_don_hang':
-            ct_don_hang_page();
+            ct_don_hang_admin();
             break;
             default: echo "Page not pound";
     

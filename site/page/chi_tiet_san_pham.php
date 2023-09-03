@@ -3,7 +3,6 @@
     extract($data['dung_tich']);
     extract($data['sp_cung_loai']);
     extract($data['yeu_thich']);
-    print_r($data['yeu_thich']);
     if(isset($data['mess'])){
         extract($data['mess']);
     }
@@ -342,12 +341,22 @@
                 icon_wishlist.classList.add('text-green-900');
                 text_wishlist.classList.add('text-green-900')
                 text_wishlist.innerText="Đã yêu thích";
+                toast({
+                    title: "Thành công",
+                    message: "Đã thêm sản phẩm vào danh mục yêu thích thành công",
+                    type: "success",
+                });
             }else if(repo==2){
                 int_count--;
                 document.getElementById('count_wl').innerText = "" + int_count;
                 text_wishlist.classList.remove('text-green-900');
                 icon_wishlist.classList.remove('text-green-900');
                 text_wishlist.innerText="Thêm vào mục yêu thích";
+                toast({
+                    title: "Thành công",
+                    message: "Đã bỏ sản phẩm khỏi danh mục yêu thích",
+                    type: "success",
+                });
             }else{
                 toast({
               title: "Thất bại",

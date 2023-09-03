@@ -137,13 +137,13 @@
                                     <img class="w-16 h-16" src="<?=$img_dir.$cart['img']?>" alt="">
                                     <div class="">
                                         <h6 class="my-0"><?=$cart['ten_sp']?><span> / <?=$cart['dung_tich']?>ml</span></h6>
-                                        <small class="text-muted"><?=$cart['gia']?> x <?=$cart['so_luong']?></small>
+                                        <small class="text-muted"><?=number_format($cart['gia'])?> x <?=$cart['so_luong']?></small>
                                     </div>
                                 </div>
                                 <input class="hidden" name="dung_tich[]" type="text" value="<?=$cart['id_dt']?>">
                                 <input class="hidden" name="so_luong[]" type="text" value="<?=$cart['so_luong']?>">
                                 <input class="hidden" name="gia[]" type="text" value="<?=$cart['gia']?>">
-                                <p class="text-muted min-w-[25%] text-right"><?=$cart['gia']*$cart['so_luong']?> đ</p>
+                                <p class="text-muted min-w-[25%] text-right"><?=number_format($cart['gia']*$cart['so_luong'])?> đ</p>
                             </li>
                         </ul>
                             <?php
@@ -188,8 +188,7 @@
     <script src="public/boostrap/popper.min.js"></script>
     <script src="public/boostrap/bootstrap.min.js"></script>
     <script>
-        
-        // console.log(inputElement);
+
         function change_select() {
             var select_vc=document.getElementById("select_vc");
              let selectedOption = select_vc.options[select_vc.selectedIndex];
@@ -201,9 +200,11 @@
         function render(){
             let gia_tam_tinh=parseInt(document.getElementById('gia_tam_tinh').innerText);
             let gia_vc=parseInt(document.getElementById('gia-vc').innerText);
+            console.log(gia_tam_tinh);
+            console.log(gia_vc);
             let inputElement=document.querySelector('.value-tt');
-            document.getElementById('total_price').innerText=gia_tam_tinh+gia_vc+" "+"đ";
-            inputElement.value = gia_tam_tinh + gia_vc;
+            document.getElementById('total_price').innerText=gia_tam_tinh + gia_vc ;
+            inputElement.value = gia_tam_tinh + gia_vc ;
             // console.log(inputElement);
         }
         render();

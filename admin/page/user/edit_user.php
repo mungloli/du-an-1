@@ -38,9 +38,9 @@ extract($data['user'])
                 <span class="text-red-600 text-xs"><?php if(isset($errors['email'])) echo $errors['email']?></span>
                 <div class="mt-5 w-1/2">
                     <p class="font-medium">Vai trò</p>
-                    <input type="radio" name="vai_tro" id="0"<?php if($user['vai_tro']==0) echo "checked"?>>
+                    <input type="radio" name="vai_tro" value="0" id="0"<?php if($user['vai_tro']==0) echo "checked"?>>
                     <label class="" for="0">Người dùng</label>
-                    <input class="ml-5" type="radio" name="vai_tro" id="1" <?php if($user['vai_tro']==1) echo "checked"?>>
+                    <input class="ml-5" type="radio" name="vai_tro" value="1" id="1" <?php if($user['vai_tro']==1) echo "checked"?>>
                     <label class="" for="1">Quản trị</label>
                     <span class="text-red-600 text-xs"><?php if(isset($errors['vai_tro'])) echo $errors['vai_tro']?></span>
                 </div>
@@ -56,7 +56,7 @@ extract($data['user'])
                 <span class="text-red-600 text-xs"><?php if(isset($errors['confirm_mat_khau'])) echo $errors['confirm_mat_khau']?></span>
                 </label>
                 <div class="mt-4">
-                    <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_update_user">Thêm mới</button>
+                    <button class="px-3 h-8 bg-green-500 text-white rounded-xl" name="btn_update_user">Cập nhật</button>
                     <a href="index.php?ctl=user">
                         <button class="px-3 h-8 inline-block bg-green-500 text-white rounded-xl" type="button">Danh sách hãng</button>    
                     </a>

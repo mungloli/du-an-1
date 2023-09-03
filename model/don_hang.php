@@ -1,8 +1,8 @@
 <?php 
 function insert_don_hang($id_kh,$dia_chi,$id_vc,$ten_kh,$sdt,$tong_tien){
     $connect=connection();
-    $sql = "INSERT INTO `don_hang`(`id_khach_hang`, `dia_chi`, `id_vc`, `ten_kh`, `sdt`,`tong_tien`) 
-    VALUES ('$id_kh','$dia_chi','$id_vc','$ten_kh','$sdt','$tong_tien')";
+    $sql = "INSERT INTO `don_hang`(`id_khach_hang`, `dia_chi`, `id_vc`, `ten_kh`, `sdt`,`tong_tien`,`date`) 
+    VALUES ('$id_kh','$dia_chi','$id_vc','$ten_kh','$sdt','$tong_tien',NOW())";
     $stmt = $connect->prepare($sql);
     $stmt->execute();
     $id=$connect->lastInsertId();
