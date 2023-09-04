@@ -250,24 +250,28 @@
                         item.classList.remove('border-green-800','border-red-800');
                     });
                     let newObj = JSON.parse(html.responseText);
-                    var giasp= new Intl.NumberFormat().format(newObj.gia);
-                    gia.innerText=giasp + ' đ';
-                    document.getElementById('tinh-trang').innerText=newObj.so_luong;
-                    document.getElementById('amount').setAttribute('max',newObj.so_luong);
-                    if(newObj.so_luong >0){
+                    
+                    console.log(newObj);
+                    if(newObj[0].so_luong == 0 || Object.values(newObj[0]).length == 0){
+                        document.getElementById('tinh-trang').innerText=0;
+                        gia.innerText=0 + "đ";
+                        label_dt[index].classList.add('border-red-800');
+                        document.getElementById('box_con_hang').classList.remove('flex');
+                        document.getElementById('box_con_hang').classList.add('hidden');
+                        document.getElementById('box_het_hang').classList.remove('hidden');
+                        document.getElementById('box_het_hang').classList.add('block');
+                    }else {
+                        var giasp= new Intl.NumberFormat().format(newObj[0].gia);
+                        gia.innerText=giasp + ' đ';
+                        document.getElementById('tinh-trang').innerText=newObj[0].so_luong;
+                        document.getElementById('amount').setAttribute('max',newObj[0].so_luong);
                         label_dt[index].classList.add('border-green-800');
                         document.getElementById('box_con_hang').classList.remove('hidden');
                         document.getElementById('box_con_hang').classList.add('flex');
                         document.getElementById('box_het_hang').classList.remove('block');
                         document.getElementById('box_het_hang').classList.add('hidden');
                         
-                    }else{
-                        label_dt[index].classList.add('border-red-800');
-                        document.getElementById('box_con_hang').classList.remove('flex');
-                        document.getElementById('box_con_hang').classList.add('hidden');
-                        document.getElementById('box_het_hang').classList.remove('hidden');
-                        document.getElementById('box_het_hang').classList.add('block');
-                    };
+                    }
                 }
             };
                 html.send(jsondata);

@@ -15,7 +15,7 @@
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result[0];
+        return $result;
      }
      $gia=select_gia_san_pham_by_dung_tich($id_sp,$id_dt);
     //  print_r($gia)
