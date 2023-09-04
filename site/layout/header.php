@@ -10,7 +10,7 @@
         <div class="max-w-6xl mx-auto">
           <div class="flex justify-between items-center h-[88px]">
             <div class="">
-            <form action="index.php?ctl=sanpham" method="post"class="bg-white rounded-lg overflow-hidden px-2">
+            <form action="index.php?ctl=product" method="post"class="bg-white rounded-lg overflow-hidden px-2">
               <input class="h-10 w-56 outline-none" type="text" placeholder="Tìm sản phẩm" name="kyw">
               <button class="w-7" type="submit" name="timkiem" value="Tìm" id=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>

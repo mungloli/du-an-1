@@ -1,4 +1,4 @@
-<?
+<?php
     extract($data['list_don_hang']);
 ?>
 
@@ -33,7 +33,8 @@
                         <tr>
                             <th class="p-2 border text-left w-1/12">ID</th>
                             <th class="p-2 border text-left w-3/12">Tên khách hàng</th>
-                            <th class="p-2 border text-left w-1/12">Thông tin</th>
+                            <th class="p-2 border text-left w-1/12">Số điện thoại</th>
+                            <th class="p-2 border text-left w-3/12">Địa chỉ</th>
                             <th class="p-2 border text-left w-1/12">Trạng thái</th>
                             <th class="p-2 border text-left w-1/12">Thao tác</th>
                         </tr>
@@ -42,23 +43,22 @@
                         <?php
                             foreach($list_don_hang as $don_hang){
                             $ttdh=get_ttdh($don_hang['trang_thai']);
-                            $kh=$don_hang["dia_chi"].'
-                            <br>'.$don_hang["sdt"];
+                            $kh=$don_hang["dia_chi"];
                         ?>
                             <tr>
                                 <td class="p-2 border"><?=$don_hang['id']?></td>
                                 <td class="p-2 border"><?=$don_hang['ten_kh']?></td>
+                                <td class="p-2 border"><?=$don_hang["sdt"]?></td>
                                 <td class="p-2 border"><?=$kh?></td>
                                 <td class="p-2 border"><?=$ttdh?></td>
                                 <td class="p-2 border">
                                     <a class="px-2 py-1 bg-red-600 rounded-lg text-white hover:bg-red-700" 
                                     href="index.php?ctl=ct_don_hang&id=<?=$don_hang['id']?>">Chi tiết</a>
-                                    <a class="px-2 py-1 block w-max mt-2 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
+                                    <a class="<?php if($don_hang['trang_thai'] == 4) echo "hidden"?> px-2 py-1 block w-max mt-2 bg-yellow-500 rounded-lg text-white hover:bg-yellow-600" 
                                     href="index.php?ctl=edit_don_hang&id=<?=$don_hang['id']?>">Sửa</a>
                                 </td>
                             </tr>
                         <?php
-                            // print_r() ;
                             }
                         ?>
                     </tbody>

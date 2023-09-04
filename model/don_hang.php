@@ -29,7 +29,7 @@ function insert_don_hang($id_kh,$dia_chi,$id_vc,$ten_kh,$sdt,$tong_tien){
 }
 function don_hang_all(){
    $connect=connection();
-   $sql = "SELECT * FROM don_hang";
+   $sql = "SELECT * FROM don_hang ORDER BY don_hang.id DESC";
    $stmt = $connect->prepare($sql);
    $stmt->execute();
    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

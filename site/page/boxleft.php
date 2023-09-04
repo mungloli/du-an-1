@@ -10,7 +10,7 @@
                 <div class="mb">
                     <div class="title nav">Thương hiệu
                         <div class="search1">
-                            <form action="index.php?ctl=sanpham" method="post" class="flex items-end">
+                            <form action="index.php?ctl=product" method="post" class="flex items-end">
                                 <input class="w-48" type="text" placeholder="Tìm thương hiệu" name="kyw">
                                 <button class="bg-[#117b4d] text-white rounded-lg border px-3 py-2" type="submit" name="timkiem" value="Tìm" id="">Tìm</button>
                       </form>
@@ -20,7 +20,7 @@
                         <?php
                             foreach ($dshang as $hg) {
                                 extract($hg);
-                                $linkhang="index.php?ctl=sanpham&id_hang=".$id;
+                                $linkhang="index.php?ctl=product&id_hang=".$id;
                                 echo '<input type="checkbox"> <a href="'.$linkhang.'">'.$name.'</a> <br>';
                             }
                         ?>
@@ -32,7 +32,7 @@
                         <!-- <?php
                             foreach ($dsnew as $sp) {
                                 extract($sp);
-                                $linkhang="index.php?ctl=sanpham&id_hang=".$id;
+                                $linkhang="index.php?ctl=product&id_hang=".$id;
                                 echo '<input type="checkbox"> <a href="'.$linkhang.'">'.$price.'</a> <br>';
                             }
                         ?> -->
@@ -58,7 +58,7 @@
                                         <?php
                                             foreach ($dshang as $hg) {
                                                 extract($hg);
-                                                $linkhang="index.php?ctl=sanpham&id_hang=".$id;
+                                                $linkhang="index.php?ctl=product&id_hang=".$id;
                                                 echo ' <li><a href="'.$linkhang.'">'.$name.'</a></li>';
                                             }
                                         ?>
@@ -75,7 +75,7 @@
                                         <?php
                                             foreach ($dsloai as $loai) {
                                                 extract($loai);
-                                                $linkloai="index.php?ctl=sanpham&id_loai=".$id;
+                                                $linkloai="index.php?ctl=product&id_loai=".$id;
                                                 echo ' <li><a href="'.$linkloai.'">'.$name.'</a></li>';
                                             }
                                         ?>

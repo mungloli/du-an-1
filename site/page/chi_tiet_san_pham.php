@@ -130,11 +130,8 @@
             <div class="flex gap-5 mt-5">
                 <div class="w-3/4">
                     <div class="bg-green-900 py-3 px-2">
-                        <ul class="flex justify-between">
+                        <ul class="">
                             <li class="font-medium text-xl text-white">Thông tin sản phẩm</li>
-                            <li class="font-medium text-xl text-white">Hưỡng dẫn sử dụng và bảo quản</li>
-                            <li class="font-medium text-xl text-white">Chính sách đổi trả</li>
-                            <li class="font-medium text-xl text-white">Đánh giá</li>
                         </ul>
                     </div>
                     <div class="border px-3 h-[91%]">

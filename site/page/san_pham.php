@@ -7,12 +7,13 @@ extract($data['dsloai']);
     
     // Sử dụng array_chunk để phân chia mảng dữ liệu thành các trang nhỏ hơn
     $paginated_data = array_chunk($dsnew, $records_per_page);
-    
-    // Xác định trang hiện tại mà người dùng đang xem
-    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $current_page = max(1, min($current_page, count($paginated_data)));
-    // Hiển thị dữ liệu trên trang hiện tại
-    $dsnew = $paginated_data[$current_page - 1];
+    if(!empty($paginated_data)){
+        // Xác định trang hiện tại mà người dùng đang xem
+        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $current_page = max(1, min($current_page, count($paginated_data)));
+        // Hiển thị dữ liệu trên trang hiện tại
+        $dsnew = $paginated_data[$current_page - 1];
+    }
 global $img_dir;
 ?>
 <!DOCTYPE html>
@@ -28,6 +29,7 @@ global $img_dir;
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
   <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/toast.css">
   <link rel="stylesheet" href="public/css/san_pham.css">
 </head>
 <body>
@@ -126,7 +128,7 @@ global $img_dir;
                     </div>
                     <div class="mt-10 text-center">
                 <?php 
-                if ($current_page > 1) {
+                if (isset($current_page) && $current_page > 1) {
                     echo "<a class='px-2 py-1 mx-1 hover:text-green-900' href='index.php?ctl=product&page=" . ($current_page - 1) . "'>Pre</a> ";
                   }
                 // Hiển thị các liên kết phân trang
@@ -134,7 +136,7 @@ global $img_dir;
                     echo "<a class='" . ($current_page == $i ? 'bg-green-900 text-white' : 'bg-white') . " px-2 py-1 mx-1' href='index.php?ctl=product&page=$i'>$i</a> ";
                 }
                     
-                if ($current_page < count($paginated_data)) {
+                if (isset($current_page) && $current_page < count($paginated_data)) {
                     echo "<a class='px-2 py-1 mx-1 hover:text-green-900' href='index.php?ctl=product&page=" . ($current_page + 1) . "'>Next</a> ";
                   }
                 ?>
@@ -143,9 +145,11 @@ global $img_dir;
             </div>
             
     </main>
+    <div id="toast"></div>
     <?php require "site/layout/footer.php"?>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="public/js/main.js"></script>
     <script>
         var btn_wishlist=document.querySelectorAll('.btn_wishlist');
       
@@ -165,13 +169,27 @@ global $img_dir;
              btn_wishlist[index].classList.add('text-white');
              int_count++;
              document.getElementById('count_wl').innerText = "" + int_count;
-             console.log(repo);
-           }else{
+             toast({
+              title: "Thành công",
+              message: "Đã thêm sản phẩm vào danh mục yêu thích thành công",
+              type: "success",
+              });
+           }else if(repo==2){
             btn_wishlist[index].classList.remove('bg-green-900');
             btn_wishlist[index].classList.remove('text-white');
             int_count--;
             document.getElementById('count_wl').innerText = "" + int_count;
-            console.log(repo);
+            toast({
+              title: "Thành công",
+              message: "Đã bỏ sản phẩm khỏi danh mục yêu thích",
+              type: "success",
+              });
+           }else{
+              toast({
+              title: "Thất bại",
+              message: repo,
+              type: "error",
+              });
            }
           }
         }

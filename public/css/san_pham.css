@@ -106,7 +106,7 @@
 }
 .box-cent{
     display: flex;
-    justify-content: space-between;
+    
 }
 .bar{
     background-color: rgb(240, 238, 238);
@@ -155,6 +155,7 @@
     margin-top: 0;
 }
 .content{
+    width: 70%;
     border: 1px solid rgb(228, 225, 225);
     border-radius: 3px;
     margin: 20px 0 0 20px;
@@ -241,6 +242,7 @@
     color: white;
 }
 .blog{
+    width: 70%;
     font-size: 30px;
     padding-bottom: 10px;
 }
